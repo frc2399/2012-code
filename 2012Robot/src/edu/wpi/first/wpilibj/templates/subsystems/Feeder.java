@@ -22,16 +22,12 @@ public class Feeder extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
         
         //default is set to zero
-        feedMotor.set(0);
+        setFeederSpeed(0.0);
     }
     
     
-    public void teleopCommand(){
-        if(feedButt.getRawButton(1) == true){
-            feedMotor.set(0.5);
-        } else {
-            feedMotor.set(0);
-        }
+    public void setFeederSpeed(double speed){
+        feedMotor.set(speed);   
     }
 }
 
