@@ -4,7 +4,11 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.OI;
 import edu.wpi.first.wpilibj.templates.subsystems.ExampleSubsystem;
-
+import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
+import edu.wpi.first.wpilibj.templates.subsystems.Feeder;
+import edu.wpi.first.wpilibj.templates.subsystems.Kinect;
+import edu.wpi.first.wpilibj.templates.subsystems.Shooter;
+import edu.wpi.first.wpilibj.templates.subsystems.Vision;
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
  * CommandBase stores creates and stores each control system. To access a
