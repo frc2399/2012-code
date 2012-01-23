@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.templates.RobotMap;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 
 /**
@@ -16,7 +17,7 @@ public class Feeder extends Subsystem {
 
     
     Jaguar feedMotor = new Jaguar(RobotMap.feedMotor);
-    Joystick feedButt = new Joystick(RobotMap.feedButt);
+    
     public void initDefaultCommand() {
        // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
