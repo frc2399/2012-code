@@ -16,16 +16,29 @@ public class OI {
     // Process operator interface input here.
     
     public static int feedButtPort = 1;
-    Joystick stickOne = new Joystick(1);
-    private final JoystickButton feedButt = new JoystickButton(stickOne, feedButtPort);
+    public static int leftStickNum = 1;
+    Joystick leftStick = new Joystick(leftStickNum);
+    private final JoystickButton feedButt = new JoystickButton(leftStick, feedButtPort);
     
     StartPickupBall feedOn = new StartPickupBall();
     StopPickupBall feedOff = new StopPickupBall();
+    
+    public static int rightStickNum = 2;
+    Joystick rightStick = new Joystick(rightStickNum);
+  
     
     
     public OI(){
         feedButt.whenPressed(feedOn);
         feedButt.whenReleased(feedOff);
+    }
+    
+    public double getLeftSpeed() {
+        return leftStick.getY();
+    }
+    
+    public double getRightSpeed() {
+        return rightStick.getX();
     }
 }
 

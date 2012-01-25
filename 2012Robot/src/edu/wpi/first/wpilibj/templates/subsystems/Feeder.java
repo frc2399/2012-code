@@ -17,7 +17,7 @@ public class Feeder extends Subsystem {
 
     
     Jaguar feedMotor = new Jaguar(RobotMap.feedMotor);
-    
+    Jaguar loadMotor = new Jaguar(RobotMap.loadMotor);
     public void initDefaultCommand() {
        // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
