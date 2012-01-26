@@ -15,16 +15,17 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 public class OI {
     // Process operator interface input here.
     
-    public static int feedButtPort = 1;
     public static int leftStickNum = 1;
     Joystick leftStick = new Joystick(leftStickNum);
+    public static int rightStickNum = 2;
+    Joystick rightStick = new Joystick(rightStickNum);
+    
+    public static int feedButtPort = 1;
     private final JoystickButton feedButt = new JoystickButton(leftStick, feedButtPort);
     
     StartPickupBall feedOn = new StartPickupBall();
     StopPickupBall feedOff = new StopPickupBall();
     
-    public static int rightStickNum = 2;
-    Joystick rightStick = new Joystick(rightStickNum);
   
     
     
@@ -38,7 +39,7 @@ public class OI {
     }
     
     public double getRightSpeed() {
-        return rightStick.getX();
+        return rightStick.getY();
     }
 }
 

@@ -16,11 +16,11 @@ public class JoystickDrive extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        (oi.getLeftSpeed(),oi.getRightSpeed());
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        driveTrain.drive.tankDrive(oi.getLeftSpeed(), oi.getRightSpeed());
     }
 
     // Make this return true when this Command no longer needs to run execute()

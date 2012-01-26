@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.JoystickDrive;
+import edu.wpi.first.wpilibj.templates.commands.JoystickDrive;
 /**
  *
  */
@@ -21,12 +21,13 @@ public class DriveTrain extends Subsystem {
     Jaguar rightRear = new Jaguar(RobotMap.rightRear);
     
     //come back to look at this please:
-    drive = new RobotDrive(RobotMap.leftFront,RobotMap.leftRear,RobotMap.rightFront,RobotMap.rightRear);
+    public RobotDrive drive = new RobotDrive(RobotMap.leftFront, RobotMap.leftRear,
+                                        RobotMap.rightFront,RobotMap.rightRear);
      
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-        
+        setDefaultCommand(new JoystickDrive());
     }
     
     
