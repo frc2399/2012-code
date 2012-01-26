@@ -21,8 +21,7 @@ public class DriveTrain extends Subsystem {
     Jaguar rightRear = new Jaguar(RobotMap.rightRear);
     
     //come back to look at this please:
-    public RobotDrive drive = new RobotDrive(RobotMap.leftFront, RobotMap.leftRear,
-                                        RobotMap.rightFront,RobotMap.rightRear);
+    public RobotDrive drive = new RobotDrive(leftFront, leftRear, rightFront, rightRear);
      
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
