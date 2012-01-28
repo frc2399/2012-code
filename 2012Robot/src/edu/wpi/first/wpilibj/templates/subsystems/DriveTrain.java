@@ -28,7 +28,9 @@ public class DriveTrain extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
         setDefaultCommand(new JoystickDrive());
     }
-    
+    public void updateStatus(){
+
+    }
     
 }
 
