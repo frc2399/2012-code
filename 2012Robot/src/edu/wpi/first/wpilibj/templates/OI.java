@@ -54,12 +54,12 @@ public class OI {
     }
     
     public double getLeftSpeed() {
-        System.out.println("leftStick.getY() returns" + leftStick.getY());
+        //System.out.println("leftStick.getY() returns" + leftStick.getY());
         return -leftStick.getY();
     }
     
     public double getRightSpeed() {
-        System.out.println("rightStick.getY() returns" + rightStick.getY());
+        //System.out.println("rightStick.getY() returns" + rightStick.getY());
         return -rightStick.getY();
     }
 }

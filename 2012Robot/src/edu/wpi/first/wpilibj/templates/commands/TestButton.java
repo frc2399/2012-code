@@ -18,7 +18,7 @@ String displayText;
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        SmartDashboard.putString("Joysticks",displayText);
+        System.out.println(displayText);
     }
 
     // Called repeatedly when this Command is scheduled to run
