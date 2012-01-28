@@ -9,7 +9,8 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.templates.commands.JoystickDrive;
 /**
- *
+ *contains methods for controlling the DriveTrain
+ * @author Jessie and Emma
  */
 public class DriveTrain extends Subsystem {
     // Put methods for controlling this subsystem
@@ -20,9 +21,13 @@ public class DriveTrain extends Subsystem {
     Jaguar rightFront = new Jaguar(RobotMap.rightFront);
     Jaguar rightRear = new Jaguar(RobotMap.rightRear);
     
-    //come back to look at this please:
+    //which motors we are using to drive the robot
     public RobotDrive drive = new RobotDrive(leftFront, leftRear, rightFront, rightRear);
      
+    /**
+     * Default: DriveTrain subsystem controlled by inputs from the joysticks if no other 
+     * commands are using the subsystem
+     */
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());

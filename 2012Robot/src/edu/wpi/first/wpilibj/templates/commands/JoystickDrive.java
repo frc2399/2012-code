@@ -2,8 +2,9 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 /**
- *
- * @author bradmiller
+ *drives the robot in TankDrive based on y-values returned from the joysticks in the OI
+ * requires the DriveTrain subsystem
+ * @author Emma and Jessie
  */
 public class JoystickDrive extends CommandBase {
 

@@ -15,6 +15,10 @@ import edu.wpi.first.wpilibj.templates.commands.TestButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
+/**
+ * the Operator Interface, defines port numbers, joysticks, and commands
+ * @author 2399 Programmers
+ */
 public class OI {
     // Process operator interface input here.
     
@@ -41,6 +45,10 @@ public class OI {
     private final JoystickButton testButt2 = new JoystickButton(rightStick,testButt2Port);
     private final JoystickButton testButt3 = new JoystickButton(shooterStick,testButt3Port);
     
+    /**
+     * When the PickupBall feeder button "feedbutt" is pressed, the PickupBall feeder is turned on,
+     * and when it is released the feeder stops.
+     */
     public OI(){
         feedButt.whenPressed(feedOn);
         feedButt.whenReleased(feedOff);
@@ -53,11 +61,19 @@ public class OI {
           
     }
     
+    /**
+     * gets the speed of the left joystick based on the y-axis position
+     * @return the y position of the left joystick
+     */
     public double getLeftSpeed() {
         //System.out.println("leftStick.getY() returns" + leftStick.getY());
         return -leftStick.getY();
     }
     
+    /**
+     * gets the speed of the right joystick based on the y-axis position
+     * @return the y position of the right joystick
+     */
     public double getRightSpeed() {
         //System.out.println("rightStick.getY() returns" + rightStick.getY());
         return -rightStick.getY();

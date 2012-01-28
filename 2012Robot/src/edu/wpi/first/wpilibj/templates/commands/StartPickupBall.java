@@ -5,10 +5,14 @@ import edu.wpi.first.wpilibj.templates.subsystems.Feeder;
 
 /**
  *
- * @author bradmiller
+ * @author Jessie
  */
 public class StartPickupBall extends CommandBase {
-
+    
+    /**
+     * turns the PickupBall feeder on
+     * requires the "feeder" subsystem
+     */
     public StartPickupBall() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -16,6 +20,9 @@ public class StartPickupBall extends CommandBase {
     }
 
     // Called just before this Command runs the first time
+    /**
+     * turns the PickupBall feeder on
+     */
     protected void initialize() {
         feeder.setFeederSpeed(0.5);
     }
