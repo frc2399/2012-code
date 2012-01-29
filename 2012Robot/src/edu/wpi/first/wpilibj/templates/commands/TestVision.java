@@ -31,7 +31,8 @@ public class TestVision extends CommandBase {
         cc = new CriteriaCollection();
         cc.addCriteria(MeasurementType.IMAQ_MT_BOUNDING_RECT_WIDTH, 20, 400, false);
         cc.addCriteria(MeasurementType.IMAQ_MT_BOUNDING_RECT_HEIGHT, 15, 400, false);
-
+        camera.writeResolution(AxisCamera.ResolutionT.k320x240);
+        
          try {
             ColorImage image = camera.getImage();
             BinaryImage greenThreshold = image.thresholdRGB(0, 187, 189, 255, 0, 225);

@@ -50,9 +50,7 @@ public class OI {
         feedButt.whenReleased(feedOff);
         shooterButt.whenPressed(shoot);
         
-        testButt1.whenPressed(new TestButton("1"));
-        testButt2.whenPressed(new TestButton("2"));
-        testButt3.whenPressed(new TestButton("3"));
+       
        
           
     }
