@@ -56,6 +56,7 @@ public class RobotTemplate extends IterativeRobot {
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
 		autonomousCommand.cancel();
+        updateStatus();
     }
 
     /**
@@ -63,5 +64,16 @@ public class RobotTemplate extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        updateStatus();
+    }
+    
+    public void teleopDisabled(){
+    updateStatus();
+    }
+    
+    
+    public void updateStatus(){
+    CommandBase.driveTrain.updateStatus();
+    
     }
 }

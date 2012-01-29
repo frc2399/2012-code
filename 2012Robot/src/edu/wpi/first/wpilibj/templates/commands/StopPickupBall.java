@@ -3,10 +3,13 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 /**
  *
- * @author bradmiller
+ * @author Jessie 
  */
 public class StopPickupBall extends CommandBase {
-
+    /**
+     * sets the speed of the PickupBall belt to zero, stopping the belt 
+     * requires the "feeder" subsystem
+     */
     public StopPickupBall() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -14,6 +17,9 @@ public class StopPickupBall extends CommandBase {
     }
 
     // Called just before this Command runs the first time
+    /**
+     * sets the PickupBall feeder speed to zero, stopping the belt
+     */
     protected void initialize() {
         feeder.setFeederSpeed(0);
     }
