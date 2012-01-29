@@ -5,6 +5,7 @@ package edu.wpi.first.wpilibj.templates;
  * to a variable name. This provides flexibility changing wiring, makes checking
  * the wiring easier and significantly reduces the number of magic numbers
  * floating around.
+ * @author 2399 Programmers
  */
 public class RobotMap {
     // For example to map the left and right motors, you could define the
@@ -24,5 +25,10 @@ public class RobotMap {
     public static int leftRear = 2;
     public static int rightFront = 4;
     public static int rightRear = 5;
+    
+    public static final int leftEncoderA = 1;
+    public static final int leftEncoderB = 2;
+    public static final int rightEncoderA = 3;
+    public static final int rightEncoderB = 4;
     
 }
