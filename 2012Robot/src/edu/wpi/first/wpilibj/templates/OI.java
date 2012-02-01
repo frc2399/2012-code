@@ -49,9 +49,6 @@ public class OI {
         feedButt.whenPressed(feedOn);
         feedButt.whenReleased(feedOff);
         shooterButt.whenPressed(shoot);
-        
-          
-    }
     
     /**
      * gets the speed of the left joystick based on the y-axis position
