@@ -49,13 +49,7 @@ public class OI {
         feedButt.whenPressed(feedOn);
         feedButt.whenReleased(feedOff);
         shooterButt.whenPressed(shoot);
-        
-<<<<<<< HEAD
        
-=======
->>>>>>> b5d1ff07f9f033b9d813e85ca5a31c89a716f689
-       
-          
     }
     
     /**
