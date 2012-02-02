@@ -56,6 +56,8 @@ public class DriveTrain extends Subsystem {
      */
     public void setSpeed(double leftSpeed, double rightSpeed){
        drive.setLeftRightMotorOutputs(leftSpeed, rightSpeed);
+       System.out.println("the left speed is:" + leftSpeed);
+       System.out.println("the right speed is;" + rightSpeed);
     }
     
     /**
