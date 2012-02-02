@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.templates.commands.ShootBall;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.commands.TestButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.templates.commands.Go;
 
 
 /**
@@ -27,7 +28,7 @@ public class OI {
     public static int feedButtPort = 4;
     public static int shooterStickNum = 2;
     public static int shooterButtNum = 1;
-    
+    public static int goTestButtNum = 3;
     
     
     Joystick leftStick = new Joystick(leftStickNum);
@@ -36,9 +37,11 @@ public class OI {
     StartPickupBall feedOn = new StartPickupBall();
     StopPickupBall feedOff = new StopPickupBall();
     ShootBall shoot = new ShootBall();
+    Go goTest = new Go(12.0);
     
     private final JoystickButton feedButt = new JoystickButton(leftStick, feedButtPort);
     private final JoystickButton shooterButt = new JoystickButton(shooterStick,shooterButtNum);
+    private final JoystickButton goTestButt = new JoystickButton(rightStick,goTestButtNum);
     
     
     /**
@@ -49,6 +52,11 @@ public class OI {
         feedButt.whenPressed(feedOn);
         feedButt.whenReleased(feedOff);
         shooterButt.whenPressed(shoot);
+
+        goTestButt.whenPressed(goTest);
+        
+    }
+
     
     /**
      * gets the speed of the left joystick based on the y-axis position

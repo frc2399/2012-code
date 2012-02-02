@@ -31,6 +31,9 @@ public class DriveTrain extends Subsystem {
     public DriveTrain(){
         double distPerPulse = 0.101;
         
+        leftEncoder.start();
+        rightEncoder.start();
+        
         leftEncoder.setDistancePerPulse(distPerPulse);
         rightEncoder.setDistancePerPulse(distPerPulse);
     }
@@ -51,16 +54,10 @@ public class DriveTrain extends Subsystem {
      * sets the speed of the left motor to a double between -1 and 1
      * @param speed the speed of the left motor
      */
-    public void setLeftSpeed(double speed){
-       //todo 
+    public void setSpeed(double leftSpeed, double rightSpeed){
+       drive.setLeftRightMotorOutputs(leftSpeed, rightSpeed);
     }
-    /**
-     * sets the speed of the right motor to a double between -1 and 1
-     * @param speed the speed of the right motor
-     */
-    public void setRightSpeed(double speed){
-        //todo
-    }
+    
     /**
      * gives the value of the right encoder
      * @return the number of ticks in the right encoder
