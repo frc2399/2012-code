@@ -54,18 +54,10 @@ public class DriveTrain extends Subsystem {
      * sets the speed of the left motor to a double between -1 and 1
      * @param speed the speed of the left motor
      */
-    public void setLeftSpeed(double speed){
-       leftFront.set(speed);
-       leftRear.set(speed);
+    public void setSpeed(double leftSpeed, double rightSpeed){
+       drive.setLeftRightMotorOutputs(leftSpeed, rightSpeed);
     }
-    /**
-     * sets the speed of the right motor to a double between -1 and 1
-     * @param speed the speed of the right motor
-     */
-    public void setRightSpeed(double speed){
-       rightFront.set(speed);
-       rightRear.set(speed);
-    }
+    
     /**
      * gives the value of the right encoder
      * @return the number of ticks in the right encoder
