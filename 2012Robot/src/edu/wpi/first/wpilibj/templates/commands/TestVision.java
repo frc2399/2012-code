@@ -37,7 +37,7 @@ public class TestVision extends CommandBase {
             ColorImage image = camera.getImage();
             BinaryImage greenThreshold = image.thresholdRGB(0, 187, 189, 255, 0, 225);
             BinaryImage convexHullImage = greenThreshold.convexHull(false);
-            BinaryImage noSmallParticles = convexHullImage.removeSmallObjects(false, 7);
+            BinaryImage noSmallParticles = convexHullImage.removeSmallObjects(false, 5);
             BinaryImage foundParticles = noSmallParticles.particleFilter(cc);
 
             /* what to do with ParticleAnalysisReport:
