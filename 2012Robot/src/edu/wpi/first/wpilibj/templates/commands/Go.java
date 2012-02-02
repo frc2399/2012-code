@@ -33,6 +33,7 @@ public class Go extends CommandBase {
         driveTrain.setLeftSpeed(0.25);
         driveTrain.setRightSpeed(0.25);
         ticksFinal = (driveTrain.getRightEncoder() + driveTrain.getLeftEncoder()) / 2;
+        System.out.println("execute method");
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -48,6 +49,7 @@ public class Go extends CommandBase {
     protected void end() {
         driveTrain.setLeftSpeed(0);
         driveTrain.setRightSpeed(0);
+        System.out.println("end method");
     }
 
     // Called when another command which requires one or more of the same
