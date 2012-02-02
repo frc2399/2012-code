@@ -30,8 +30,7 @@ public class Go extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        driveTrain.setLeftSpeed(0.25);
-        driveTrain.setRightSpeed(0.25);
+        driveTrain.setSpeed(0.25, 0.25);
         ticksFinal = (driveTrain.getRightEncoder() + driveTrain.getLeftEncoder()) / 2;
         System.out.println("execute method");
     }
@@ -47,8 +46,7 @@ public class Go extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-        driveTrain.setLeftSpeed(0);
-        driveTrain.setRightSpeed(0);
+        driveTrain.setSpeed(0, 0);
         System.out.println("end method");
     }
 
