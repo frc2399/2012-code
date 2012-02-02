@@ -53,7 +53,7 @@ public class OI {
         feedButt.whenReleased(feedOff);
         shooterButt.whenPressed(shoot);
         goTestButt.whenPressed(goTest);
-        System.out.println("just pressed the goTestButt");
+        
     }
     
     /**
