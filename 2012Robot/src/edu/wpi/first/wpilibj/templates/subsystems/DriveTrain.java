@@ -31,6 +31,9 @@ public class DriveTrain extends Subsystem {
     public DriveTrain(){
         double distPerPulse = 0.101;
         
+        leftEncoder.start();
+        rightEncoder.start();
+        
         leftEncoder.setDistancePerPulse(distPerPulse);
         rightEncoder.setDistancePerPulse(distPerPulse);
     }

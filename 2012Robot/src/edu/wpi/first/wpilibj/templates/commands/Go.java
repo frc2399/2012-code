@@ -11,7 +11,10 @@ public class Go extends CommandBase {
     double ticksFinal;
     double distToGo;
     
-
+    /**
+     * 
+     * @param dist the distance you want to go
+     */
     public Go(double dist) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
