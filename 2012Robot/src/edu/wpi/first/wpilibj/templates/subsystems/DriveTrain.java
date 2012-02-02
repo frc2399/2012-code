@@ -65,6 +65,7 @@ public class DriveTrain extends Subsystem {
      * @return the number of ticks in the right encoder
      */
     public double getRightEncoder(){
+        System.out.println("right encoder:" + rightEncoder.getDistance());
         return rightEncoder.getDistance();
     }
     /**
@@ -72,6 +73,7 @@ public class DriveTrain extends Subsystem {
      * @return the number of ticks in the left encoder
      */
     public double getLeftEncoder(){
+        System.out.println("left encoder:" + leftEncoder.getDistance());
         return leftEncoder.getDistance();
     }
     
