@@ -24,7 +24,7 @@ public class Go extends CommandBase {
     // Called just before this Command runs the first time
     protected void initialize() {
         System.out.println("just pressed the goTestButt");
-        ticksInitial = (-driveTrain.getRightEncoder() - driveTrain.getLeftEncoder()) / 2;
+        ticksInitial = (driveTrain.getRightEncoder() - driveTrain.getLeftEncoder()) / 2;
         //change distToGo
     }
 
