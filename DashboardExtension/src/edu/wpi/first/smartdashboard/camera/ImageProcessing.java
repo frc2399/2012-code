@@ -23,22 +23,40 @@ public class ImageProcessing extends WPICameraExtension {
 
     @Override
     public WPIImage processImage(WPIColorImage rawImage) {
-
-
-        /* things to do:
-         * color thresholds: red(0,151), green(198,255), blue(0,255)
-         * 
-         */
-        WPIBinaryImage redBinary = rawImage.getRedChannel().getThresholdInverted(150);
-        WPIBinaryImage greenBinary = rawImage.getGreenChannel().getThresholdInverted(198);
+       
+        //find color thresholds: red(0,151), green(198,255), blue(0,255)
+        WPIBinaryImage redBinary = rawImage.getRedChannel().getThresholdInverted(151);
+        WPIBinaryImage greenBinary = rawImage.getGreenChannel().getThreshold(198);
         WPIBinaryImage blueBinary = rawImage.getBlueChannel().getThreshold(0);
        
         // contains the pixels that show up in all three of the other images
         WPIBinaryImage finalBinary = blueBinary.getAnd(redBinary).getAnd(greenBinary);
         
         finalBinary.dilate(6);
+        finalBinary.erode(5);
         
+        //use contours' getHeight and getWidth to find particles that are big enough to be considered
+        WPIContour[] contours = finalBinary.findContours();
+        ArrayList<WPIContour> finalContours = new ArrayList<WPIContour>(); 
         
+        for (WPIContour c : contours){
+           if (c.getHeight() > 15 && c.getWidth() > 20){
+               finalContours.add(c);
+           }
+        }
+        
+        // find the centers of each of the contours
+        double[] contourCentersX = new double[finalContours.size()];
+        for (int i = 0; i < finalContours.size(); i++){
+           contourCentersX[i] = finalContours.get(i).getX() + 0.5*finalContours.get(i).getHeight();
+        }
+            
+        
+        /*
+        for (int i = 0; i <contourCenters.length; i++){
+            c[i] = finalContours.get(i).
+        }
+         */
         return rawImage.getGreenChannel();
     }
 }
