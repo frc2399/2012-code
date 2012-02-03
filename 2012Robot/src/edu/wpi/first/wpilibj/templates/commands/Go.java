@@ -32,7 +32,7 @@ public class Go extends CommandBase {
     protected void execute() {
         driveTrain.setSpeed(0.25, 0.25);
         ticksFinal = (driveTrain.getRightEncoder() - driveTrain.getLeftEncoder()) / 2;
-        System.out.println("execute method");
+        System.out.println("ticksFinal is:" + ticksFinal);
     }
 
     // Make this return true when this Command no longer needs to run execute()
