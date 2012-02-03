@@ -32,11 +32,13 @@ public class DriveTrain extends Subsystem {
     public DriveTrain(){
         double distPerPulse = 0.101;
         
+        leftEncoder.setDistancePerPulse(distPerPulse);
+        rightEncoder.setDistancePerPulse(distPerPulse);
+        
         leftEncoder.start();
         rightEncoder.start();
         
-        leftEncoder.setDistancePerPulse(distPerPulse);
-        rightEncoder.setDistancePerPulse(distPerPulse);
+        
     }
     /**
      * Default: DriveTrain subsystem controlled by inputs from the joysticks if no other 
