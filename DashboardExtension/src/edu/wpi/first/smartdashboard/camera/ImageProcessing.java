@@ -25,10 +25,12 @@ public class ImageProcessing extends WPICameraExtension {
 
     public ImageProcessing(){
         super();
-        NetworkTable.setTeam(2399);
+
     }
     @Override
     public WPIImage processImage(WPIColorImage rawImage) {
+        
+                NetworkTable.setTeam(2399);
         
         //find color thresholds: red(0,151), green(198,255), blue(0,255)
         WPIBinaryImage redBinary = rawImage.getRedChannel().getThresholdInverted(151);

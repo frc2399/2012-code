@@ -20,11 +20,12 @@ public class Aim extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        System.out.println("number of particles: " + NetworkTable.getTable("camera").getKeys().size());
+        System.out.println(NetworkTable.getTable("camera").isConnected());
+       // System.out.println("number of particles: " + NetworkTable.getTable("camera").getKeys().size());
         for (int i = 0; i < NetworkTable.getTable("camera").getKeys().size(); i++) {
             double x = NetworkTable.getTable("camera").getDouble("x" + i, 0);
             double y = NetworkTable.getTable("camera").getDouble("y" + i, 0);
-            System.out.println("particle #" + i + " center:(" + x + "," + y + ")");
+           // System.out.println("particle #" + i + " center:(" + x + "," + y + ")");
         }
     }
 
