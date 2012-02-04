@@ -32,6 +32,7 @@ public class OI {
     public static int shooterButtNum = 1;
     public static int goTestButtNum = 3;
     public static int spin180ButtNum = 5;
+    public static int spin90ButtNum = 4;
     
     Joystick leftStick = new Joystick(leftStickNum);
     Joystick rightStick = new Joystick(rightStickNum);
@@ -39,14 +40,16 @@ public class OI {
     StartPickupBall feedOn = new StartPickupBall();
     StopPickupBall feedOff = new StopPickupBall();
     ShootBall shoot = new ShootBall();
-    Go goTest = new Go(12.0);
+    Go goTest = new Go(-36.0);
+    //these two angles go counter-clockwise
     Spinning spin180 = new Spinning(DriveTrain.Turn180);
+    Spinning spin90 = new Spinning(DriveTrain.Turn90);
     
     private final JoystickButton feedButt = new JoystickButton(leftStick, feedButtPort);
     private final JoystickButton shooterButt = new JoystickButton(shooterStick,shooterButtNum);
     private final JoystickButton goTestButt = new JoystickButton(rightStick,goTestButtNum);
     private final JoystickButton spin180Butt = new JoystickButton(rightStick,spin180ButtNum);
-    
+    private final JoystickButton spin90Butt = new JoystickButton(rightStick,spin90ButtNum);
     /**
      * When the PickupBall feeder button "feedbutt" is pressed, the PickupBall feeder is turned on,
      * and when it is released the feeder stops.
@@ -58,6 +61,7 @@ public class OI {
 
         goTestButt.whenPressed(goTest);
         spin180Butt.whenPressed(spin180);
+        spin90Butt.whenPressed(spin90);
     }
 
     

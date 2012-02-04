@@ -25,7 +25,7 @@ public class DriveTrain extends Subsystem {
     Encoder rightEncoder = new Encoder(RobotMap.rightEncoderA, RobotMap.rightEncoderB);
     //which motors we are using to drive the robot
     public RobotDrive drive = new RobotDrive(leftFront, leftRear, rightFront, rightRear);
-    public static final double Turn90 = 23.55;
+    public static final double Turn90 = 22.3725;
     public static final double Turn180 = 47.1;
      
     
@@ -68,8 +68,8 @@ public class DriveTrain extends Subsystem {
      * @return the number of ticks in the right encoder
      */
     public double getRightEncoder(){
-        System.out.println("right encoder:" + rightEncoder.getDistance());
-        return rightEncoder.getDistance();
+        System.out.println("right encoder:" + -rightEncoder.getDistance());
+        return -rightEncoder.getDistance();
     }
     /**
      * gives the value of the left encoder
