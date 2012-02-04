@@ -21,7 +21,7 @@ import java.util.ArrayList;
  */
 public class ImageProcessing extends WPICameraExtension {
 
-    public double[][] getCenters(WPIColorImage rawImage) {
+    public WPIImage processImage(WPIColorImage rawImage) {
 
         //find color thresholds: red(0,151), green(198,255), blue(0,255)
         WPIBinaryImage redBinary = rawImage.getRedChannel().getThresholdInverted(151);
@@ -55,11 +55,19 @@ public class ImageProcessing extends WPICameraExtension {
         }
         // Puts the center in a 2D array 
         double[][] contourCenters = new double[finalContours.size()][2];
-        for (int i = 0; i < finalContours.size(); i++){
-            contourCenters[i][0]= contourCentersX[i];
-            contourCenters[i][1]= contourCentersY[i];
+        for (int i = 0; i < finalContours.size(); i++) {
+            contourCenters[i][0] = contourCentersX[i];
+            contourCenters[i][1] = contourCentersY[i];
         }
-        
-        return contourCenters;
+
+        WPIPoint[] centerPoints = new WPIPoint[finalContours.size()];
+        for (int i = 0; i < finalContours.size(); i++) {
+            centerPoints[i] = new WPIPoint((int) (contourCentersX[i]), (int) (contourCentersY[i]));
+        }
+        rawImage.drawPoints(centerPoints, WPIColor.RED, 5);
+        // figure out a way to return our centers- look up extensions?
+        //return contourCenters;
+
+        return rawImage;
     }
 }
