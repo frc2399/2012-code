@@ -5,51 +5,39 @@ package edu.wpi.first.wpilibj.templates.commands;
  *
  * @author Jessie and Emma
  */
-public class Go extends CommandBase {
+public class Spinning extends CommandBase {
     
-    double ticksInitial;
-    double ticksFinal;
+    double inchesInitial;
+    double inchesFinal;
     double distToGo;
     
     /**
      * 
      * @param dist the distance you want to go
      */
-    public Go(double dist) {
+    public Spinning(double dist) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        if(dist >= 0){
-            distToGo = dist - 4.25;
-        } else {
-            distToGo = dist + 4.25;
-        }
+        distToGo = dist;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
         System.out.println("just pressed the goTestButt");
-        ticksInitial = (driveTrain.getRightEncoder() + driveTrain.getLeftEncoder()) / 2;
+        inchesInitial = (driveTrain.getRightEncoder() - driveTrain.getLeftEncoder()) / 2;
         //change distToGo
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if (distToGo >= 0){
-            driveTrain.setSpeed(0.25, 0.25);
-            ticksFinal = (driveTrain.getRightEncoder() + driveTrain.getLeftEncoder()) / 2;
-            System.out.println("ticksFinal is:" + ticksFinal);
-        } else {
-            driveTrain.setSpeed(-0.25, -0.25);
-            ticksFinal = (driveTrain.getRightEncoder() + driveTrain.getLeftEncoder()) / 2;
-            System.out.println("ticksFinal is:" + ticksFinal);
-        }
+        driveTrain.setSpeed(-0.25, 0.25);
+        inchesFinal = (driveTrain.getRightEncoder() - driveTrain.getLeftEncoder()) / 2;
+        System.out.println("execute method");
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if(distToGo >= 0 && ticksFinal - ticksInitial >= distToGo){
-            return true;
-        } else if(distToGo < 0 && ticksFinal - ticksInitial <= distToGo) {
+        if(inchesFinal - inchesInitial >= distToGo){
             return true;
         } else {
             return false;

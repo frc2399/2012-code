@@ -25,17 +25,20 @@ public class DriveTrain extends Subsystem {
     Encoder rightEncoder = new Encoder(RobotMap.rightEncoderA, RobotMap.rightEncoderB);
     //which motors we are using to drive the robot
     public RobotDrive drive = new RobotDrive(leftFront, leftRear, rightFront, rightRear);
-    
+    public static final double Turn90 = 22.3725;
+    public static final double Turn180 = 47.1;
      
     
     public DriveTrain(){
         double distPerPulse = 0.101;
         
+        leftEncoder.setDistancePerPulse(distPerPulse);
+        rightEncoder.setDistancePerPulse(distPerPulse);
+        
         leftEncoder.start();
         rightEncoder.start();
         
-        leftEncoder.setDistancePerPulse(distPerPulse);
-        rightEncoder.setDistancePerPulse(distPerPulse);
+        
     }
     /**
      * Default: DriveTrain subsystem controlled by inputs from the joysticks if no other 
@@ -56,6 +59,8 @@ public class DriveTrain extends Subsystem {
      */
     public void setSpeed(double leftSpeed, double rightSpeed){
        drive.setLeftRightMotorOutputs(leftSpeed, rightSpeed);
+       System.out.println("the left speed is:" + leftSpeed);
+       System.out.println("the right speed is;" + rightSpeed);
     }
     
     /**
@@ -63,13 +68,15 @@ public class DriveTrain extends Subsystem {
      * @return the number of ticks in the right encoder
      */
     public double getRightEncoder(){
-        return rightEncoder.getDistance();
+        System.out.println("right encoder:" + -rightEncoder.getDistance());
+        return -rightEncoder.getDistance();
     }
     /**
      * gives the value of the left encoder
      * @return the number of ticks in the left encoder
      */
     public double getLeftEncoder(){
+        System.out.println("left encoder:" + leftEncoder.getDistance());
         return leftEncoder.getDistance();
     }
     
