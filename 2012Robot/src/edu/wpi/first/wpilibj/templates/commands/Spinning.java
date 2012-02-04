@@ -24,14 +24,14 @@ public class Spinning extends CommandBase {
     // Called just before this Command runs the first time
     protected void initialize() {
         System.out.println("just pressed the goTestButt");
-        ticksInitial = (-driveTrain.getRightEncoder() + driveTrain.getLeftEncoder()) / 2;
+        ticksInitial = (driveTrain.getRightEncoder() + driveTrain.getLeftEncoder()) / 2;
         //change distToGo
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         driveTrain.setSpeed(-0.25, 0.25);
-        ticksFinal = (-driveTrain.getRightEncoder() + driveTrain.getLeftEncoder()) / 2;
+        ticksFinal = (driveTrain.getRightEncoder() + driveTrain.getLeftEncoder()) / 2;
         System.out.println("execute method");
     }
 
