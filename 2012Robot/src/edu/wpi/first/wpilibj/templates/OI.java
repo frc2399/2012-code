@@ -40,7 +40,7 @@ public class OI {
     StartPickupBall feedOn = new StartPickupBall();
     StopPickupBall feedOff = new StopPickupBall();
     ShootBall shoot = new ShootBall();
-    Go goTest = new Go(48.0);
+    Go goTest = new Go(-36.0);
     Spinning spin180 = new Spinning(DriveTrain.Turn180);
     Spinning spin90 = new Spinning(DriveTrain.Turn90);
     

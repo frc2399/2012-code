@@ -18,7 +18,11 @@ public class Go extends CommandBase {
     public Go(double dist) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        distToGo = dist - 4.25;
+        if(dist >= 0){
+            distToGo = dist - 4.25;
+        } else {
+            distToGo = dist + 4.25;
+        }
     }
 
     // Called just before this Command runs the first time
@@ -30,9 +34,15 @@ public class Go extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        driveTrain.setSpeed(0.25, 0.25);
-        ticksFinal = (driveTrain.getRightEncoder() + driveTrain.getLeftEncoder()) / 2;
-        System.out.println("ticksFinal is:" + ticksFinal);
+        if (distToGo >= 0){
+            driveTrain.setSpeed(0.25, 0.25);
+            ticksFinal = (driveTrain.getRightEncoder() + driveTrain.getLeftEncoder()) / 2;
+            System.out.println("ticksFinal is:" + ticksFinal);
+        } else {
+            driveTrain.setSpeed(-0.25, -0.25);
+            ticksFinal = (driveTrain.getRightEncoder() + driveTrain.getLeftEncoder()) / 2;
+            System.out.println("ticksFinal is:" + ticksFinal);
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()
