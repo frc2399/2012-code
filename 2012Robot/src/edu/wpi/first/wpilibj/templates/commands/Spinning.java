@@ -7,8 +7,8 @@ package edu.wpi.first.wpilibj.templates.commands;
  */
 public class Spinning extends CommandBase {
     
-    double ticksInitial;
-    double ticksFinal;
+    double inchesInitial;
+    double inchesFinal;
     double distToGo;
     
     /**
@@ -24,20 +24,20 @@ public class Spinning extends CommandBase {
     // Called just before this Command runs the first time
     protected void initialize() {
         System.out.println("just pressed the goTestButt");
-        ticksInitial = (driveTrain.getRightEncoder() + driveTrain.getLeftEncoder()) / 2;
+        inchesInitial = (driveTrain.getRightEncoder() - driveTrain.getLeftEncoder()) / 2;
         //change distToGo
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         driveTrain.setSpeed(-0.25, 0.25);
-        ticksFinal = (driveTrain.getRightEncoder() + driveTrain.getLeftEncoder()) / 2;
+        inchesFinal = (driveTrain.getRightEncoder() - driveTrain.getLeftEncoder()) / 2;
         System.out.println("execute method");
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if(ticksFinal - ticksInitial >= distToGo){
+        if(inchesFinal - inchesInitial >= distToGo){
             return true;
         } else {
             return false;
