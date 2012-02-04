@@ -76,10 +76,6 @@ public class ImageProcessing extends WPICameraExtension {
         //possibly fixed- see NetworkTable things
         
         // put the centers into a table that goes to the robot
-        /* internet example:
-        NetworkTable.getTable("camera").putInt("x", 50);
-        NetworkTable.getTable("camera").putInt("y", 60);
-        */
         for (int i = 0; i < finalContours.size(); i++) {
           NetworkTable.getTable("camera").putDouble("x" + i, contourCentersX[i]);  
           NetworkTable.getTable("camera").putDouble("y" + i, contourCentersY[i]);
