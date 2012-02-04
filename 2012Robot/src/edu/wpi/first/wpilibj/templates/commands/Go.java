@@ -18,7 +18,7 @@ public class Go extends CommandBase {
     public Go(double dist) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        distToGo = dist - 4.0;
+        distToGo = dist;
     }
 
     // Called just before this Command runs the first time
