@@ -48,15 +48,15 @@ public class ImageProcessing extends WPICameraExtension {
         // find the centers of each of the contours
         double[] contourCentersX = new double[finalContours.size()];
         for (int i = 0; i < finalContours.size(); i++){
-           contourCentersX[i] = finalContours.get(i).getX() + 0.5*finalContours.get(i).getHeight();
+           contourCentersX[i] = finalContours.get(i).getX() + 0.5*finalContours.get(i).getWidth();
         }
-            
+double[] contourCentersY = new double[finalContours.size()];
+        for (int i = 0; i < finalContours.size(); i++){
+           contourCentersY[i] = finalContours.get(i).getY() + 0.5*finalContours.get(i).getHeight();
+        }            
         
-        /*
-        for (int i = 0; i <contourCenters.length; i++){
-            c[i] = finalContours.get(i).
-        }
-         */
+        
+     
         return rawImage.getGreenChannel();
     }
 }
