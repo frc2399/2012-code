@@ -39,7 +39,7 @@ public class OI {
     StartPickupBall feedOn = new StartPickupBall();
     StopPickupBall feedOff = new StopPickupBall();
     ShootBall shoot = new ShootBall();
-    Go goTest = new Go(12.0);
+    Go goTest = new Go(36.0);
     Spinning spin180 = new Spinning(DriveTrain.Turn180);
     
     private final JoystickButton feedButt = new JoystickButton(leftStick, feedButtPort);
