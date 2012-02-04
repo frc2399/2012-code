@@ -13,6 +13,8 @@ import edu.wpi.first.wpijavacv.WPIGrayscaleImage;
 import edu.wpi.first.wpijavacv.WPIContour;
 import edu.wpi.first.wpijavacv.WPIPoint;
 import edu.wpi.first.wpijavacv.WPIPolygon;
+import edu.wpi.first.smartdashboard.robot.Robot;
+import edu.wpi.first.wpilibj.networking.NetworkTable;
 import java.util.ArrayList;
 
 /**
@@ -21,8 +23,13 @@ import java.util.ArrayList;
  */
 public class ImageProcessing extends WPICameraExtension {
 
+    public ImageProcessing(){
+        super();
+        NetworkTable.setTeam(2399);
+    }
+    @Override
     public WPIImage processImage(WPIColorImage rawImage) {
-
+        
         //find color thresholds: red(0,151), green(198,255), blue(0,255)
         WPIBinaryImage redBinary = rawImage.getRedChannel().getThresholdInverted(151);
         WPIBinaryImage greenBinary = rawImage.getGreenChannel().getThreshold(198);
@@ -31,7 +38,7 @@ public class ImageProcessing extends WPICameraExtension {
         // contains the pixels that show up in all three of the other images
         WPIBinaryImage finalBinary = blueBinary.getAnd(redBinary).getAnd(greenBinary);
 
-        finalBinary.dilate(6);
+        finalBinary.dilate(7);
         finalBinary.erode(5);
 
         //use contours' getHeight and getWidth to find particles that are big enough to be considered
@@ -66,8 +73,14 @@ public class ImageProcessing extends WPICameraExtension {
         }
         rawImage.drawPoints(centerPoints, WPIColor.RED, 5);
         // figure out a way to return our centers- look up extensions?
-        //return contourCenters;
-
+        //possibly fixed- see NetworkTable things
+        
+        // put the centers into a table that goes to the robot
+        for (int i = 0; i < finalContours.size(); i++) {
+          NetworkTable.getTable("camera").putDouble("x" + i, contourCentersX[i]);  
+          NetworkTable.getTable("camera").putDouble("y" + i, contourCentersY[i]);
+        }
+        
         return rawImage;
     }
 }
