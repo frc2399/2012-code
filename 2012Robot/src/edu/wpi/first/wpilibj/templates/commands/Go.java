@@ -47,7 +47,9 @@ public class Go extends CommandBase {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if(ticksFinal - ticksInitial >= distToGo){
+        if(distToGo >= 0 && ticksFinal - ticksInitial >= distToGo){
+            return true;
+        } else if(distToGo < 0 && ticksFinal - ticksInitial <= distToGo) {
             return true;
         } else {
             return false;
