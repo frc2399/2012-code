@@ -24,6 +24,7 @@ public abstract class CommandBase extends Command {
     public static Feeder feeder = new Feeder();
     public static DriveTrain driveTrain = new DriveTrain();
     public static Vision vision = new Vision();
+    public static Shooter shooter = new Shooter();
     public static void init() {
         // This MUST be here. If the OI creates Commands (which it very likely
         // will), constructing it during the construction of CommandBase (from
@@ -33,7 +34,10 @@ public abstract class CommandBase extends Command {
         oi = new OI();
 
         // Show what command your subsystem is running on the SmartDashboard
-        SmartDashboard.putData(exampleSubsystem);
+        SmartDashboard.putData(driveTrain);
+        SmartDashboard.putData(shooter);
+        //This line doesn't work b/c Gillie's code is currently disabled...can we re-enable it?
+        //SmartDashboard.putData(vision);
     }
 
     public CommandBase(String name) {

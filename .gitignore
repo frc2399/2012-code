@@ -3,3 +3,8 @@
 /2012Robot/j2meclasses/
 /2012Robot/doc/
 /2012Robot/suite/
+/PrototypeSixWheel/build/
+/DashboardExtension/nbproject/private/
+/DashboardExtension/build/
+/DashboardExtension/dist/
+*.jar
