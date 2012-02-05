@@ -53,4 +53,7 @@ public class ShooterPitch extends PIDSubsystem {
         } catch (Exception e) {
         }
     }
+    public boolean atSetpoint(){
+        return Math.abs(getPosition() - getSetpoint()) < 10;
+    }
 }
