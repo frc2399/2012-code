@@ -1,4 +1,3 @@
-
 package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -9,6 +8,9 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.templates.commands.JoystickDrive;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.CANJaguar;
+import edu.wpi.first.wpilibj.can.CANTimeoutException;
+
 /**
  *contains methods for controlling the DriveTrain
  * @author Jessie and Emma
@@ -17,19 +19,28 @@ public class DriveTrain extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
-    Jaguar leftFront = new Jaguar(RobotMap.leftFront);
-    Jaguar leftRear = new Jaguar(RobotMap.leftRear);
-    Jaguar rightFront = new Jaguar(RobotMap.rightFront);
-    Jaguar rightRear = new Jaguar(RobotMap.rightRear);
     Encoder leftEncoder = new Encoder(RobotMap.leftEncoderA, RobotMap.leftEncoderB);
     Encoder rightEncoder = new Encoder(RobotMap.rightEncoderA, RobotMap.rightEncoderB);
     //which motors we are using to drive the robot
-    public RobotDrive drive = new RobotDrive(leftFront, leftRear, rightFront, rightRear);
     public static final double Turn90 = 22.3725;
     public static final double Turn180 = 47.1;
-     
+    public RobotDrive drive;
+    public DriveTrain() {
+        try {
+
+            CANJaguar leftFront = new CANJaguar(RobotMap.leftFront);
+            CANJaguar leftRear = new CANJaguar(RobotMap.leftRear);
+            CANJaguar rightFront = new CANJaguar(RobotMap.rightFront);
+            CANJaguar rightRear = new CANJaguar(RobotMap.rightRear);
     
-    public DriveTrain(){
+            
+        drive = new RobotDrive(leftFront, leftRear, rightFront, rightRear);
+    
+}
+catch (Exception e){
+        System.out.println(e);
+        }
+
         double distPerPulse = 0.101;
         
         leftEncoder.setDistancePerPulse(distPerPulse);
@@ -81,4 +92,3 @@ public class DriveTrain extends Subsystem {
     }
     
 }
-
