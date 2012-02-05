@@ -30,10 +30,12 @@ import java.util.ArrayList;
 public class ImageProcessing extends WPICameraExtension {
 
     WPIColorImage computerImage;
-
+    NetworkTable cameraTable;
+    
     public ImageProcessing() {
         super();
-        
+        cameraTable = new NetworkTable();
+        /*
            // Load in image to process (this goes in your constructor or wherever you want to load in an image file)
         BufferedImage img = null;
         String filename = "file.jpg";
@@ -49,7 +51,7 @@ public class ImageProcessing extends WPICameraExtension {
 
         // Create a WPIColorImage instance to process
         computerImage = new WPIColorImage(img);
-
+*/
 
     }
 
@@ -110,10 +112,10 @@ public class ImageProcessing extends WPICameraExtension {
         // put the centers into a table that goes to the robot
 
         for (int i = 0; i < finalContours.size(); i++) {
-            NetworkTable.getTable("camera").putDouble("x" + i, contourCentersX[i]);
-            NetworkTable.getTable("camera").putDouble("y" + i, contourCentersY[i]);
+            cameraTable.putDouble("x" + i, contourCentersX[i]);
+            cameraTable.putDouble("y" + i, contourCentersY[i]);
         }
-
+        NetworkTable.getTable("SmartDashboard").putSubTable("camera",cameraTable);
         return rawImage;
     }
 }

@@ -21,35 +21,25 @@ public class Aim extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        //for NetworkTableTestingExtension:
+       
         try {
             NetworkTable SDTable = new NetworkTable();
-            SDTable = NetworkTable.getTable("SmartDashboard");
-           // System.out.println(SDTable.getKeys());
-            
-            //System.out.println(SDTable.containsKey("x"));
-                        
-          // System.out.println(SDTable.getValue("test").getClass());
-            
-            System.out.println(SDTable.getSubTable("test").getInt("testNum", 0));
+            SDTable = NetworkTable.getTable("SmartDashboard");    
+ 
+            for (int i = 0; i < SDTable.getSubTable("camera").getKeys().size(); i++) {
+        double x = SDTable.getSubTable("camera").getDouble("x" + i, 0);
+        double y = SDTable.getSubTable("camera").getDouble("y" + i, 0);
+        System.out.println("particle #" + i + " center:(" + x + "," + y + ")");
+            }
        } catch (Exception ex) {
             System.out.println(ex);
       }
         
-        /*
-        System.out.println(NetworkTable.getTable("camera").isConnected());
-        // System.out.println("number of particles: " + NetworkTable.getTable("camera").getKeys().size());
-        for (int i = 0; i < NetworkTable.getTable("camera").getKeys().size(); i++) {
-        double x = NetworkTable.getTable("camera").getDouble("x" + i, 0);
-        double y = NetworkTable.getTable("camera").getDouble("y" + i, 0);
-        // System.out.println("particle #" + i + " center:(" + x + "," + y + ")");
-        }
-         */
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true
