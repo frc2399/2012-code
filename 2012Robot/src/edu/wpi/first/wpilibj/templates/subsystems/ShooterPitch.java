@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.commands.Aim;
 import edu.wpi.first.wpilibj.CANJaguar;
-import edu.wpi.first.wpilibj.can.CANTimeoutException;
+
 
 /**
  *
@@ -20,7 +20,7 @@ public class ShooterPitch extends PIDSubsystem {
     private CANJaguar pitchMotor;
 
     public ShooterPitch() {
-        super(0.0, 0.0, 0.0);
+        super(0.01, 0.0, 0.0);
         setSetpointRange(MaxAngle, MinAngle);
         setSetpoint(MinAngle);
         encoder.start();
