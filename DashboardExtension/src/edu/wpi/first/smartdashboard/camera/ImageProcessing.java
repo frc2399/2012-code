@@ -13,8 +13,14 @@ import edu.wpi.first.wpijavacv.WPIGrayscaleImage;
 import edu.wpi.first.wpijavacv.WPIContour;
 import edu.wpi.first.wpijavacv.WPIPoint;
 import edu.wpi.first.wpijavacv.WPIPolygon;
+
 import edu.wpi.first.smartdashboard.robot.Robot;
 import edu.wpi.first.wpilibj.networking.NetworkTable;
+
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 /**
@@ -23,15 +29,41 @@ import java.util.ArrayList;
  */
 public class ImageProcessing extends WPICameraExtension {
 
-    public ImageProcessing(){
+    WPIColorImage computerImage;
+    NetworkTable cameraTable;
+    
+    public ImageProcessing() {
         super();
+        cameraTable = new NetworkTable();
+        /*
+           // Load in image to process (this goes in your constructor or wherever you want to load in an image file)
+        BufferedImage img = null;
+        String filename = "file.jpg";
+        try {
+            System.out.println("Loading image: " + filename);
+            img = ImageIO.read(new File(filename));
+            System.out.println("Image is: " + img.getWidth() + "x" + img.getHeight());
+        } catch (Exception ignore) {
+            System.err.println("***ERROR**** Failed to load image: " + filename);
+            // ignore.printStackTrace(System.err);
+            System.exit(1);
+        }
+
+        // Create a WPIColorImage instance to process
+        computerImage = new WPIColorImage(img);
+*/
 
     }
+
     @Override
     public WPIImage processImage(WPIColorImage rawImage) {
+
+        NetworkTable.setTeam(2399);
         
-                NetworkTable.setTeam(2399);
-        
+        if (computerImage != null){
+        rawImage = computerImage;
+        }
+
         //find color thresholds: red(0,151), green(198,255), blue(0,255)
         WPIBinaryImage redBinary = rawImage.getRedChannel().getThresholdInverted(151);
         WPIBinaryImage greenBinary = rawImage.getGreenChannel().getThreshold(198);
@@ -76,14 +108,14 @@ public class ImageProcessing extends WPICameraExtension {
         rawImage.drawPoints(centerPoints, WPIColor.RED, 5);
         // figure out a way to return our centers- look up extensions?
         //possibly fixed- see NetworkTable things
-        
+
         // put the centers into a table that goes to the robot
-       
+
         for (int i = 0; i < finalContours.size(); i++) {
-          NetworkTable.getTable("camera").putDouble("x" + i, contourCentersX[i]);  
-          NetworkTable.getTable("camera").putDouble("y" + i, contourCentersY[i]);
+            cameraTable.putDouble("x" + i, contourCentersX[i]);
+            cameraTable.putDouble("y" + i, contourCentersY[i]);
         }
-        
+        NetworkTable.getTable("SmartDashboard").putSubTable("camera",cameraTable);
         return rawImage;
     }
 }
