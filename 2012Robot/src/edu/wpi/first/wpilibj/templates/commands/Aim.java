@@ -26,7 +26,7 @@ public class Aim extends CommandBase {
             NetworkTable SDTable = new NetworkTable();
             SDTable = NetworkTable.getTable("SmartDashboard");    
  
-            for (int i = 0; i < SDTable.getSubTable("camera").getKeys().size(); i++) {
+            for (int i = 0; i < (SDTable.getSubTable("camera").getKeys().size())/2; i++) {
         double x = SDTable.getSubTable("camera").getDouble("x" + i, 0);
         double y = SDTable.getSubTable("camera").getDouble("y" + i, 0);
         System.out.println("particle #" + i + " center:(" + x + "," + y + ")");
