@@ -35,10 +35,10 @@ public class ImageProcessing extends WPICameraExtension {
     public ImageProcessing() {
         super();
         cameraTable = new NetworkTable();
-        /*
+        
            // Load in image to process (this goes in your constructor or wherever you want to load in an image file)
         BufferedImage img = null;
-        String filename = "C:\Users\Gillie\2012-code\TestImages\VisionTargetTest2.jpg";
+        String filename = "C:/Users/Lauren/2012-code/TestImages/VisionTargetTest2.jpg";
         try {
             System.out.println("Loading image: " + filename);
             img = ImageIO.read(new File(filename));
@@ -51,7 +51,6 @@ public class ImageProcessing extends WPICameraExtension {
 
         // Create a WPIColorImage instance to process
         computerImage = new WPIColorImage(img);
-*/
 
     }
 
