@@ -38,7 +38,7 @@ public class ImageProcessing extends WPICameraExtension {
         /*
            // Load in image to process (this goes in your constructor or wherever you want to load in an image file)
         BufferedImage img = null;
-        String filename = "file.jpg";
+        String filename = "C:\Users\Gillie\2012-code\TestImages\VisionTargetTest2.jpg";
         try {
             System.out.println("Loading image: " + filename);
             img = ImageIO.read(new File(filename));
