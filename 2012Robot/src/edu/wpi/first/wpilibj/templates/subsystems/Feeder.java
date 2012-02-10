@@ -6,8 +6,8 @@ import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.CANJaguar;
-import edu.wpi.first.wpilibj.can.CANTimeoutException;
+import edu.wpi.first.wpilibj.Victor;
+
 
 
 /**
@@ -17,17 +17,10 @@ import edu.wpi.first.wpilibj.can.CANTimeoutException;
 public class Feeder extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-    private CANJaguar feedMotor;
-    private CANJaguar loadMotor;
+    private Victor feedMotor = new Victor(RobotMap.feedMotor);
+    private Victor loadMotor= new Victor(RobotMap.loadMotor);
        
     public Feeder(){
-    try{
-       feedMotor = new CANJaguar(RobotMap.feedMotor);
-       loadMotor = new CANJaguar(RobotMap.loadMotor);
-}
-    catch (Exception e){
-        System.out.println(e);
-        }
     }
 
     /**
@@ -46,14 +39,10 @@ public class Feeder extends Subsystem {
      * @param speed double between -1 and 1
      */
     public void setFeederSpeed(double speed){
-        try {
-            feedMotor.setX(speed);
-        } catch (Exception e) {
-        }
-        try {
-            loadMotor.setX(speed);
-        } catch (Exception e) {
-        }  
+        
+            feedMotor.set(speed);
+            loadMotor.set(speed);
+        
     }
 }
 
