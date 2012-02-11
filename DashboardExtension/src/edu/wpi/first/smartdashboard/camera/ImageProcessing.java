@@ -31,36 +31,36 @@ public class ImageProcessing extends WPICameraExtension {
 
     WPIColorImage computerImage;
     NetworkTable cameraTable;
-    
+
     public ImageProcessing() {
         super();
         cameraTable = new NetworkTable();
-        
-           // Load in image to process (this goes in your constructor or wherever you want to load in an image file)
+        /*
+        // Load in image to process (this goes in your constructor or wherever you want to load in an image file)
         BufferedImage img = null;
-        String filename = "C:/Users/Lauren/2012-code/TestImages/VisionTargetTest2.jpg";
+        String filename = "C:/Users/Gillie/2012-code/TestImages/VisionTargetTest2.jpg";
         try {
-            System.out.println("Loading image: " + filename);
-            img = ImageIO.read(new File(filename));
-            System.out.println("Image is: " + img.getWidth() + "x" + img.getHeight());
+        System.out.println("Loading image: " + filename);
+        img = ImageIO.read(new File(filename));
+        System.out.println("Image is: " + img.getWidth() + "x" + img.getHeight());
         } catch (Exception ignore) {
-            System.err.println("***ERROR**** Failed to load image: " + filename);
-            // ignore.printStackTrace(System.err);
-            System.exit(1);
+        System.err.println("***ERROR**** Failed to load image: " + filename);
+        // ignore.printStackTrace(System.err);
+        System.exit(1);
         }
-
+        
         // Create a WPIColorImage instance to process
         computerImage = new WPIColorImage(img);
-
+         */
     }
 
     @Override
     public WPIImage processImage(WPIColorImage rawImage) {
 
         NetworkTable.setTeam(2399);
-        
-        if (computerImage != null){
-        rawImage = computerImage;
+
+        if (computerImage != null) {
+            rawImage = computerImage;
         }
 
         //find color thresholds: red(0,151), green(198,255), blue(0,255)
@@ -114,7 +114,7 @@ public class ImageProcessing extends WPICameraExtension {
             cameraTable.putDouble("x" + i, contourCentersX[i]);
             cameraTable.putDouble("y" + i, contourCentersY[i]);
         }
-        NetworkTable.getTable("SmartDashboard").putSubTable("camera",cameraTable);
+        NetworkTable.getTable("SmartDashboard").putSubTable("camera", cameraTable);
         return rawImage;
     }
 }
