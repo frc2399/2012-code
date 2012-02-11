@@ -20,12 +20,12 @@ public class RobotMap {
     
     //motors:
     public static int feedMotor = 6;
-    public static int loadMotor = 7;
+    public static int loadMotor = 9;
     public static int leftFront = 5;
-    public static int leftRear = 4;
+    public static int leftRear = 2;
     public static int rightFront = 8;
     public static int rightRear = 1;
-    public static int pitchMotor = 2;
+    public static int pitchMotor = 4;
     
     
     public static final int leftEncoderA = 1;

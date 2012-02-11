@@ -28,9 +28,9 @@ public class AutonomousRightFast extends CommandGroup {
         addSequential(new Go(-17.5, 0.5));
         //counter clockwise
         addSequential(new Spinning(DriveTrain.Turn135Fast, 0.5));
-        addSequential(new Go(72.5, 0.5));
+        addSequential(new Go(75.5, 0.5));
         addSequential(new Spinning(DriveTrain.Turn45Fast, 0.5));
-        addSequential(new Go(32.5, 0.5));
+        addSequential(new Go(28.5, 0.5));
         //lower the arm to tip the bridge
     }
 }
