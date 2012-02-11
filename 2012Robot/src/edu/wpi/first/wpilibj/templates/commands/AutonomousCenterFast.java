@@ -13,9 +13,9 @@ import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
  *
  * @author Emma and Jessie
  */
-public class AutonomousCenter extends CommandGroup {
-
-    public AutonomousCenter() {
+public class AutonomousCenterFast extends CommandGroup {
+//start bot w both front wheel just inside of key
+    public AutonomousCenterFast() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         /**addSequential(new Aim());
@@ -24,9 +24,10 @@ public class AutonomousCenter extends CommandGroup {
         addSequential(new LoadBall());
         addSequential(new ShootBall());
         */
-        addSequential(new Go(-30.0, 0.25));
-        addSequential(new Spinning(DriveTrain.Turn180, 0.25));
-        addSequential(new Go(30.0, 0.25));
+        //take off 2.5 in for each dist in the slow autonomous commnds
+        addSequential(new Go(-27.5, 0.5));
+        addSequential(new Spinning(DriveTrain.Turn180Fast, 0.5));
+        addSequential(new Go(27.5, 0.5));
         //lower the arm to tip the bridge
         
     }
