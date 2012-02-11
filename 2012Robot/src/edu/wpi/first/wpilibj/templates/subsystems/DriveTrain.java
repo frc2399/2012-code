@@ -70,8 +70,8 @@ catch (Exception e){
      */
     public void setSpeed(double leftSpeed, double rightSpeed){
        drive.setLeftRightMotorOutputs(leftSpeed, rightSpeed);
-       System.out.println("the left speed is:" + leftSpeed);
-       System.out.println("the right speed is;" + rightSpeed);
+       //System.out.println("the left speed is:" + leftSpeed);
+       //System.out.println("the right speed is;" + rightSpeed);
     }
     
     /**
@@ -79,7 +79,7 @@ catch (Exception e){
      * @return the number of ticks in the right encoder
      */
     public double getRightEncoder(){
-        System.out.println("right encoder:" + -rightEncoder.getDistance());
+        //System.out.println("right encoder:" + -rightEncoder.getDistance());
         return -rightEncoder.getDistance();
     }
     /**
@@ -87,7 +87,7 @@ catch (Exception e){
      * @return the number of ticks in the left encoder
      */
     public double getLeftEncoder(){
-        System.out.println("left encoder:" + leftEncoder.getDistance());
+        //System.out.println("left encoder:" + leftEncoder.getDistance());
         return leftEncoder.getDistance();
     }
     
