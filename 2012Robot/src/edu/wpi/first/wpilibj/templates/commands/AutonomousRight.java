@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.templates.commands.Spinning;
 import edu.wpi.first.wpilibj.templates.commands.Aim;
 import edu.wpi.first.wpilibj.templates.commands.LoadBall;
 import edu.wpi.first.wpilibj.templates.commands.ShootBall;
+import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 
 
 /**
@@ -18,27 +19,18 @@ public class AutonomousRight extends CommandGroup {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         
-    }
-
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
-
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    }
-
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
-    }
-
-    // Called once after isFinished returns true
-    protected void end() {
-    }
-
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
+        /**addSequential(new Aim());
+        addSequential(new LoadBall());
+        addSequential(new ShootBall());
+        addSequential(new LoadBall());
+        addSequential(new ShootBall());
+        */
+        addSequential(new Go(-20.0));
+        //counter clockwise
+        addSequential(new Spinning(DriveTrain.Turn135));
+        addSequential(new Go(69.0));
+        addSequential(new Spinning(DriveTrain.Turn45));
+        addSequential(new Go(30.0));
+        //lower the arm to tip the bridge
     }
 }

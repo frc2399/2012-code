@@ -23,7 +23,13 @@ public class DriveTrain extends Subsystem {
     Encoder rightEncoder = new Encoder(RobotMap.rightEncoderA, RobotMap.rightEncoderB);
     //which motors we are using to drive the robot
     public static final double Turn90 = 22.3725;
+    public static final double TurnNeg90 = -22.3725;
     public static final double Turn180 = 47.1;
+    public static final double TurnNeg180 = -47.1;
+    public static final double Turn135 = 35.325;
+    public static final double TurnNeg135 = -35.325;
+    public static final double Turn45 = 11.775;
+    public static final double TurnNeg45 = -11.775;
     public RobotDrive drive;
     public DriveTrain() {
         try {

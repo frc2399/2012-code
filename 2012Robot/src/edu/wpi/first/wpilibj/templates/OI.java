@@ -17,6 +17,8 @@ import edu.wpi.first.wpilibj.templates.commands.Go;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.templates.commands.Spinning;
 import edu.wpi.first.wpilibj.templates.commands.TestShooter;
+import edu.wpi.first.wpilibj.templates.commands.AutonomousCenter;
+import edu.wpi.first.wpilibj.templates.commands.AutonomousRight;
 
 
 /**
@@ -35,6 +37,8 @@ public class OI {
     public static int spin180ButtNum = 5;
     public static int spin90ButtNum = 4;
     public static int PIDTestButtNum = 3;
+    public static int AutonomousCenterTestButtNum = 5;
+    public static int AutonomousRightTestButtNum = 2;
     
     Joystick leftStick = new Joystick(leftStickNum);
     Joystick rightStick = new Joystick(rightStickNum);
@@ -47,13 +51,17 @@ public class OI {
     Spinning spin180 = new Spinning(DriveTrain.Turn180);
     Spinning spin90 = new Spinning(DriveTrain.Turn90);
     TestShooter testPitch = new TestShooter();
-    
+    AutonomousCenter autonomousCenterTest = new AutonomousCenter();
+    AutonomousRight autonomousRightTest = new AutonomousRight();
+    //buttons
     private final JoystickButton feedButt = new JoystickButton(leftStick, feedButtPort);
     private final JoystickButton shooterButt = new JoystickButton(shooterStick,shooterButtNum);
     private final JoystickButton goTestButt = new JoystickButton(rightStick,goTestButtNum);
     private final JoystickButton spin180Butt = new JoystickButton(rightStick,spin180ButtNum);
     private final JoystickButton spin90Butt = new JoystickButton(rightStick,spin90ButtNum);
     private final JoystickButton PIDTestButt = new JoystickButton(shooterStick,PIDTestButtNum);
+    private final JoystickButton AutonomousCenterTestButt = new JoystickButton(leftStick, AutonomousCenterTestButtNum);
+    private final JoystickButton AutonomousRightTestButt = new JoystickButton(leftStick, AutonomousRightTestButtNum);
     /**
      * When the PickupBall feeder button "feedbutt" is pressed, the PickupBall feeder is turned on,
      * and when it is released the feeder stops.
@@ -67,6 +75,9 @@ public class OI {
         goTestButt.whenPressed(goTest);
         spin180Butt.whenPressed(spin180);
         spin90Butt.whenPressed(spin90);
+        
+        AutonomousCenterTestButt.whenPressed(autonomousCenterTest);
+        AutonomousRightTestButt.whenPressed(autonomousRightTest);
     }
 
     

@@ -18,11 +18,12 @@ public class AutonomousCenter extends CommandGroup {
     public AutonomousCenter() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        addSequential(new Aim());
+        /**addSequential(new Aim());
         addSequential(new LoadBall());
         addSequential(new ShootBall());
         addSequential(new LoadBall());
         addSequential(new ShootBall());
+        */
         addSequential(new Go(-30.0));
         addSequential(new Spinning(DriveTrain.Turn180));
         addSequential(new Go(30.0));
