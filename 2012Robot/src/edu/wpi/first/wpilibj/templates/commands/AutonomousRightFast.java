@@ -13,21 +13,24 @@ import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
  *
  * @author Emma and Jessie
  */
-public class AutonomousCenter extends CommandGroup {
-
-    public AutonomousCenter() {
+public class AutonomousRightFast extends CommandGroup {
+//start bot w front left wheel in corner of key
+    public AutonomousRightFast() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+        
         /**addSequential(new Aim());
         addSequential(new LoadBall());
         addSequential(new ShootBall());
         addSequential(new LoadBall());
         addSequential(new ShootBall());
         */
-        addSequential(new Go(-30.0, 0.25));
-        addSequential(new Spinning(DriveTrain.Turn180, 0.25));
-        addSequential(new Go(30.0, 0.25));
+        addSequential(new Go(-17.5, 0.5));
+        //counter clockwise
+        addSequential(new Spinning(DriveTrain.Turn135Fast, 0.5));
+        addSequential(new Go(72.5, 0.5));
+        addSequential(new Spinning(DriveTrain.Turn45Fast, 0.5));
+        addSequential(new Go(32.5, 0.5));
         //lower the arm to tip the bridge
-        
     }
 }

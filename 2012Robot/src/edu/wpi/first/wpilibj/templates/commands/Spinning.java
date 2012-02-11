@@ -10,15 +10,17 @@ public class Spinning extends CommandBase {
     double inchesInitial;
     double inchesFinal;
     double distToGo;
+    double speed;
     
     /**
      * 
      * @param dist the distance you want to go
      */
-    public Spinning(double dist) {
+    public Spinning(double dist, double speed) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         distToGo = dist;
+        this.speed = speed;
     }
 
     // Called just before this Command runs the first time
@@ -32,10 +34,10 @@ public class Spinning extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         if (distToGo >= 0){
-            driveTrain.setSpeed(-0.25, 0.25);
+            driveTrain.setSpeed(-speed, speed);
             inchesFinal = (driveTrain.getRightEncoder() - driveTrain.getLeftEncoder()) / 2;
         } else {
-            driveTrain.setSpeed(0.25, -0.25);
+            driveTrain.setSpeed(speed, -speed);
             inchesFinal = (-driveTrain.getRightEncoder() + driveTrain.getLeftEncoder()) / 2;
         }
         

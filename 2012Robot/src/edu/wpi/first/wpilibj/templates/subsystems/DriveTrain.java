@@ -28,8 +28,21 @@ public class DriveTrain extends Subsystem {
     public static final double TurnNeg180 = -47.1;
     public static final double Turn135 = 35.325;
     public static final double TurnNeg135 = -35.325;
-    public static final double Turn45 = 11.775;
-    public static final double TurnNeg45 = -11.775;
+    //fast
+    public static final double Turn90Fast = 17.3725;
+    public static final double TurnNeg90Fast = -17.3725;
+    public static final double Turn180Fast = 42.1;
+    public static final double TurnNeg180Fast = -42.1;
+    public static final double Turn135Fast = 30.325;
+    public static final double TurnNeg135Fast = -30.325;
+    
+    //approximated. because it is the 2nd turn in command group had to account for error
+    public static final double Turn45 = 13.775;
+    public static final double TurnNeg45 = -13.775;
+    
+    public static final double Turn45Fast = 8.775;
+    public static final double TurnNeg45Fast = -8.775;
+    
     public RobotDrive drive;
     public DriveTrain() {
         try {

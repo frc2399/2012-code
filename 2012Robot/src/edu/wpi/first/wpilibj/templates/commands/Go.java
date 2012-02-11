@@ -10,12 +10,14 @@ public class Go extends CommandBase {
     double ticksInitial;
     double ticksFinal;
     double distToGo;
+    double speed;
     
     /**
      * 
      * @param dist the distance you want to go
+     * @param speed any speed between -1 and 1
      */
-    public Go(double dist) {
+    public Go(double dist, double speed) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         if(dist >= 0){
@@ -23,6 +25,7 @@ public class Go extends CommandBase {
         } else {
             distToGo = dist + 4.25;
         }
+        this.speed = speed;
     }
 
     // Called just before this Command runs the first time
@@ -35,11 +38,11 @@ public class Go extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         if (distToGo >= 0){
-            driveTrain.setSpeed(0.25, 0.25);
+            driveTrain.setSpeed(speed, speed);
             ticksFinal = (driveTrain.getRightEncoder() + driveTrain.getLeftEncoder()) / 2;
             System.out.println("ticksFinal is:" + ticksFinal);
         } else {
-            driveTrain.setSpeed(-0.25, -0.25);
+            driveTrain.setSpeed(-speed, -speed);
             ticksFinal = (driveTrain.getRightEncoder() + driveTrain.getLeftEncoder()) / 2;
             System.out.println("ticksFinal is:" + ticksFinal);
         }
