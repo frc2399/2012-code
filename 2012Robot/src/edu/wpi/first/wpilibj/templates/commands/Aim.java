@@ -22,20 +22,29 @@ public class Aim extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-       
+
         try {
             NetworkTable SDTable = new NetworkTable();
-            SDTable = NetworkTable.getTable("SmartDashboard");    
- 
-            for (int i = 0; i < (SDTable.getSubTable("camera").getKeys().size())/2; i++) {
-        double x = SDTable.getSubTable("camera").getDouble("x" + i, 0);
-        double y = SDTable.getSubTable("camera").getDouble("y" + i, 0);
-        System.out.println("particle #" + i + " center:(" + x + "," + y + ")");
+            SDTable = NetworkTable.getTable("SmartDashboard");
+            
+            //Makes chosenX and chosenY the first X and Y values
+            double chosenX = SDTable.getSubTable("camera").getDouble("x0" , 0);
+            double chosenY = SDTable.getSubTable("camera").getDouble("y0" , 0);
+            
+            //The for loop looks at the values in the camera table
+            for (int i = 0; i < (SDTable.getSubTable("camera").getKeys().size()) / 2; i++) {
+                double x = SDTable.getSubTable("camera").getDouble("x" + i, 0);
+                double y = SDTable.getSubTable("camera").getDouble("y" + i, 0);
+                // Finds the y value of the top target
+                if (y > chosenY){
+                    chosenY = y;
+                    chosenX = x;
+                }
             }
-       } catch (Exception ex) {
+        } catch (Exception ex) {
             System.out.println(ex);
-      }
-        
+        }
+
     }
 
     // Make this return true when this Command no longer needs to run execute()
