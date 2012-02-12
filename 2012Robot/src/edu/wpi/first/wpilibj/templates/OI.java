@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj.templates.commands.TestShooter;
 import edu.wpi.first.wpilibj.templates.commands.AutonomousCenter;
 import edu.wpi.first.wpilibj.templates.commands.AutonomousRightFast;
 import edu.wpi.first.wpilibj.templates.commands.AutonomousCenterFast;
+import edu.wpi.first.wpilibj.templates.commands.AutonomousLeft;
 
 
 /**
@@ -39,7 +40,7 @@ public class OI {
     public static int spin90ButtNum = 4;
     public static int PIDTestButtNum = 3;
     public static int AutonomousCenterTestButtNum = 5;
-    public static int AutonomousRightFastTestButtNum = 2;
+    public static int AutonomousLeftTestButtNum = 2;
     public static int AutonomousCenterFastTestButtNum = 4;
     
     Joystick leftStick = new Joystick(leftStickNum);
@@ -54,7 +55,7 @@ public class OI {
     Spinning spin90 = new Spinning(DriveTrain.Turn90, 0.25);
     TestShooter testPitch = new TestShooter();
     AutonomousCenter autonomousCenterTest = new AutonomousCenter();
-    AutonomousRightFast autonomousRightFastTest = new AutonomousRightFast();
+    AutonomousLeft autonomousLeftTest = new AutonomousLeft();
     AutonomousCenterFast autonomousCenterFastTest = new AutonomousCenterFast();
     //buttons
     private final JoystickButton feedButt = new JoystickButton(leftStick, feedButtPort);
@@ -64,7 +65,7 @@ public class OI {
     private final JoystickButton spin90Butt = new JoystickButton(rightStick,spin90ButtNum);
     private final JoystickButton PIDTestButt = new JoystickButton(shooterStick,PIDTestButtNum);
     private final JoystickButton AutonomousCenterTestButt = new JoystickButton(leftStick, AutonomousCenterTestButtNum);
-    private final JoystickButton AutonomousRightFastTestButt = new JoystickButton(leftStick, AutonomousRightFastTestButtNum);
+    private final JoystickButton AutonomousLeftTestButt = new JoystickButton(leftStick, AutonomousLeftTestButtNum);
     private final JoystickButton AutonomousCenterFastTestButt = new JoystickButton(leftStick, AutonomousCenterFastTestButtNum);
     /**
      * When the PickupBall feeder button "feedbutt" is pressed, the PickupBall feeder is turned on,
@@ -81,7 +82,7 @@ public class OI {
         spin90Butt.whenPressed(spin90);
         
         AutonomousCenterTestButt.whenPressed(autonomousCenterTest);
-        AutonomousRightFastTestButt.whenPressed(autonomousRightFastTest);
+        AutonomousLeftTestButt.whenPressed(autonomousLeftTest);
         AutonomousCenterFastTestButt.whenPressed(autonomousCenterFastTest);
     }
 

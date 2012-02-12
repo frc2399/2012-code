@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.templates.commands.Spinning;
 import edu.wpi.first.wpilibj.templates.commands.Aim;
 import edu.wpi.first.wpilibj.templates.commands.LoadBall;
 import edu.wpi.first.wpilibj.templates.commands.ShootBall;
+import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 
 
 /**
@@ -17,6 +18,20 @@ public class AutonomousLeft extends CommandGroup {
     public AutonomousLeft() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+        
+        /**addSequential(new Aim());
+        addSequential(new LoadBall());
+        addSequential(new ShootBall());
+        addSequential(new LoadBall());
+        addSequential(new ShootBall());
+        */
+        addSequential(new Go(-20.0, 0.25));
+        //counter clockwise
+        addSequential(new Spinning(DriveTrain.TurnNeg135, 0.5));
+        addSequential(new Go(74.0, 0.25));
+        addSequential(new Spinning(DriveTrain.TurnNeg45, 0.5));
+        addSequential(new Go(32.0, 0.25));
+        //lower the arm to tip the bridge
         
     }
 }
