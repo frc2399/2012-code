@@ -18,10 +18,8 @@ import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.templates.commands.Spinning;
 import edu.wpi.first.wpilibj.templates.commands.TestShooter;
 import edu.wpi.first.wpilibj.templates.commands.AutonomousCenter;
-import edu.wpi.first.wpilibj.templates.commands.AutonomousRightFast;
-import edu.wpi.first.wpilibj.templates.commands.AutonomousCenterFast;
 import edu.wpi.first.wpilibj.templates.commands.AutonomousLeft;
-
+import edu.wpi.first.wpilibj.templates.commands.AutonomousRight;
 
 /**
  * the Operator Interface, defines port numbers, joysticks, and commands
@@ -39,9 +37,9 @@ public class OI {
     public static int spin180ButtNum = 5;
     public static int spin90ButtNum = 4;
     public static int PIDTestButtNum = 3;
-    public static int AutonomousCenterTestButtNum = 5;
-    public static int AutonomousLeftTestButtNum = 2;
-    public static int AutonomousCenterFastTestButtNum = 4;
+    public static int AutonomousCenterTestButtNum = 2;
+    public static int AutonomousLeftTestButtNum = 4;
+    public static int AutonomousRightTestButtNum = 5;
     
     Joystick leftStick = new Joystick(leftStickNum);
     Joystick rightStick = new Joystick(rightStickNum);
@@ -56,7 +54,7 @@ public class OI {
     TestShooter testPitch = new TestShooter();
     AutonomousCenter autonomousCenterTest = new AutonomousCenter();
     AutonomousLeft autonomousLeftTest = new AutonomousLeft();
-    AutonomousCenterFast autonomousCenterFastTest = new AutonomousCenterFast();
+    AutonomousRight autonomousRightTest = new AutonomousRight();
     //buttons
     private final JoystickButton feedButt = new JoystickButton(leftStick, feedButtPort);
     private final JoystickButton shooterButt = new JoystickButton(shooterStick,shooterButtNum);
@@ -66,8 +64,8 @@ public class OI {
     private final JoystickButton PIDTestButt = new JoystickButton(shooterStick,PIDTestButtNum);
     private final JoystickButton AutonomousCenterTestButt = new JoystickButton(leftStick, AutonomousCenterTestButtNum);
     private final JoystickButton AutonomousLeftTestButt = new JoystickButton(leftStick, AutonomousLeftTestButtNum);
-    private final JoystickButton AutonomousCenterFastTestButt = new JoystickButton(leftStick, AutonomousCenterFastTestButtNum);
-    /**
+    private final JoystickButton AutonomousRightTestButt = new JoystickButton(leftStick, AutonomousRightTestButtNum);
+   /**
      * When the PickupBall feeder button "feedbutt" is pressed, the PickupBall feeder is turned on,
      * and when it is released the feeder stops.
      */
@@ -83,7 +81,7 @@ public class OI {
         
         AutonomousCenterTestButt.whenPressed(autonomousCenterTest);
         AutonomousLeftTestButt.whenPressed(autonomousLeftTest);
-        AutonomousCenterFastTestButt.whenPressed(autonomousCenterFastTest);
+        AutonomousRightTestButt.whenPressed(autonomousRightTest);
     }
 
     
