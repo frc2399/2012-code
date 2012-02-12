@@ -20,6 +20,8 @@ import edu.wpi.first.wpilibj.templates.commands.TestShooter;
 import edu.wpi.first.wpilibj.templates.commands.AutonomousCenter;
 import edu.wpi.first.wpilibj.templates.commands.AutonomousLeft;
 import edu.wpi.first.wpilibj.templates.commands.AutonomousRight;
+import edu.wpi.first.wpilibj.templates.commands.ShmackDown;
+import edu.wpi.first.wpilibj.templates.commands.LiftSmacker;
 
 /**
  * the Operator Interface, defines port numbers, joysticks, and commands
@@ -40,6 +42,8 @@ public class OI {
     public static int AutonomousCenterTestButtNum = 2;
     public static int AutonomousLeftTestButtNum = 4;
     public static int AutonomousRightTestButtNum = 5;
+    public static int ShmackDownButtNum = 3;
+    public static int LiftSmackerButtNum = 2;
     
     Joystick leftStick = new Joystick(leftStickNum);
     Joystick rightStick = new Joystick(rightStickNum);
@@ -55,6 +59,9 @@ public class OI {
     AutonomousCenter autonomousCenterTest = new AutonomousCenter();
     AutonomousLeft autonomousLeftTest = new AutonomousLeft();
     AutonomousRight autonomousRightTest = new AutonomousRight();
+    ShmackDown shmackDown = new ShmackDown();
+    LiftSmacker liftSmacker = new LiftSmacker();
+    
     //buttons
     private final JoystickButton feedButt = new JoystickButton(leftStick, feedButtPort);
     private final JoystickButton shooterButt = new JoystickButton(shooterStick,shooterButtNum);
@@ -65,6 +72,8 @@ public class OI {
     private final JoystickButton AutonomousCenterTestButt = new JoystickButton(leftStick, AutonomousCenterTestButtNum);
     private final JoystickButton AutonomousLeftTestButt = new JoystickButton(leftStick, AutonomousLeftTestButtNum);
     private final JoystickButton AutonomousRightTestButt = new JoystickButton(leftStick, AutonomousRightTestButtNum);
+    private final JoystickButton ShmackDownButt = new JoystickButton (rightStick,ShmackDownButtNum);
+    private final JoystickButton LiftSmackerButt = new JoystickButton (rightStick,LiftSmackerButtNum);
    /**
      * When the PickupBall feeder button "feedbutt" is pressed, the PickupBall feeder is turned on,
      * and when it is released the feeder stops.
@@ -82,6 +91,10 @@ public class OI {
         AutonomousCenterTestButt.whenPressed(autonomousCenterTest);
         AutonomousLeftTestButt.whenPressed(autonomousLeftTest);
         AutonomousRightTestButt.whenPressed(autonomousRightTest);
+        
+        ShmackDownButt.whenPressed(shmackDown);
+        LiftSmackerButt.whenPressed(liftSmacker);
+        
     }
 
     

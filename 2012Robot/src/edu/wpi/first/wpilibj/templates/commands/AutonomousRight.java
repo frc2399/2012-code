@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.templates.commands.Aim;
 import edu.wpi.first.wpilibj.templates.commands.LoadBall;
 import edu.wpi.first.wpilibj.templates.commands.ShootBall;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
-
+import edu.wpi.first.wpilibj.templates.commands.ShmackDown;
 
 /**
  *
