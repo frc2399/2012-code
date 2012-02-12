@@ -35,7 +35,7 @@ public class OI {
     public static int feedButtPort = 7;
     public static int shooterStickNum = 2;
     public static int shooterButtNum = 1;
-    public static int goTestButtNum = 3;
+    public static int goTestButtNum = 7;
     public static int spin180ButtNum = 5;
     public static int spin90ButtNum = 4;
     public static int PIDTestButtNum = 3;
