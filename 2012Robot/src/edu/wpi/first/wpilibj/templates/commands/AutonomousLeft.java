@@ -25,12 +25,12 @@ public class AutonomousLeft extends CommandGroup {
         addSequential(new LoadBall());
         addSequential(new ShootBall());
         */
-        addSequential(new Go(-20.0, 0.25));
+        addSequential(new Go(-20.0, 0.5));
         //counter clockwise
         addSequential(new Spinning(DriveTrain.TurnNeg135, 0.5));
-        addSequential(new Go(74.0, 0.25));
+        addSequential(new Go(74.0, 0.5));
         addSequential(new Spinning(DriveTrain.TurnNeg45, 0.5));
-        addSequential(new Go(32.0, 0.25));
+        addSequential(new Go(32.0, 0.5));
         //lower the arm to tip the bridge
         
     }

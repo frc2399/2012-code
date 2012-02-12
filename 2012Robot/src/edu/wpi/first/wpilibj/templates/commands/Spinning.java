@@ -1,5 +1,6 @@
 
 package edu.wpi.first.wpilibj.templates.commands;
+import java.lang.Math;
 
 /**
  *
@@ -7,8 +8,10 @@ package edu.wpi.first.wpilibj.templates.commands;
  */
 public class Spinning extends CommandBase {
     
-    double inchesInitial;
-    double inchesFinal;
+    double rightInitial;
+    double leftInitial;
+    double rightFinal;
+    double leftFinal;
     double distToGo;
     double speed;
     
@@ -26,7 +29,8 @@ public class Spinning extends CommandBase {
     // Called just before this Command runs the first time
     protected void initialize() {
         //System.out.println("just pressed the goTestButt");
-            inchesInitial = (driveTrain.getRightEncoder() - driveTrain.getLeftEncoder()) / 2;
+            rightInitial = driveTrain.getRightEncoder();
+            leftInitial = driveTrain.getLeftEncoder();
         
         //change distToGo
     }
@@ -35,23 +39,25 @@ public class Spinning extends CommandBase {
     protected void execute() {
         if (distToGo >= 0){
             driveTrain.setSpeed(-speed, speed);
-            inchesFinal = (driveTrain.getRightEncoder() - driveTrain.getLeftEncoder()) / 2;
         } else {
             driveTrain.setSpeed(speed, -speed);
-            inchesFinal = (-driveTrain.getRightEncoder() + driveTrain.getLeftEncoder()) / 2;
         }
         
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if(distToGo >= 0 && inchesFinal - inchesInitial >= distToGo){
-            return true;
-        } else if(distToGo < 0 && inchesFinal - inchesInitial <= distToGo) {
+        rightFinal = driveTrain.getRightEncoder();
+        leftFinal = driveTrain.getLeftEncoder();
+        double rightDist = rightFinal - rightInitial;
+        double leftDist = leftFinal - leftInitial;
+        
+        if(Math.abs((rightDist - leftDist)/2) >= Math.abs(distToGo)){
             return true;
         } else {
             return false;
         }
+        
     }
 
     // Called once after isFinished returns true
