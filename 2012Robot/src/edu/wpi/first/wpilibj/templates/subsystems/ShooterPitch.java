@@ -38,7 +38,7 @@ public class ShooterPitch extends PIDSubsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-        setDefaultCommand(new Aim());
+        setDefaultCommand(new Aim("top"));
     }
 
     protected double returnPIDInput() {

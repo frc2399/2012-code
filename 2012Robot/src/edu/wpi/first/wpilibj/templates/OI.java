@@ -4,6 +4,8 @@ package edu.wpi.first.wpilibj.templates;
 //imports from First
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+//is this right?? 
+import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
 
 //imports from our own code
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -22,6 +24,7 @@ import edu.wpi.first.wpilibj.templates.commands.AutonomousLeft;
 import edu.wpi.first.wpilibj.templates.commands.AutonomousRight;
 import edu.wpi.first.wpilibj.templates.commands.ShmackDown;
 import edu.wpi.first.wpilibj.templates.commands.LiftSmacker;
+import edu.wpi.first.wpilibj.templates.commands.Aim;
 
 /**
  * the Operator Interface, defines port numbers, joysticks, and commands
@@ -44,10 +47,16 @@ public class OI {
     public static int AutonomousRightTestButtNum = 5;
     public static int ShmackDownButtNum = 3;
     public static int LiftSmackerButtNum = 2;
+    public static int AimTopButtNum = 1;
+    public static int AimRightButtNum = 2;
+    public static int AimLeftButtNum = 3;
+    public static int AimBottomButtNum = 4; 
     
     Joystick leftStick = new Joystick(leftStickNum);
     Joystick rightStick = new Joystick(rightStickNum);
     Joystick shooterStick = new Joystick(shooterStickNum);
+
+    
     StartPickupBall feedOn = new StartPickupBall();
     StopPickupBall feedOff = new StopPickupBall();
     ShootBall shoot = new ShootBall();
@@ -61,6 +70,11 @@ public class OI {
     AutonomousRight autonomousRightTest = new AutonomousRight();
     ShmackDown shmackDown = new ShmackDown();
     LiftSmacker liftSmacker = new LiftSmacker();
+    Aim aimTop = new Aim("top");
+    Aim aimRight = new Aim("right");
+    Aim aimLeft = new Aim("left");
+    Aim aimBottom = new Aim("Bottom");
+    
     
     //buttons
     private final JoystickButton feedButt = new JoystickButton(leftStick, feedButtPort);
@@ -72,8 +86,12 @@ public class OI {
     private final JoystickButton AutonomousCenterTestButt = new JoystickButton(leftStick, AutonomousCenterTestButtNum);
     private final JoystickButton AutonomousLeftTestButt = new JoystickButton(leftStick, AutonomousLeftTestButtNum);
     private final JoystickButton AutonomousRightTestButt = new JoystickButton(leftStick, AutonomousRightTestButtNum);
-    private final JoystickButton ShmackDownButt = new JoystickButton (rightStick,ShmackDownButtNum);
-    private final JoystickButton LiftSmackerButt = new JoystickButton (rightStick,LiftSmackerButtNum);
+    private final JoystickButton ShmackDownButt = new JoystickButton(rightStick,ShmackDownButtNum);
+    private final JoystickButton LiftSmackerButt = new JoystickButton(rightStick,LiftSmackerButtNum);
+    private final DigitalIOButton AimTopButt = new DigitalIOButton(AimTopButtNum);
+    private final DigitalIOButton AimRightButt = new DigitalIOButton(AimRightButtNum);
+    private final DigitalIOButton AimLeftButt = new DigitalIOButton(AimLeftButtNum);
+    private final DigitalIOButton AimBottomButt = new DigitalIOButton(AimBottomButtNum);
    /**
      * When the PickupBall feeder button "feedbutt" is pressed, the PickupBall feeder is turned on,
      * and when it is released the feeder stops.
@@ -94,6 +112,11 @@ public class OI {
         
         ShmackDownButt.whenPressed(shmackDown);
         LiftSmackerButt.whenPressed(liftSmacker);
+        
+        AimTopButt.whenPressed(aimTop);
+        AimRightButt.whenPressed(aimRight);
+        AimLeftButt.whenPressed(aimLeft);
+        AimBottomButt.whenPressed(aimBottom);
         
     }
 
