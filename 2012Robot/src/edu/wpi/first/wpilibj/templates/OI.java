@@ -70,10 +70,10 @@ public class OI {
     AutonomousRight autonomousRightTest = new AutonomousRight();
     ShmackDown shmackDown = new ShmackDown();
     LiftSmacker liftSmacker = new LiftSmacker();
-    Aim aimTop = new Aim("top");
-    Aim aimRight = new Aim("right");
-    Aim aimLeft = new Aim("left");
-    Aim aimBottom = new Aim("Bottom");
+    Aim aimTop = new Aim(1);
+    Aim aimRight = new Aim(2);
+    Aim aimLeft = new Aim(3);
+    Aim aimBottom = new Aim(4);
     
     
     //buttons
