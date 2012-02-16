@@ -2,6 +2,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.networktables.NetworkTableKeyNotDefined;
+import com.sun.squawk.util.MathUtils;
 
 /**
  *
@@ -9,7 +10,10 @@ import edu.wpi.first.wpilibj.networktables.NetworkTableKeyNotDefined;
  */
 public class Aim extends CommandBase {
     
-    String position;
+    String position; 
+
+    final double targetHeight = 109;     //heights in inches
+    final double cameraHeight = 20;
     
     public Aim(String position) {
         // Use requires() here to declare subsystem dependencies
@@ -136,5 +140,16 @@ public class Aim extends CommandBase {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    }
+    
+    private double targetRange(double yPixel){
+    return 305.01*((targetHeight-cameraHeight)/yPixel);
+    }
+    
+    private double yawAngle(double xPixel){
+    return MathUtils.atan(xPixel/346.03);
+    }
+     private double pitchAngle(double range){
+    return 0; //for now. we need to finish it. 
     }
 }
