@@ -10,12 +10,12 @@ import com.sun.squawk.util.MathUtils;
  */
 public class Aim extends CommandBase {
     
-    String position; 
+    int position; 
 
     final double targetHeight = 109;     //heights in inches
     final double cameraHeight = 20;
     
-    public Aim(String position) {
+    public Aim(int position) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         
@@ -31,7 +31,7 @@ public class Aim extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         //this is for finding the topmost target
-        if(position.equals("top")) {
+        if(position == 1) {
             try {
                 NetworkTable SDTable = new NetworkTable();
                 SDTable = NetworkTable.getTable("SmartDashboard");
@@ -54,7 +54,7 @@ public class Aim extends CommandBase {
                 System.out.println(ex);
             }
           //this is for finding the rightmost target
-        } else if(position.equals("right")){
+        } else if(position == 2){
             try {
                 NetworkTable SDTable = new NetworkTable();
                 SDTable = NetworkTable.getTable("SmartDashboard");
@@ -77,7 +77,7 @@ public class Aim extends CommandBase {
                 System.out.println(ex);
         }
       //this is for finding the leftmost target
-    } else if(position.equals("left")){
+    } else if(position == 3){
         try {
                 NetworkTable SDTable = new NetworkTable();
                 SDTable = NetworkTable.getTable("SmartDashboard");
@@ -100,7 +100,7 @@ public class Aim extends CommandBase {
                 System.out.println(ex);
     }
       //this is for finding the lowest target
-    } else if(position.equals("bottom")){
+    } else if(position == 4){
         try {
                 NetworkTable SDTable = new NetworkTable();
                 SDTable = NetworkTable.getTable("SmartDashboard");
@@ -153,3 +153,4 @@ public class Aim extends CommandBase {
     return 0; //for now. we need to finish it. 
     }
 }
+
