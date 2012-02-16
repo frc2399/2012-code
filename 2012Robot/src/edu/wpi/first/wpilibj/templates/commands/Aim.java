@@ -9,16 +9,15 @@ import com.sun.squawk.util.MathUtils;
  * @author bradmiller
  */
 public class Aim extends CommandBase {
-    
-    int position; 
 
+    int position;
     final double targetHeight = 109;     //heights in inches
     final double cameraHeight = 20;
-    
+
     public Aim(int position) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        
+
         requires(vision);
         requires(shooterPitch);
         this.position = position;
@@ -31,102 +30,14 @@ public class Aim extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         //this is for finding the topmost target
-        if(position == 1) {
-            try {
-                NetworkTable SDTable = new NetworkTable();
-                SDTable = NetworkTable.getTable("SmartDashboard");
-            
-                //Makes chosenX and chosenY the first X and Y values
-                double topX = SDTable.getSubTable("camera").getDouble("x0" , 0);
-                double topY = SDTable.getSubTable("camera").getDouble("y0" , 0);
-            
-                //The for loop looks at the values in the camera table
-                for (int i = 0; i < (SDTable.getSubTable("camera").getKeys().size()) / 2; i++) {
-                    double x = SDTable.getSubTable("camera").getDouble("x" + i, 0);
-                    double y = SDTable.getSubTable("camera").getDouble("y" + i, 0);
-                    // Finds the y value of the top target
-                    if (y > topY){
-                        topY = y;
-                        topX = x;
-                    }
-                }
-            }   catch (Exception ex) {
-                System.out.println(ex);
-            }
-          //this is for finding the rightmost target
-        } else if(position == 2){
-            try {
-                NetworkTable SDTable = new NetworkTable();
-                SDTable = NetworkTable.getTable("SmartDashboard");
-            
-                //Makes chosenX and chosenY the first X and Y values
-                double rightX = SDTable.getSubTable("camera").getDouble("x0" , 0);
-                double rightY = SDTable.getSubTable("camera").getDouble("y0" , 0);
-            
-                //The for loop looks at the values in the camera table
-                for (int i = 0; i < (SDTable.getSubTable("camera").getKeys().size()) / 2; i++) {
-                    double x = SDTable.getSubTable("camera").getDouble("x" + i, 0);
-                    double y = SDTable.getSubTable("camera").getDouble("y" + i, 0);
-                    // Finds the y value of the top target
-                    if (x > rightX){
-                        rightY = y;
-                        rightX = x;
-                    }
-                }
-            }   catch (Exception ex) {
-                System.out.println(ex);
+
+        try {
+            NetworkTable cameraTable = NetworkTable.getTable("SmartDashboard").getSubTable("camera");
+
+        } catch (Exception ex) {
+            System.out.println(ex);
         }
-      //this is for finding the leftmost target
-    } else if(position == 3){
-        try {
-                NetworkTable SDTable = new NetworkTable();
-                SDTable = NetworkTable.getTable("SmartDashboard");
-            
-                //Makes chosenX and chosenY the first X and Y values
-                double leftX = SDTable.getSubTable("camera").getDouble("x0" , 0);
-                double leftY = SDTable.getSubTable("camera").getDouble("y0" , 0);
-            
-                //The for loop looks at the values in the camera table
-                for (int i = 0; i < (SDTable.getSubTable("camera").getKeys().size()) / 2; i++) {
-                    double x = SDTable.getSubTable("camera").getDouble("x" + i, 0);
-                    double y = SDTable.getSubTable("camera").getDouble("y" + i, 0);
-                    // Finds the y value of the top target
-                    if (x < leftX){
-                        leftY = y;
-                        leftX = x;
-                    }
-                }
-            }   catch (Exception ex) {
-                System.out.println(ex);
     }
-      //this is for finding the lowest target
-    } else if(position == 4){
-        try {
-                NetworkTable SDTable = new NetworkTable();
-                SDTable = NetworkTable.getTable("SmartDashboard");
-            
-                //Makes chosenX and chosenY the first X and Y values
-                double bottomX = SDTable.getSubTable("camera").getDouble("x0" , 0);
-                double bottomY = SDTable.getSubTable("camera").getDouble("y0" , 0);
-            
-                //The for loop looks at the values in the camera table
-                for (int i = 0; i < (SDTable.getSubTable("camera").getKeys().size()) / 2; i++) {
-                    double x = SDTable.getSubTable("camera").getDouble("x" + i, 0);
-                    double y = SDTable.getSubTable("camera").getDouble("y" + i, 0);
-                    // Finds the y value of the top target
-                    if (y < bottomY){
-                        bottomY = y;
-                        bottomX = x;
-                    }
-                }
-            }   catch (Exception ex) {
-                System.out.println(ex);
-    
-            }
-    }
-    }
-    
-    
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
@@ -141,16 +52,87 @@ public class Aim extends CommandBase {
     // subsystems is scheduled to run
     protected void interrupted() {
     }
-    
-    private double targetRange(double yPixel){
-    return 305.01*((targetHeight-cameraHeight)/yPixel);
+
+    private double targetRange(double yPixel) {
+        return 305.01 * ((targetHeight - cameraHeight) / yPixel);
     }
-    
-    private double yawAngle(double xPixel){
-    return MathUtils.atan(xPixel/346.03);
+
+    private double yawAngle(double xPixel) {
+        return MathUtils.atan(xPixel / 346.03);
     }
-     private double pitchAngle(double range){
-    return 0; //for now. we need to finish it. 
+
+    private double pitchAngle(double range) {
+        return 0; //for now. we need to finish it. 
+    }
+
+    private double getTopY(NetworkTable table) {
+        //assuming table is the camera table
+        double topY = 0;
+        try {
+            //Makes chosenX and chosenY the first X and Y values
+
+            topY = table.getDouble("y0", 0);
+
+            //The for loop looks at the values in the camera table
+            for (int i = 0; i < (table.getKeys().size()) / 2; i++) {
+                double y = table.getDouble("y" + i, 0);
+                // Finds the y value of the top target
+                if (y < topY) {
+                    topY = y;
+                }
+            }
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return topY;
+    }
+
+    private double getChosenX(NetworkTable table) {
+        double chosenX = 0;
+        double chosenY = 0;
+        try {
+
+            //Makes chosenX and chosenY the first X and Y values
+            chosenX = table.getDouble("x0", 0);
+            chosenY = table.getDouble("y0", 0);
+
+            //The for loop looks at the values in the camera table
+            for (int i = 0; i < (table.getKeys().size()) / 2; i++) {
+                double x = table.getDouble("x" + i, 0);
+                double y = table.getDouble("y" + i, 0);
+
+                switch (position) {
+                    case 1: // top
+                        if (y < chosenY) {
+                            chosenY = y;
+                            chosenX = x;
+                        }
+                        break;
+                    case 2: // right
+                        if (x > chosenX) {
+                            chosenY = y;
+                            chosenX = x;
+                        }
+                        break;
+                    case 3: // left
+                        if (x < chosenX) {
+                            chosenY = y;
+                            chosenX = x;
+                        }
+                        break;
+                    case 4: // bottom
+                        if (y > chosenY) {
+                            chosenY = y;
+                            chosenX = x;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return chosenX;
     }
 }
-
