@@ -6,7 +6,7 @@ import com.sun.squawk.util.MathUtils;
 
 /**
  *
- * @author bradmiller
+ * @author Emma, Lauren, Gillie, Sarah and Jessie
  */
 public class Aim extends CommandBase {
 

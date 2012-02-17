@@ -18,7 +18,7 @@ public class Feeder extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     private Victor feedMotor = new Victor(RobotMap.feedMotor);
-    private Victor loadMotor= new Victor(RobotMap.loadMotor);
+    
        
     public Feeder(){
     }
@@ -41,7 +41,6 @@ public class Feeder extends Subsystem {
     public void setFeederSpeed(double speed){
         
             feedMotor.set(speed);
-            loadMotor.set(speed);
         
     }
 }

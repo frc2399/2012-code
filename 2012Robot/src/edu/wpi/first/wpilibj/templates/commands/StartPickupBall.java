@@ -24,7 +24,7 @@ public class StartPickupBall extends CommandBase {
      * turns the PickupBall feeder on
      */
     protected void initialize() {
-        feeder.setFeederSpeed(0.5);
+        feeder.setFeederSpeed(0.25);
     }
 
     // Called repeatedly when this Command is scheduled to run
