@@ -1,41 +1,31 @@
 
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.templates.subsystems.Feeder;
-import edu.wpi.first.wpilibj.DigitalInput;
-
 /**
  *
- * @author Jessie
+ * @author bradmiller
  */
-public class FeedBallOn extends CommandBase {
-    
-    /**
-     * turns the PickupBall feeder on
-     * requires the "feeder" subsystem
-     */
-    public FeedBallOn() {
+public class ShootOn extends CommandBase {
+
+    public ShootOn() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        requires(feeder);
+        requires(shooter);
     }
 
     // Called just before this Command runs the first time
-    /**
-     * turns the PickupBall feeder on
-     */
     protected void initialize() {
-        feeder.setFeederSpeed(0.25);
+        shooter.setSpeed(0.5);   
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-       
+        
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true

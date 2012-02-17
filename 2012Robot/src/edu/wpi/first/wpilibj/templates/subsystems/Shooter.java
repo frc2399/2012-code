@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.Victor;
 public class Shooter extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-    Victor shootMotor = new Victor(RobotMap.pitchMotor);
+    Victor shootMotor = new Victor(RobotMap.shootMotor);
     
     public Shooter(){
         
@@ -27,8 +27,8 @@ public class Shooter extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
         
     }
-    public void setSpeed(){
-        
+    public void setSpeed(double speed){
+        shootMotor.set(speed);
     }
     
     public double getShooterSpeed(){

@@ -2,17 +2,15 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.subsystems.Loader;
-import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.templates.subsystems.Shooter;
 
 /**
  *
  * @author Jessie
  */
-public class LoadBallOff extends CommandBase {
-    
-    public LoadBallOff() {
+public class LoadBall extends CommandBase {
+
+    public LoadBall() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         requires(loader);
@@ -25,14 +23,17 @@ public class LoadBallOff extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        //true == interrupted
-        //if there is a ball at the top, stop
         if(loader.getTop() == true){
             loader.setLoaderSpeed(0.0);
-        } 
-        if(shooter.getShooterSpeed() < 0.25){
-            loader.setLoaderSpeed(0.0);
         }
+        if(loader.getMiddle() == true && loader.getTop() == false){
+            loader.setLoaderSpeed(0.25);
+    }
+        if(loader.getBottom()== true && loader.getTop() == true && loader.getMiddle() == false){
+            feeder.setFeederSpeed(0.25);
+        }
+       
+        
     }
 
     // Make this return true when this Command no longer needs to run execute()

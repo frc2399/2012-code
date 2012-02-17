@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.commands.FeedBallOn;
 import edu.wpi.first.wpilibj.templates.commands.FeedBallOff;
+import edu.wpi.first.wpilibj.templates.commands.ShootOn;
+import edu.wpi.first.wpilibj.templates.commands.ShootOff;
 import edu.wpi.first.wpilibj.templates.commands.ShootBall;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.commands.TestButton;
@@ -25,8 +27,8 @@ import edu.wpi.first.wpilibj.templates.commands.AutonomousRight;
 import edu.wpi.first.wpilibj.templates.commands.ShmackDown;
 import edu.wpi.first.wpilibj.templates.commands.LiftSmacker;
 import edu.wpi.first.wpilibj.templates.commands.Aim;
-import edu.wpi.first.wpilibj.templates.commands.LoadBallOn;
-import edu.wpi.first.wpilibj.templates.commands.LoadBallOff;
+import edu.wpi.first.wpilibj.templates.commands.LoadBall;
+
 /**
  * the Operator Interface, defines port numbers, joysticks, and commands
  * @author 2399 Programmers
@@ -38,7 +40,8 @@ public class OI {
     public static int rightStickNum = 3;
     public static int feedButtPort = 7;
     public static int shooterStickNum = 2;
-    public static int shooterButtNum = 1;
+    public static int shootButtNum = 1;
+    public static int triggerButtNum = 20;
     public static int goTestButtNum = 7;
     public static int spin180ButtNum = 5;
     public static int spin90ButtNum = 4;
@@ -61,9 +64,10 @@ public class OI {
     
     FeedBallOn feedOn = new FeedBallOn();
     FeedBallOff feedOff = new FeedBallOff();
-    LoadBallOn loadOn = new LoadBallOn();
-    LoadBallOff loadOff = new LoadBallOff();
-    ShootBall shoot = new ShootBall();
+    LoadBall load = new LoadBall();
+    ShootOn shootOn = new ShootOn();
+    ShootOff shootOff = new ShootOff();
+    ShootBall trigger = new ShootBall();
     Go goTest = new Go(-36.0, 0.25);
     //these two angles go counter-clockwise
     Spinning spin180 = new Spinning(DriveTrain.Turn180, 0.25);
@@ -82,7 +86,8 @@ public class OI {
     
     //buttons
     private final JoystickButton feedButt = new JoystickButton(leftStick, feedButtPort);
-    private final JoystickButton shooterButt = new JoystickButton(shooterStick,shooterButtNum);
+    private final JoystickButton shootButt = new JoystickButton(shooterStick,shootButtNum);
+    private final JoystickButton triggerButt = new JoystickButton(shooterStick,triggerButtNum);
     private final JoystickButton goTestButt = new JoystickButton(rightStick,goTestButtNum);
     private final JoystickButton spin180Butt = new JoystickButton(rightStick,spin180ButtNum);
     private final JoystickButton spin90Butt = new JoystickButton(rightStick,spin90ButtNum);
@@ -97,6 +102,7 @@ public class OI {
     private final DigitalIOButton AimLeftButt = new DigitalIOButton(AimLeftButtNum);
     private final DigitalIOButton AimBottomButt = new DigitalIOButton(AimBottomButtNum);
     private final JoystickButton LoadButt = new JoystickButton(leftStick,LoadButtNum);
+    
    /**
      * When the PickupBall feeder button "feedbutt" is pressed, the PickupBall feeder is turned on,
      * and when it is released the feeder stops.
@@ -104,7 +110,9 @@ public class OI {
     public OI(){
         feedButt.whenPressed(feedOn);
         feedButt.whenReleased(feedOff);
-        shooterButt.whenPressed(shoot);
+        shootButt.whenPressed(shootOn);
+        shootButt.whenReleased(shootOff);
+        triggerButt.whenPressed(trigger);
         PIDTestButt.whenPressed(testPitch);
 
         goTestButt.whenPressed(goTest);
@@ -123,8 +131,8 @@ public class OI {
         AimLeftButt.whenPressed(aimLeft);
         AimBottomButt.whenPressed(aimBottom);
         
-        LoadButt.whenPressed(loadOn);
-        LoadButt.whenReleased(loadOff);
+        LoadButt.whenPressed(load);
+    
         
     }
 
