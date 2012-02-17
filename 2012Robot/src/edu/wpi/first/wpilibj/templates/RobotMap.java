@@ -26,6 +26,7 @@ public class RobotMap {
     public static int rightFront = 8;
     public static int rightRear = 1;
     public static int pitchMotor = 4;
+    public static int yawMotor = 10;
     public static int SmackMotor = 9;
     
     public static final int leftEncoderA = 1;
@@ -34,6 +35,8 @@ public class RobotMap {
     public static final int rightEncoderB = 5;
     public static final int pitchEncoderA = 14;
     public static final int pitchEncoderB = 13;
+    public static final int yawEncoderA = 15;
+    public static final int yawEncoderB = 16;
     public static final int smackDownSwitch = 7;
     public static final int liftUpSwitch = 8;
     
