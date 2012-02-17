@@ -33,8 +33,7 @@ public class RobotMap {
     public static final int leftEncoderB = 2;
     public static final int rightEncoderA = 4;
     public static final int rightEncoderB = 5;
-    public static final int pitchEncoderA = 14;
-    public static final int pitchEncoderB = 13;
+    public static final int pitchEncoder = 14;
     public static final int yawEncoderA = 15;
     public static final int yawEncoderB = 16;
     public static final int smackDownSwitch = 7;
