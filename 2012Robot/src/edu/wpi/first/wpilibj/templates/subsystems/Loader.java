@@ -21,6 +21,9 @@ public class Loader extends Subsystem {
     // here. Call these from Commands.
     
     private Victor loadMotor= new Victor(RobotMap.loadMotor);
+    private DigitalInput topSensor = new DigitalInput(RobotMap.topSensor);
+    private DigitalInput bottomSensor = new DigitalInput(RobotMap.bottomSensor);
+    private DigitalInput middleSensor = new DigitalInput(RobotMap.middleSensor);
     
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -36,5 +39,19 @@ public class Loader extends Subsystem {
     public void setLoaderSpeed(double speed){
         loadMotor.set(speed);
     }
+    
+    public boolean getTop(){
+        return topSensor.get();
+    }
+    
+    public boolean getBottom(){
+        return bottomSensor.get();
+    }
+    
+    public boolean getMiddle(){   
+        return middleSensor.get();
+    }
+                
+         
 }
 

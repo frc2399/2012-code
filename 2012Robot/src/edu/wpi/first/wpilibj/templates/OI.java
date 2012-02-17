@@ -9,8 +9,8 @@ import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
 
 //imports from our own code
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.templates.commands.StartPickupBall;
-import edu.wpi.first.wpilibj.templates.commands.StopPickupBall;
+import edu.wpi.first.wpilibj.templates.commands.FeedBallOn;
+import edu.wpi.first.wpilibj.templates.commands.FeedBallOff;
 import edu.wpi.first.wpilibj.templates.commands.ShootBall;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.commands.TestButton;
@@ -25,7 +25,8 @@ import edu.wpi.first.wpilibj.templates.commands.AutonomousRight;
 import edu.wpi.first.wpilibj.templates.commands.ShmackDown;
 import edu.wpi.first.wpilibj.templates.commands.LiftSmacker;
 import edu.wpi.first.wpilibj.templates.commands.Aim;
-
+import edu.wpi.first.wpilibj.templates.commands.LoadBallOn;
+import edu.wpi.first.wpilibj.templates.commands.LoadBallOff;
 /**
  * the Operator Interface, defines port numbers, joysticks, and commands
  * @author 2399 Programmers
@@ -50,15 +51,18 @@ public class OI {
     public static int AimTopButtNum = 1;
     public static int AimRightButtNum = 2;
     public static int AimLeftButtNum = 3;
-    public static int AimBottomButtNum = 4; 
+    public static int AimBottomButtNum = 4;
+    public static int LoadButtNum = 9;
     
     Joystick leftStick = new Joystick(leftStickNum);
     Joystick rightStick = new Joystick(rightStickNum);
     Joystick shooterStick = new Joystick(shooterStickNum);
 
     
-    StartPickupBall feedOn = new StartPickupBall();
-    StopPickupBall feedOff = new StopPickupBall();
+    FeedBallOn feedOn = new FeedBallOn();
+    FeedBallOff feedOff = new FeedBallOff();
+    LoadBallOn loadOn = new LoadBallOn();
+    LoadBallOff loadOff = new LoadBallOff();
     ShootBall shoot = new ShootBall();
     Go goTest = new Go(-36.0, 0.25);
     //these two angles go counter-clockwise
@@ -92,6 +96,7 @@ public class OI {
     private final DigitalIOButton AimRightButt = new DigitalIOButton(AimRightButtNum);
     private final DigitalIOButton AimLeftButt = new DigitalIOButton(AimLeftButtNum);
     private final DigitalIOButton AimBottomButt = new DigitalIOButton(AimBottomButtNum);
+    private final JoystickButton LoadButt = new JoystickButton(leftStick,LoadButtNum);
    /**
      * When the PickupBall feeder button "feedbutt" is pressed, the PickupBall feeder is turned on,
      * and when it is released the feeder stops.
@@ -117,6 +122,9 @@ public class OI {
         AimRightButt.whenPressed(aimRight);
         AimLeftButt.whenPressed(aimLeft);
         AimBottomButt.whenPressed(aimBottom);
+        
+        LoadButt.whenPressed(loadOn);
+        LoadButt.whenReleased(loadOff);
         
     }
 

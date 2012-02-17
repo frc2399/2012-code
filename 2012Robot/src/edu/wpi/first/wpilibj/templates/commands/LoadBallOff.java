@@ -4,7 +4,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 import edu.wpi.first.wpilibj.templates.subsystems.Loader;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.DigitalInput;
-
+import edu.wpi.first.wpilibj.templates.subsystems.Shooter;
 
 /**
  *
@@ -12,10 +12,6 @@ import edu.wpi.first.wpilibj.DigitalInput;
  */
 public class LoadBallOff extends CommandBase {
     
-    private DigitalInput top = new DigitalInput(RobotMap.topSensor);
-    private DigitalInput middle = new DigitalInput(RobotMap.middleSensor);
-    private DigitalInput bottom = new DigitalInput(RobotMap.bottomSensor);
-
     public LoadBallOff() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -31,9 +27,12 @@ public class LoadBallOff extends CommandBase {
     protected void execute() {
         //true == interrupted
         //if there is a ball at the top, stop
-        if(top.get() == true){
-            loader.setLoaderSpeed(0);
+        if(loader.getTop() == true){
+            loader.setLoaderSpeed(0.0);
         } 
+        if(shooter.getShooterSpeed() < 0.25){
+            loader.setLoaderSpeed(0.0);
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()

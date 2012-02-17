@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.DigitalInput;
 
 
 
@@ -18,7 +19,10 @@ public class Feeder extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     private Victor feedMotor = new Victor(RobotMap.feedMotor);
-    
+    private DigitalInput topSensor = new DigitalInput(RobotMap.topSensor);
+    private DigitalInput bottomSensor = new DigitalInput(RobotMap.bottomSensor);
+    private DigitalInput middleSensor = new DigitalInput(RobotMap.middleSensor);
+
 
     /**
      * Default: PickupBall feeder speed is zero, feeder is off
@@ -38,7 +42,19 @@ public class Feeder extends Subsystem {
     public void setFeederSpeed(double speed){
         
             feedMotor.set(speed);
-        
     }
+            
+    public boolean getTop(){
+        return topSensor.get();
+    }
+    
+    public boolean getMiddle(){
+        return middleSensor.get();
+    }
+    
+    public boolean getBottom(){
+        return bottomSensor.get();
+    }
+
 }
 
