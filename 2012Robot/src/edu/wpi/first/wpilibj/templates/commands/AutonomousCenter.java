@@ -27,7 +27,8 @@ public class AutonomousCenter extends CommandGroup {
         addSequential(new Go(-30.0, 0.5));
         addSequential(new Spinning(DriveTrain.Turn180, 0.5));
         addSequential(new Go(30.0, 0.5));
-        //lower the arm to tip the bridge
+        addSequential(new ShmackDown());
+        
         
     }
 }

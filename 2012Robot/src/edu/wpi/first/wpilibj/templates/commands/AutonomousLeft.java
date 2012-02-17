@@ -31,7 +31,7 @@ public class AutonomousLeft extends CommandGroup {
         addSequential(new Go(74.0, 0.5));
         addSequential(new Spinning(DriveTrain.TurnNeg45Fast, 0.5));
         addSequential(new Go(27.0, 0.5));
-        //lower the arm to tip the bridge
+        addSequential(new ShmackDown());
         
     }
 }

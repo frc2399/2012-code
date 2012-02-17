@@ -31,6 +31,6 @@ public class AutonomousRight extends CommandGroup {
         addSequential(new Go(64.0, 0.5));
         addSequential(new Spinning(DriveTrain.Turn45Fast, 0.5));
         addSequential(new Go(27.0, 0.5));
-        //lower the arm to tip the bridge
+        addSequential(new ShmackDown());
     }
 }
