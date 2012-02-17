@@ -1,30 +1,23 @@
 
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.templates.subsystems.Feeder;
+import edu.wpi.first.wpilibj.templates.subsystems.Loader;
 
 /**
  *
  * @author Jessie
  */
-public class StartPickupBall extends CommandBase {
-    
-    /**
-     * turns the PickupBall feeder on
-     * requires the "feeder" subsystem
-     */
-    public StartPickupBall() {
+public class LoadBallOn extends CommandBase {
+
+    public LoadBallOn() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        requires(feeder);
+        requires(loader);
     }
 
     // Called just before this Command runs the first time
-    /**
-     * turns the PickupBall feeder on
-     */
     protected void initialize() {
-        feeder.setFeederSpeed(0.25);
+        loader.setLoaderSpeed(0.25);
     }
 
     // Called repeatedly when this Command is scheduled to run

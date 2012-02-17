@@ -2,43 +2,39 @@
 package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+
+import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.Victor;
-
-
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.templates.RobotMap;
+// import sensor for Ed
 
 /**
- *contains methods for controlling the feeder
- * @author Jessie and Emma
+ *
  */
-public class Feeder extends Subsystem {
+public class Loader extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-    private Victor feedMotor = new Victor(RobotMap.feedMotor);
     
-
-    /**
-     * Default: PickupBall feeder speed is zero, feeder is off
-     */
+    private Victor loadMotor= new Victor(RobotMap.loadMotor);
+    
     public void initDefaultCommand() {
-       // Set the default command for a subsystem here.
+        // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-        
-        //default is set to zero
-        setFeederSpeed(0.0);
+        setLoaderSpeed(0.0);
     }
     
     /**
      * sets the feeder speed
      * @param speed double between -1 and 1
      */
-    public void setFeederSpeed(double speed){
-        
-            feedMotor.set(speed);
-        
+    
+    public void setLoaderSpeed(double speed){
+        loadMotor.set(speed);
     }
 }
 

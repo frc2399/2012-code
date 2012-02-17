@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
 import edu.wpi.first.wpilibj.templates.RobotMap;
+import edu.wpi.first.wpilibj.Victor;
 
 
 
@@ -15,14 +16,10 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 public class Shooter extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-    public Shooter(){
-        try{
-        CANJaguar pitchMotor = new CANJaguar(RobotMap.pitchMotor);
+    Victor shootMotor = new Victor(RobotMap.pitchMotor);
     
-}
-    catch (Exception e){
-        System.out.println(e);
-        }
+    public Shooter(){
+        
     }
 
     public void initDefaultCommand() {
@@ -30,5 +27,20 @@ public class Shooter extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
         
     }
+    public void setSpeed(){
+        
+    }
+    
+    public double getShooterSpeed(){
+        return shootMotor.get(); 
+    }
+    public boolean upToSpeed(){
+        if(getShooterSpeed() >= .5){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
 
