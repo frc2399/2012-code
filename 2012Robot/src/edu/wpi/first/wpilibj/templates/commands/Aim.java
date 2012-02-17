@@ -1,3 +1,4 @@
+
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
@@ -6,7 +7,9 @@ import com.sun.squawk.util.MathUtils;
 
 /**
  *
- * @author Emma, Lauren, Gillie, Sarah and Jessie
+ * converting origin in corner to origin in center:
+ * y = 120 - y
+ * x = x - 160
  */
 public class Aim extends CommandBase {
 
@@ -33,7 +36,9 @@ public class Aim extends CommandBase {
 
         try {
             NetworkTable cameraTable = NetworkTable.getTable("SmartDashboard").getSubTable("camera");
-
+            System.out.println("Top Y: " +  getTopY(cameraTable));
+            System.out.println("Chosen X: " +  getChosenX(cameraTable));
+            System.out.println("range: " +  targetRange(getTopY(cameraTable)));
         } catch (Exception ex) {
             System.out.println(ex);
         }
@@ -53,7 +58,7 @@ public class Aim extends CommandBase {
     protected void interrupted() {
     }
 
-    private double targetRange(double yPixel) {
+    private double targetRange(double yPixel) { // yPixel is the top target's y-coordinate
         return 305.01 * ((targetHeight - cameraHeight) / yPixel);
     }
 
@@ -83,7 +88,8 @@ public class Aim extends CommandBase {
             }
         } catch (Exception ex) {
             System.out.println(ex);
-        }
+        } 
+        topY = 120 - topY;
         return topY;
     }
 
@@ -133,6 +139,7 @@ public class Aim extends CommandBase {
         } catch (Exception ex) {
             System.out.println(ex);
         }
+        chosenX = chosenX - 160;
         return chosenX;
     }
 }

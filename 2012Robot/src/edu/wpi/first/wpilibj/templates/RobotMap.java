@@ -37,4 +37,9 @@ public class RobotMap {
     public static final int smackDownSwitch = 7;
     public static final int liftUpSwitch = 8;
     
+    public static final int topSensor = 54;
+    public static final int middleSensor = 55;
+    public static final int bottomSensor = 56;
+    
+    
 }

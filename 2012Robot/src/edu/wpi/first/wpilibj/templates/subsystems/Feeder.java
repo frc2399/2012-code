@@ -19,9 +19,6 @@ public class Feeder extends Subsystem {
     // here. Call these from Commands.
     private Victor feedMotor = new Victor(RobotMap.feedMotor);
     
-       
-    public Feeder(){
-    }
 
     /**
      * Default: PickupBall feeder speed is zero, feeder is off

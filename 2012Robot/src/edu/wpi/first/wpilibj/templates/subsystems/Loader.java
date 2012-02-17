@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.templates.RobotMap;
 // import sensor for Ed
 
 /**
@@ -23,6 +25,16 @@ public class Loader extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+        setLoaderSpeed(0.0);
+    }
+    
+    /**
+     * sets the feeder speed
+     * @param speed double between -1 and 1
+     */
+    
+    public void setLoaderSpeed(double speed){
+        loadMotor.set(speed);
     }
 }
 
