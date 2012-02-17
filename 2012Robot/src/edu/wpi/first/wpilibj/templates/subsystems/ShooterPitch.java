@@ -1,10 +1,10 @@
 package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.commands.Aim;
 import edu.wpi.first.wpilibj.CANJaguar;
+import edu.wpi.first.wpilibj.AnalogChannel;
 
 
 /**
@@ -16,14 +16,15 @@ public class ShooterPitch extends PIDSubsystem {
 
     public static final int MaxAngle = 360;
     public static final int MinAngle = 0;
-    private Encoder encoder = new Encoder(RobotMap.pitchEncoderA, RobotMap.pitchEncoderB);
+    public static final double DegPerVolt = 0.0123; //This number is arbitrary. We need to find the real one.
+    public static final double OffsetAngle = 15; // This number is also arbitrary!!!
+    private final AnalogChannel encoder = new AnalogChannel(RobotMap.pitchEncoder);
     private CANJaguar pitchMotor;
 
     public ShooterPitch() {
         super(0.01, 0.0, 0.0);
         setSetpointRange(MaxAngle, MinAngle);
         setSetpoint(MinAngle);
-        encoder.start();
         enable();
 
         try {
@@ -43,7 +44,10 @@ public class ShooterPitch extends PIDSubsystem {
 
     protected double returnPIDInput() {
         //for sensor
-        return encoder.getDistance();
+        double voltage = encoder.getVoltage();
+        double angle = (voltage * DegPerVolt) + OffsetAngle;
+        return angle;
+        
     }
 
     protected void usePIDOutput(double output) {
@@ -54,6 +58,6 @@ public class ShooterPitch extends PIDSubsystem {
         }
     }
     public boolean atSetpoint(){
-        return Math.abs(getPosition() - getSetpoint()) < 10;
+        return Math.abs(getPosition() - getSetpoint()) < 10; //Needs Testing!!!!
     }
 }
