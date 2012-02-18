@@ -33,13 +33,12 @@ public class ShooterPitch extends PIDSubsystem {
             System.out.println(e);
         }
 
-        double degreesPerPulse = 1.44;
     }
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-        setDefaultCommand(new Aim(1));
+      //  setDefaultCommand(new Aim(1));
     }
 
     protected double returnPIDInput() {

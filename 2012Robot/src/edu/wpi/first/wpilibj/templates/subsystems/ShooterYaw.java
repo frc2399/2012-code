@@ -22,6 +22,7 @@ public class ShooterYaw extends PIDSubsystem {
         super(0.0,0.0,0.0);
         setSetpointRange(MaxAngle, MinAngle);
         setSetpoint(MinAngle);
+        encoder.setDistancePerPulse(0.0868056);
         encoder.start();
         enable();
         
@@ -30,14 +31,12 @@ public class ShooterYaw extends PIDSubsystem {
         } catch (Exception e) {
             System.out.println(e);
         }
-
-        double degreesPerPulse = 1.44;
     }
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-        setDefaultCommand(new Aim(1));
+       // setDefaultCommand(new Aim(1));
     }
     
     protected double returnPIDInput(){
