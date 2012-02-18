@@ -1,4 +1,3 @@
-
 package edu.wpi.first.wpilibj.templates.commands;
 
 /**
@@ -19,7 +18,7 @@ public class ManYaw extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        //shooterYaw.setSetpoint(oi.getTwistSpeed()+shooterYaw.getSetpoint());
+        //shooterYaw.setSetpoint(shooterYaw.getSetpoint() + oi.getTwistSpeed());
         System.out.println(oi.getTwistSpeed());
     }
 

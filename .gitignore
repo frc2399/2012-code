@@ -9,3 +9,7 @@
 /DashboardExtension/doc/
 /DashboardExtension/suite/
 *.jar
+/NetworkTableTestingExtension/dist/
+/DashboardExtension/dist/
+/NetworkTableTestingExtension/build/
+/NetworkTableTestingExtension/nbproject/private/
