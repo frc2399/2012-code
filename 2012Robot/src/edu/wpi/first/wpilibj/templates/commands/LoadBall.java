@@ -1,8 +1,8 @@
-
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.subsystems.Loader;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -23,17 +23,17 @@ public class LoadBall extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if(loader.getTop() == true){
+        if (loader.getTop() == true) {
             loader.setLoaderSpeed(0.0);
         }
-        if(loader.getMiddle() == true && loader.getTop() == false){
+        if (loader.getMiddle() == true && loader.getTop() == false) {
             loader.setLoaderSpeed(0.25);
-    }
-        if(loader.getBottom()== true && loader.getTop() == true && loader.getMiddle() == false){
+        }
+        if (loader.getBottom() == true && loader.getTop() == true && loader.getMiddle() == false) {
             feeder.setFeederSpeed(0.25);
         }
-       
-        
+
+        SmartDashboard.putBoolean("ballReady", loader.getTop());
     }
 
     // Make this return true when this Command no longer needs to run execute()

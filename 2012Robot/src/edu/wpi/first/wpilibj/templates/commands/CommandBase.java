@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.Vision;
 import edu.wpi.first.wpilibj.templates.subsystems.ShooterPitch;
 import edu.wpi.first.wpilibj.templates.subsystems.RampSmacker;
 import edu.wpi.first.wpilibj.templates.subsystems.Loader;
+import edu.wpi.first.wpilibj.templates.subsystems.ShooterYaw;
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
  * CommandBase stores creates and stores each control system. To access a
@@ -30,6 +31,7 @@ public abstract class CommandBase extends Command {
     public static ShooterPitch shooterPitch = new ShooterPitch();
     public static RampSmacker rampSmacker = new RampSmacker();
     public static Loader loader = new Loader();
+    public static ShooterYaw shooterYaw = new ShooterYaw();
     
     public static void init() {
         // This MUST be here. If the OI creates Commands (which it very likely
