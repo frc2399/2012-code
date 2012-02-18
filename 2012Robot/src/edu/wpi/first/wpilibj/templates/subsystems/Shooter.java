@@ -17,6 +17,7 @@ public class Shooter extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     Victor shootMotor = new Victor(RobotMap.shootMotor);
+    Victor shootMotor2 = new Victor(RobotMap.shootMotor2);
     
     public Shooter(){
         
@@ -29,10 +30,11 @@ public class Shooter extends Subsystem {
     }
     public void setSpeed(double speed){
         shootMotor.set(speed);
+        shootMotor2.set(speed);
     }
     
     public double getShooterSpeed(){
-        return shootMotor.get(); 
+        return (shootMotor.get() + shootMotor2.get()) / 2; 
     }
     public boolean upToSpeed(){
         if(getShooterSpeed() >= .5){
