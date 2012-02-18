@@ -2,12 +2,15 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 /**
- *drives the robot in TankDrive based on y-values returned from the joysticks in the OI
+ * drives the robot in TankDrive based on y-values returned from the joysticks in the OI
  * requires the DriveTrain subsystem
  * @author Emma and Jessie
  */
 public class JoystickDrive extends CommandBase {
 
+    /**
+     * Creates a new instance of JoystickDrive.  
+     */
     public JoystickDrive() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -20,6 +23,9 @@ public class JoystickDrive extends CommandBase {
     }
 
     // Called repeatedly when this Command is scheduled to run
+    /**
+     * Drives the robot based on Joystick values from the OI.
+     */
     protected void execute() {
         driveTrain.drive.tankDrive(oi.getLeftSpeed(), oi.getRightSpeed());
     }

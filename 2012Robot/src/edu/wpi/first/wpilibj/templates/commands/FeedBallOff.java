@@ -4,12 +4,12 @@ package edu.wpi.first.wpilibj.templates.commands;
 import edu.wpi.first.wpilibj.templates.subsystems.Feeder;
 import edu.wpi.first.wpilibj.DigitalInput;
 /**
- *
+ * A Command that extends CommandBase and turns the feeder motor off, therefore stopping the feeder conveyor belt
  * @author Jessie 
  */
 public class FeedBallOff extends CommandBase {
     /**
-     * sets the speed of the PickupBall belt to zero, stopping the belt 
+     * sets the speed of the bottommost belt to zero, stopping the belt 
      * requires the "feeder" subsystem
      */
 

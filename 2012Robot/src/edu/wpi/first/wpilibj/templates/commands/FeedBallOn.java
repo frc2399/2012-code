@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.Feeder;
 import edu.wpi.first.wpilibj.DigitalInput;
 
 /**
- *
+ * A Command that extends CommandBase and turns the feeder motor on, therefore rotating the feeder conveyor belt
  * @author Jessie
  */
 public class FeedBallOn extends CommandBase {
@@ -15,7 +15,7 @@ public class FeedBallOn extends CommandBase {
     /**
      * turns the PickupBall feeder on
      * requires the "feeder" subsystem
-     * @param sign either -1 or 1 designates the direction of the motor/victor
+     * @param sign either -1 or 1 designates the direction of the motor/victor as positive or negative
      */
     public FeedBallOn(int sign) {
         // Use requires() here to declare subsystem dependencies
@@ -26,7 +26,7 @@ public class FeedBallOn extends CommandBase {
 
     // Called just before this Command runs the first time
     /**
-     * turns the PickupBall feeder on
+     * turns the bottommost conveyor on
      */
     protected void initialize() {
         feeder.setFeederSpeed(sign * 0.25);
