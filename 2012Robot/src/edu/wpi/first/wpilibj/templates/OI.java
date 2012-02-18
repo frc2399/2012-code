@@ -113,6 +113,7 @@ public class OI {
     public OI(){
         feedButt.whenPressed(feedOn);
         feedButt.whenReleased(feedOff);
+        feedButtNeg.whenPressed(feedNeg);s
         shootButt.whenPressed(shootOn);
         shootButt.whenReleased(shootOff);
         triggerButt.whenPressed(trigger);
