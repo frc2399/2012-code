@@ -27,7 +27,11 @@ public class JoystickDrive extends CommandBase {
      * Drives the robot based on Joystick values from the OI.
      */
     protected void execute() {
-        driveTrain.drive.tankDrive(oi.getLeftSpeed(), oi.getRightSpeed());
+        try {
+            driveTrain.drive.tankDrive(oi.getLeftSpeed(), oi.getRightSpeed());
+        } catch(Exception x){
+            
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()

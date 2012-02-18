@@ -35,15 +35,13 @@ public class DriveTrain extends Subsystem {
     public static final double TurnNeg180Fast = -42.1;
     public static final double Turn135Fast = 30.325;
     public static final double TurnNeg135Fast = -30.325;
-    
     //approximated. because it is the 2nd turn in command group had to account for error
     public static final double Turn45 = 13.775;
     public static final double TurnNeg45 = -13.775;
-    
     public static final double Turn45Fast = 8.775;
     public static final double TurnNeg45Fast = -8.775;
-    
     public RobotDrive drive;
+
     public DriveTrain() {
         try {
 
@@ -51,25 +49,25 @@ public class DriveTrain extends Subsystem {
             CANJaguar leftRear = new CANJaguar(RobotMap.leftRear);
             CANJaguar rightFront = new CANJaguar(RobotMap.rightFront);
             CANJaguar rightRear = new CANJaguar(RobotMap.rightRear);
-    
             
-        drive = new RobotDrive(leftFront, leftRear, rightFront, rightRear);
-    
-}
-catch (Exception e){
-        System.out.println(e);
+            drive = new RobotDrive(leftFront, leftRear, rightFront, rightRear);
+
+        } catch (Exception e) {
+            System.out.println(e);
         }
+        
 
         double distPerPulse = 0.101;
-        
+
         leftEncoder.setDistancePerPulse(distPerPulse);
         rightEncoder.setDistancePerPulse(distPerPulse);
-        
+
         leftEncoder.start();
         rightEncoder.start();
-        
-        
+
+
     }
+
     /**
      * Default: DriveTrain subsystem controlled by inputs from the joysticks if no other 
      * commands are using the subsystem
@@ -78,36 +76,42 @@ catch (Exception e){
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
         setDefaultCommand(new JoystickDrive());
-        
-    }
-    public void updateStatus(){
 
     }
+
+    public void updateStatus() {
+    }
+
     /**
      * sets the speed of the left motor to a double between -1 and 1
      * @param speed the speed of the left motor
      */
-    public void setSpeed(double leftSpeed, double rightSpeed){
-       drive.setLeftRightMotorOutputs(leftSpeed, rightSpeed);
-       //System.out.println("the left speed is:" + leftSpeed);
-       //System.out.println("the right speed is;" + rightSpeed);
+    public void setSpeed(double leftSpeed, double rightSpeed) {
+        try{
+          drive.setLeftRightMotorOutputs(leftSpeed, rightSpeed);
+        //System.out.println("the left speed is:" + leftSpeed);
+        //System.out.println("the right speed is;" + rightSpeed);  
+        } catch(Exception x) {
+            
+        }
+        
     }
-    
+
     /**
      * gives the value of the right encoder
      * @return the number of ticks in the right encoder
      */
-    public double getRightEncoder(){
+    public double getRightEncoder() {
         //System.out.println("right encoder:" + -rightEncoder.getDistance());
         return -rightEncoder.getDistance();
     }
+
     /**
      * gives the value of the left encoder
      * @return the number of ticks in the left encoder
      */
-    public double getLeftEncoder(){
+    public double getLeftEncoder() {
         //System.out.println("left encoder:" + leftEncoder.getDistance());
         return leftEncoder.getDistance();
     }
-    
 }
