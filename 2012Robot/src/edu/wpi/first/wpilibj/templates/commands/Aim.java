@@ -1,4 +1,3 @@
-
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
@@ -38,14 +37,16 @@ public class Aim extends CommandBase {
 
         try {
             NetworkTable cameraTable = NetworkTable.getTable("SmartDashboard").getSubTable("camera");
-            System.out.println("Top Y: " +  getTopY(cameraTable));
-            System.out.println("Chosen X: " +  getChosenX(cameraTable));
-            System.out.println("range: " +  targetRange(getTopY(cameraTable)));
+            System.out.println("Top Y: " + getTopY(cameraTable));
+            System.out.println("Chosen X: " + getChosenX(cameraTable));
+            System.out.println("range: " + targetRange(getTopY(cameraTable)));
         } catch (Exception ex) {
             System.out.println(ex);
         }
         SmartDashboard.putBoolean("yawAtSetpoint", shooterYaw.atSetpoint());
         SmartDashboard.putBoolean("pitchAtSetPoint", shooterPitch.atSetpoint());
+        SmartDashboard.putData("yawTuner", shooterYaw);
+        SmartDashboard.putData("pitchTuner", shooterPitch);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -92,7 +93,7 @@ public class Aim extends CommandBase {
             }
         } catch (Exception ex) {
             System.out.println(ex);
-        } 
+        }
         topY = 120 - topY;
         return topY;
     }
