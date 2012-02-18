@@ -10,14 +10,18 @@ import edu.wpi.first.wpilibj.DigitalInput;
  */
 public class FeedBallOn extends CommandBase {
     
+    private int sign;
+    
     /**
      * turns the PickupBall feeder on
      * requires the "feeder" subsystem
+     * @param sign either -1 or 1 designates the direction of the motor/victor
      */
-    public FeedBallOn() {
+    public FeedBallOn(int sign) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         requires(feeder);
+        this.sign = sign;
     }
 
     // Called just before this Command runs the first time
@@ -25,7 +29,7 @@ public class FeedBallOn extends CommandBase {
      * turns the PickupBall feeder on
      */
     protected void initialize() {
-        feeder.setFeederSpeed(0.25);
+        feeder.setFeederSpeed(sign * 0.25);
     }
 
     // Called repeatedly when this Command is scheduled to run

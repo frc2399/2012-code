@@ -39,6 +39,7 @@ public class OI {
     public static int leftStickNum = 1;
     public static int rightStickNum = 3;
     public static int feedButtPort = 7;
+    public static int feedButtNegPort = 8;
     public static int shooterStickNum = 2;
     public static int shootButtNum = 1;
     public static int triggerButtNum = 20;
@@ -62,8 +63,9 @@ public class OI {
     Joystick shooterStick = new Joystick(shooterStickNum);
 
     
-    FeedBallOn feedOn = new FeedBallOn();
+    FeedBallOn feedOn = new FeedBallOn(1);
     FeedBallOff feedOff = new FeedBallOff();
+    FeedBallOn feedNeg = new FeedBallOn(-1);
     LoadBall load = new LoadBall();
     ShootOn shootOn = new ShootOn();
     ShootOff shootOff = new ShootOff();
@@ -86,6 +88,7 @@ public class OI {
     
     //buttons
     private final JoystickButton feedButt = new JoystickButton(leftStick, feedButtPort);
+    private final JoystickButton feedButtNeg = new JoystickButton(leftStick, feedButtNegPort);
     private final JoystickButton shootButt = new JoystickButton(shooterStick,shootButtNum);
     private final JoystickButton triggerButt = new JoystickButton(shooterStick,triggerButtNum);
     private final JoystickButton goTestButt = new JoystickButton(rightStick,goTestButtNum);
