@@ -44,6 +44,8 @@ public class Aim extends CommandBase {
         } catch (Exception ex) {
             System.out.println(ex);
         }
+        SmartDashboard.putBoolean("yawAtSetpoint", shooterYaw.atSetpoint());
+        SmartDashboard.putBoolean("pitchAtSetPoint", shooterPitch.atSetpoint());
     }
 
     // Make this return true when this Command no longer needs to run execute()
