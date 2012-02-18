@@ -19,9 +19,6 @@ public class Feeder extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     private Victor feedMotor = new Victor(RobotMap.feedMotor);
-    private DigitalInput topSensor = new DigitalInput(RobotMap.topSensor);
-    private DigitalInput bottomSensor = new DigitalInput(RobotMap.bottomSensor);
-    private DigitalInput middleSensor = new DigitalInput(RobotMap.middleSensor);
 
 
     /**
@@ -44,17 +41,7 @@ public class Feeder extends Subsystem {
             feedMotor.set(speed);
     }
             
-    public boolean getTop(){
-        return topSensor.get();
-    }
     
-    public boolean getMiddle(){
-        return middleSensor.get();
-    }
-    
-    public boolean getBottom(){
-        return bottomSensor.get();
-    }
 
 }
 

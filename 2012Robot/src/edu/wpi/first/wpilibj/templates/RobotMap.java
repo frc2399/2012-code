@@ -35,15 +35,15 @@ public class RobotMap {
     public static final int leftEncoderB = 2;
     public static final int rightEncoderA = 3;
     public static final int rightEncoderB = 7;
-    public static final int pitchEncoder = 14;
+    public static final int pitchEncoder = 1;
     public static final int yawEncoderA = 15;
     public static final int yawEncoderB = 16;
-    public static final int smackDownSwitch = 7;
+    public static final int smackDownSwitch = 6;
     public static final int liftUpSwitch = 8;
     
-    public static final int topSensor = 54;
-    public static final int middleSensor = 55;
-    public static final int bottomSensor = 56;
+    public static final int topSensor = 10;
+    public static final int middleSensor = 11;
+    public static final int bottomSensor = 12;
     
     
 }
