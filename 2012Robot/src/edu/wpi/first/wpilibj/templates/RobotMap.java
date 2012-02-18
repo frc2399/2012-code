@@ -25,8 +25,8 @@ public class RobotMap {
     public static int leftRear = 3;
     public static int rightFront = 5;
     public static int rightRear = 9;
-    public static int pitchMotor = 2;
-    public static int yawMotor = 8;
+    public static int pitchMotor = 8;
+    public static int yawMotor = 2;
     public static int SmackMotor = 2;
     public static int shootMotor = 4;
     public static int shootMotor2 = 1;
