@@ -19,10 +19,10 @@ public class ShooterYaw extends PIDSubsystem {
     private CANJaguar yawMotor;
     
     public ShooterYaw(){
-        super(0.0,0.0,0.0);
+        super(0.10,0.0,0.0);
         setSetpointRange(MaxAngle, MinAngle);
-        setSetpoint(MinAngle);
-        encoder.setDistancePerPulse(0.0868056);
+        setSetpoint(360);
+        encoder.setDistancePerPulse(0.0833750);
         encoder.start();
         enable();
         
@@ -40,7 +40,7 @@ public class ShooterYaw extends PIDSubsystem {
     }
     
     protected double returnPIDInput(){
-        return encoder.getDistance();
+        return -encoder.getDistance();
         //for sensor
     }
     protected void usePIDOutput (double output){
