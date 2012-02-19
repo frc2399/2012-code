@@ -22,7 +22,7 @@ public class ShooterYaw extends PIDSubsystem {
     private CANJaguar yawMotor;
 
     public ShooterYaw() {
-        super(0.24, 0.0, 0.0);
+        super(0.27, 0.0, 0.0);
         setSetpointRange(MaxAngle, MinAngle);
         setSetpoint(0);
         //positive is couterclockwise as seen from above

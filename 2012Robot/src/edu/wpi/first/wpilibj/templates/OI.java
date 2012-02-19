@@ -163,7 +163,7 @@ public class OI {
     }
     
     public double getTwistSpeed(){
-        return shooterStick.getTwist();
+        return -shooterStick.getTwist();
     }
     
     public double getThrottle(){
