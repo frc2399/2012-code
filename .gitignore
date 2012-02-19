@@ -10,3 +10,7 @@
 /DashboardExtension/suite/
 *.jar
 /PrototypeSixWheel/build/
+/NetworkTableTestingExtension/dist/
+/DashboardExtension/dist/
+/NetworkTableTestingExtension/build/
+/NetworkTableTestingExtension/nbproject/private/
