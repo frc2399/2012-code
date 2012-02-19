@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 
 
 /**
- *contains methods for controlling the feeder
+ * A Subsystem that contains methods for controlling the feeder
  * @author Jessie and Emma
  */
 public class Feeder extends Subsystem {
@@ -37,7 +37,6 @@ public class Feeder extends Subsystem {
      * @param speed double between -1 and 1
      */
     public void setFeederSpeed(double speed){
-        
             feedMotor.set(speed);
     }
             

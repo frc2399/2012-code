@@ -9,7 +9,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 /**
- *
+ * A Subsystem extending PIDSubsystem that contains methods to control the ShooterPitch.  
+ * @author Gillie, Lauren, and Emma
  */
 public class ShooterPitch extends PIDSubsystem {
     // Put methods for controlling this subsystem

@@ -42,6 +42,10 @@ public class DriveTrain extends Subsystem {
     public static final double TurnNeg45Fast = -8.775;
     public RobotDrive drive;
 
+    /**
+     * A Subsystem that controls the DriveTrain and all motors associated with it.
+     * @author Jessie and Emma
+     */
     public DriveTrain() {
         try {
 

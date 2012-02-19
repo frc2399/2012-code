@@ -15,7 +15,7 @@ public class Aim extends CommandBase {
 
     int position;
     final double targetHeight = 109;     //heights in inches
-    final double cameraHeight = 20;
+    final double cameraHeight = 27.5;
 
     public Aim(int position) {
         // Use requires() here to declare subsystem dependencies
