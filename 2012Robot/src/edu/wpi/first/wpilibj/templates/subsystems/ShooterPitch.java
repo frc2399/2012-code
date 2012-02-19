@@ -9,7 +9,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 /**
- *
+ * A Subsystem extending PIDSubsystem that contains methods to control the ShooterPitch.  
+ * @author Gillie, Lauren, and Emma
  */
 public class ShooterPitch extends PIDSubsystem {
     // Put methods for controlling this subsystem
@@ -17,8 +18,10 @@ public class ShooterPitch extends PIDSubsystem {
 
     public static final int MaxAngle = 360;
     public static final int MinAngle = 0;
-    public static final double DegPerVolt = 72;
-    public static final double OffsetAngle = 15; // This number is also arbitrary!!!
+
+    public static final double DegPerVolt = 72; 
+    public static final double OffsetAngle = -180.601; 
+
     private final AnalogChannel encoder = new AnalogChannel(RobotMap.pitchEncoder);
     private CANJaguar pitchMotor;
 
