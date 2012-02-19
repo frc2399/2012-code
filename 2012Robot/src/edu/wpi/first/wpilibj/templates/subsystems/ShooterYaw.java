@@ -13,15 +13,16 @@ public class ShooterYaw extends PIDSubsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     
-    public static final int MaxAngle = 360;
-    public static final int MinAngle = 0;
+    public static final int MaxAngle = 120;
+    public static final int MinAngle = -120;
     private Encoder encoder = new Encoder(RobotMap.yawEncoderA, RobotMap.yawEncoderB);
     private CANJaguar yawMotor;
     
     public ShooterYaw(){
-        super(0.10,0.0,0.0);
+        super(0.24,0.09,0.0);                                         
         setSetpointRange(MaxAngle, MinAngle);
-        setSetpoint(360);
+        setSetpoint(0);
+        //positive is couterclockwise as seen from above
         encoder.setDistancePerPulse(0.0833750);
         encoder.start();
         enable();
@@ -52,7 +53,7 @@ public class ShooterYaw extends PIDSubsystem {
     }
     
     public boolean atSetpoint(){
-        return Math.abs(getPosition() - getSetpoint()) < 10;
+        return Math.abs(getPosition() - getSetpoint()) < 5;
     }
 }
 
