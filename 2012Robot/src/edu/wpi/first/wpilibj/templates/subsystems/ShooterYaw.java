@@ -6,12 +6,9 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.commands.Aim;
 import edu.wpi.first.wpilibj.templates.commands.ManYaw;
 import edu.wpi.first.wpilibj.CANJaguar;
-<<<<<<< HEAD
 import edu.wpi.first.wpilibj.DigitalInput;
-=======
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
->>>>>>> c18ac081f463d139af8336a377b78ae6cfe8dd96
 /**
  * A Subsystem extending PIDSubystem that contains methods for controlling the ShooterYaw
  * @author Gillie, Lauren, and Emma
