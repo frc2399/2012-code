@@ -28,7 +28,7 @@ import edu.wpi.first.wpilibj.templates.commands.ShmackDown;
 import edu.wpi.first.wpilibj.templates.commands.LiftSmacker;
 import edu.wpi.first.wpilibj.templates.commands.Aim;
 import edu.wpi.first.wpilibj.templates.commands.LoadBall;
-
+import edu.wpi.first.wpilibj.templates.commands.ManYaw;
 /**
  * the Operator Interface, defines port numbers, joysticks, and commands
  * @author 2399 Programmers
@@ -84,6 +84,7 @@ public class OI {
     Aim aimRight = new Aim(2);
     Aim aimLeft = new Aim(3);
     Aim aimBottom = new Aim(4);
+    ManYaw manYaw = new ManYaw();
     
     
     //buttons
@@ -148,6 +149,7 @@ public class OI {
     public double getLeftSpeed() {
         //System.out.println("leftStick.getY() returns" + leftStick.getY());
         return -leftStick.getY();
+       
     }
     
     /**
@@ -157,6 +159,9 @@ public class OI {
     public double getRightSpeed() {
         //System.out.println("rightStick.getY() returns" + rightStick.getY());
         return -rightStick.getY();
+    }
+    public double getTwistSpeed(){
+        return shooterStick.getTwist();
     }
 }
 
