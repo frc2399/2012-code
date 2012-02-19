@@ -8,7 +8,8 @@ import edu.wpi.first.wpilibj.templates.commands.Aim;
 import edu.wpi.first.wpilibj.templates.commands.ManYaw;
 import edu.wpi.first.wpilibj.CANJaguar;
 /**
- *
+ * A Subsystem extending PIDSubystem that contains methods for controlling the ShooterYaw
+ * @author Gillie, Lauren, and Emma
  */
 public class ShooterYaw extends PIDSubsystem {
     // Put methods for controlling this subsystem
