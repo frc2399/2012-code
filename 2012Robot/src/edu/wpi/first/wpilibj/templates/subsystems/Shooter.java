@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.templates.commands.ShootOff;
 
 
 
@@ -26,15 +27,15 @@ public class Shooter extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-        
+        setDefaultCommand(new ShootOff());
     }
     public void setSpeed(double speed){
-        shootMotor.set(speed);
-        shootMotor2.set(speed);
+        shootMotor.set(-speed);
+        shootMotor2.set(-speed);
     }
     
     public double getShooterSpeed(){
-        return (shootMotor.get() + shootMotor2.get()) / 2; 
+        return (-shootMotor.get() + -shootMotor2.get()) / 2; 
     }
     public boolean upToSpeed(){
         if(getShooterSpeed() >= .5){

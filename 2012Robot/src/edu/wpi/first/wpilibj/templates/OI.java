@@ -140,7 +140,7 @@ public class OI {
         LoadButt.whenPressed(load);
     
         ManAimButt.whenPressed(manAim);
-        ManAimButt.whenReleased(aimTop);
+        ManAimButt.whenReleased(aimTop); 
     }
 
     

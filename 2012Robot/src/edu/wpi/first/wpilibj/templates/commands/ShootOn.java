@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class ShootOn extends CommandBase {
 
-    Timer timer;
+    Timer timer = new Timer();
 
     public ShootOn() {
         // Use requires() here to declare subsystem dependencies
@@ -27,8 +27,8 @@ public class ShootOn extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        SmartDashboard.putBoolean("atSpeed", timer.get() > 1000);
-
+        SmartDashboard.putBoolean("atSpeed", timer.get() > 1);
+        System.out.println("time: " + timer.get());
     }
 
     // Make this return true when this Command no longer needs to run execute()
