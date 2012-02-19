@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.templates.commands.LoadBall;
 import edu.wpi.first.wpilibj.templates.commands.ShootBall;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.templates.commands.ShmackDown;
-
+import edu.wpi.first.wpilibj.templates.commands.AutonomousAimStart;
 /**
  * A Command that extends CommandGroup to make an Autonomous program for the right position.
  * @author Emma and Jessie
@@ -23,7 +23,7 @@ public class AutonomousRight extends CommandGroup {
     public AutonomousRight() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        
+        addSequential(new AutonomousAimStart());
         addSequential(new Aim(1));
         addSequential(new ShootOn());
         addSequential(new ShootBall());

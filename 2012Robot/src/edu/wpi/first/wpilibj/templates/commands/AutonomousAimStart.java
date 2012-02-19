@@ -3,7 +3,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 /**
  *
- * @author bradmiller
+ * @author emma & jessie :P
  */
 public class AutonomousAimStart extends CommandBase {
 
@@ -35,7 +35,7 @@ public class AutonomousAimStart extends CommandBase {
     // Called once after isFinished returns true
     protected void end() {
         shooterYaw.setSetpoint(shooterYaw.getPosition());
-        
+        shooterYaw.resetEncoder();
     }
 
     // Called when another command which requires one or more of the same
