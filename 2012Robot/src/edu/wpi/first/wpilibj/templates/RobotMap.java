@@ -19,7 +19,7 @@ public class RobotMap {
     // public static final int rangefinderModule = 1;
     
     //motors:
-    public static int feedMotor = 5;
+    public static int feedMotor = 1;
     public static int loadMotor = 3;
     public static int leftFront = 6;
     public static int leftRear = 3;
@@ -29,7 +29,7 @@ public class RobotMap {
     public static int yawMotor = 8;
     public static int SmackMotor = 2;
     public static int shootMotor = 4;
-    public static int shootMotor2 = 1;
+    public static int shootMotor2 = 5;
     
     public static final int leftEncoderA = 1;
     public static final int leftEncoderB = 2;
