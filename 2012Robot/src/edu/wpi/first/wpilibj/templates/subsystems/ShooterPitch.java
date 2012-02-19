@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.commands.Aim;
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.AnalogChannel;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 /**
@@ -22,7 +23,7 @@ public class ShooterPitch extends PIDSubsystem {
     private CANJaguar pitchMotor;
 
     public ShooterPitch() {
-        super(0.01, 0.0, 0.0);
+        super(0.0, 0.0, 0.0);
         setSetpointRange(MaxAngle, MinAngle);
         setSetpoint(MinAngle);
         enable();
@@ -45,6 +46,7 @@ public class ShooterPitch extends PIDSubsystem {
         //for sensor
         double voltage = encoder.getVoltage();
         double angle = (voltage * DegPerVolt) + OffsetAngle;
+        SmartDashboard.putDouble("printednumber", angle);
         return angle;
         
     }
