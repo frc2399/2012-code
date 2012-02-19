@@ -19,8 +19,8 @@ public class ShooterYaw extends PIDSubsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
-    public static final int MaxAngle = 120;
-    public static final int MinAngle = -120;
+    public static final int MaxAngle = 90;
+    public static final int MinAngle = -90;
     private Encoder encoder = new Encoder(RobotMap.yawEncoderA, RobotMap.yawEncoderB);
     private CANJaguar yawMotor;
 
@@ -28,7 +28,8 @@ public class ShooterYaw extends PIDSubsystem {
     private final DigitalInput AutoYawSwitch = new DigitalInput(RobotMap.autoYawSwitch);
 
     public ShooterYaw() {
-        super(0.24, 0.09, 0.0);
+        super(0.27, 0.0, 0.0);
+
         setSetpointRange(MaxAngle, MinAngle);
         setSetpoint(0);
         //positive is couterclockwise as seen from above
@@ -45,6 +46,15 @@ public class ShooterYaw extends PIDSubsystem {
         }
     }
 
+    public void setSetpoint(double setpoint) {
+        if (setpoint > MaxAngle) {
+            setpoint = MaxAngle;
+        } else if (setpoint < MinAngle) {
+            setpoint = MinAngle;
+        }
+        getPIDController().setSetpoint(setpoint);
+    }
+
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
@@ -52,8 +62,13 @@ public class ShooterYaw extends PIDSubsystem {
     }
 
     protected double returnPIDInput() {
-        return -encoder.getDistance();
-        //for sensor
+        SmartDashboard.putDouble("YawSetpoint", getSetpoint());
+        SmartDashboard.putDouble("encoderAngle", encoder.getDistance());
+
+        
+            return -encoder.getDistance();
+            //for sensor
+        
     }
 
     protected void usePIDOutput(double output) {
