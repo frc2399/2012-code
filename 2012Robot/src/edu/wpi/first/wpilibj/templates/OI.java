@@ -28,8 +28,7 @@ import edu.wpi.first.wpilibj.templates.commands.ShmackDown;
 import edu.wpi.first.wpilibj.templates.commands.LiftSmacker;
 import edu.wpi.first.wpilibj.templates.commands.Aim;
 import edu.wpi.first.wpilibj.templates.commands.LoadBall;
-import edu.wpi.first.wpilibj.templates.commands.ManYaw;
-import edu.wpi.first.wpilibj.templates.commands.ManPitch;
+import edu.wpi.first.wpilibj.templates.commands.ManAim;
 /**
  * the Operator Interface, defines port numbers, joysticks, and commands
  * @author 2399 Programmers
@@ -58,6 +57,7 @@ public class OI {
     public static int AimLeftButtNum = 3;
     public static int AimBottomButtNum = 4;
     public static int LoadButtNum = 9;
+    public static int ManAimButtNum = 12;
     
     Joystick leftStick = new Joystick(leftStickNum);
     Joystick rightStick = new Joystick(rightStickNum);
@@ -85,8 +85,7 @@ public class OI {
     Aim aimRight = new Aim(2);
     Aim aimLeft = new Aim(3);
     Aim aimBottom = new Aim(4);
-    ManYaw manYaw = new ManYaw();
-    ManPitch manPitch = new ManPitch();
+    ManAim manAim = new ManAim();
     
     
     //buttons
@@ -108,7 +107,7 @@ public class OI {
     private final DigitalIOButton AimLeftButt = new DigitalIOButton(AimLeftButtNum);
     private final DigitalIOButton AimBottomButt = new DigitalIOButton(AimBottomButtNum);
     private final JoystickButton LoadButt = new JoystickButton(leftStick,LoadButtNum);
-    
+    private final JoystickButton ManAimButt = new JoystickButton(shooterStick, ManAimButtNum);
    /**
      * When the PickupBall feeder button "feedbutt" is pressed, the PickupBall feeder is turned on,
      * and when it is released the feeder stops.
@@ -140,7 +139,8 @@ public class OI {
         
         LoadButt.whenPressed(load);
     
-        
+        ManAimButt.whenPressed(manAim);
+        ManAimButt.whenReleased(aimTop);
     }
 
     

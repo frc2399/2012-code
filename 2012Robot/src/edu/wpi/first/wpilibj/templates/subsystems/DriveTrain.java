@@ -97,7 +97,7 @@ public class DriveTrain extends Subsystem {
         
     }
 
-    /**
+     /**
      * gives the value of the right encoder
      * @return the number of ticks in the right encoder
      */
