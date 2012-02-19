@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.commands.Aim;
 import edu.wpi.first.wpilibj.templates.commands.ManYaw;
 import edu.wpi.first.wpilibj.CANJaguar;
+import edu.wpi.first.wpilibj.DigitalInput;
 /**
  * A Subsystem extending PIDSubystem that contains methods for controlling the ShooterYaw
  * @author Gillie, Lauren, and Emma
@@ -19,6 +20,8 @@ public class ShooterYaw extends PIDSubsystem {
     public static final int MinAngle = -120;
     private Encoder encoder = new Encoder(RobotMap.yawEncoderA, RobotMap.yawEncoderB);
     private CANJaguar yawMotor;
+    
+    private final DigitalInput AutoYawSwitch = new DigitalInput(RobotMap.autoYawSwitch);
     
     public ShooterYaw(){
         super(0.24,0.09,0.0);                                         
@@ -56,6 +59,15 @@ public class ShooterYaw extends PIDSubsystem {
     
     public boolean atSetpoint(){
         return Math.abs(getPosition() - getSetpoint()) < 5;
+    }
+    
+    public boolean getSwitch(){
+        if(AutoYawSwitch.get() == true){
+            return true;
+        }else{
+            return false;  
+        }
+            
     }
 }
 
