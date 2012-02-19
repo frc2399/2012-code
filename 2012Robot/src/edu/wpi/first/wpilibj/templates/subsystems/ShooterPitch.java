@@ -16,15 +16,17 @@ public class ShooterPitch extends PIDSubsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
-    public static final int MaxAngle = 360;
-    public static final int MinAngle = 0;
+    public static final int MaxAngle = 120;
+    public static final int MinAngle = 45;
+
     public static final double DegPerVolt = 72; 
-    public static final double OffsetAngle = -180.601; 
+    public static final double OffsetAngle = 287; //-165.601; 
+
     private final AnalogChannel encoder = new AnalogChannel(RobotMap.pitchEncoder);
     private CANJaguar pitchMotor;
 
     public ShooterPitch() {
-        super(0.0, 0.0, 0.0);
+        super(0.0001, 0.0, 0.0);
         setSetpointRange(MaxAngle, MinAngle);
         setSetpoint(MinAngle);
         enable();
@@ -38,7 +40,7 @@ public class ShooterPitch extends PIDSubsystem {
     }
 
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
+        // Set the default command for a  subsystem here.
         //setDefaultCommand(new MySpecialCommand());
       //  setDefaultCommand(new Aim(1));
     }
@@ -46,8 +48,9 @@ public class ShooterPitch extends PIDSubsystem {
     protected double returnPIDInput() {
         //for sensor
         double voltage = encoder.getAverageVoltage();
-        double angle = (voltage * DegPerVolt) + OffsetAngle;
+        double angle = (-voltage * DegPerVolt) + OffsetAngle;
         SmartDashboard.putDouble("printednumber", angle);
+        SmartDashboard.putDouble("voltage", voltage);
         return angle;
         
     }

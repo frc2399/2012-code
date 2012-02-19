@@ -40,8 +40,8 @@ public class Aim extends CommandBase {
             System.out.println("Top Y: " + getTopY(cameraTable));
             System.out.println("Chosen X: " + getChosenX(cameraTable));
             System.out.println("range: " + targetRange(getTopY(cameraTable)));
-            shooterYaw.setSetpoint(shooterYaw.getSetpoint() + yawAngle(getChosenX(cameraTable)));
-            shooterPitch.setSetpoint(pitchAngle(targetRange(getTopY(cameraTable))));
+          //  shooterYaw.setSetpoint(shooterYaw.getSetpoint() + yawAngle(getChosenX(cameraTable)));
+          //  shooterPitch.setSetpoint(pitchAngle(targetRange(getTopY(cameraTable))));
         } catch (Exception ex) {
             System.out.println(ex);
         }
