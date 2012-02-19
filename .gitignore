@@ -9,3 +9,5 @@
 /DashboardExtension/doc/
 /DashboardExtension/suite/
 *.jar
+/DashboardExtension/dist/
+/PrototypeSixWheel/build/
