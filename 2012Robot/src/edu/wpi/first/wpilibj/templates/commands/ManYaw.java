@@ -18,9 +18,12 @@ public class ManYaw extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        
+        if (oi.getTwistSpeed() < 0.2 && oi.getTwistSpeed() > -0.2){
+            shooterYaw.setSetpoint(shooterYaw.getSetpoint());
+        } else {
         shooterYaw.setSetpoint(shooterYaw.getSetpoint() + oi.getTwistSpeed());
        // System.out.println("Yaw twist: " + oi.getTwistSpeed());
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()

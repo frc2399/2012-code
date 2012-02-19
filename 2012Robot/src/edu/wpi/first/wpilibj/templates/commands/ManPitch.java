@@ -19,7 +19,7 @@ public class ManPitch extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        shooterPitch.setSetpoint(oi.getThrottle()); //multiply by whatever max angle
+        shooterPitch.setSetpoint(82.5 + (oi.getThrottle()/2)*75); //multiply by whatever max angle
        // System.out.println("Pitch throttle: " + oi.getThrottle());
     }
 

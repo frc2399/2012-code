@@ -26,9 +26,9 @@ public class ShooterPitch extends PIDSubsystem {
     private CANJaguar pitchMotor;
 
     public ShooterPitch() {
-        super(0.0001, 0.0, 0.0);
+        super(0.025, 0.0002, 0.0002);
         setSetpointRange(MaxAngle, MinAngle);
-        setSetpoint(MinAngle);
+        setSetpoint(80);
         enable();
 
         try {
@@ -38,7 +38,17 @@ public class ShooterPitch extends PIDSubsystem {
         }
 
     }
-
+    
+    
+    public void setSetpoint(double setpoint){
+    if (setpoint > MaxAngle){
+    setpoint = MaxAngle;
+    } else if (setpoint < MinAngle){
+        setpoint = MinAngle;
+    }      
+    getPIDController().setSetpoint(setpoint); 
+    }
+    
     public void initDefaultCommand() {
         // Set the default command for a  subsystem here.
         //setDefaultCommand(new MySpecialCommand());
@@ -49,8 +59,9 @@ public class ShooterPitch extends PIDSubsystem {
         //for sensor
         double voltage = encoder.getAverageVoltage();
         double angle = (-voltage * DegPerVolt) + OffsetAngle;
-        SmartDashboard.putDouble("printednumber", angle);
-        SmartDashboard.putDouble("voltage", voltage);
+        SmartDashboard.putDouble("pitchAngle", angle);
+                SmartDashboard.putDouble("pitchSetpoint", getSetpoint());
+        SmartDashboard.putDouble("pitchVoltage", voltage);
         return angle;
         
     }
@@ -58,7 +69,7 @@ public class ShooterPitch extends PIDSubsystem {
     protected void usePIDOutput(double output) {
         //for motor
         try {
-            pitchMotor.setX(output);
+            pitchMotor.setX(-output);
         } catch (Exception e) {
         }
     }
