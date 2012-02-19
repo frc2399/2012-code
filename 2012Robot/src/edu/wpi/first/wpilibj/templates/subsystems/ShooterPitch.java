@@ -17,8 +17,8 @@ public class ShooterPitch extends PIDSubsystem {
 
     public static final int MaxAngle = 360;
     public static final int MinAngle = 0;
-    public static final double DegPerVolt = 72; //This number is arbitrary. We need to find the real one.
-    public static final double OffsetAngle = 15; // This number is also arbitrary!!!
+    public static final double DegPerVolt = 72; 
+    public static final double OffsetAngle = -180.601; 
     private final AnalogChannel encoder = new AnalogChannel(RobotMap.pitchEncoder);
     private CANJaguar pitchMotor;
 
