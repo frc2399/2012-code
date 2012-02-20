@@ -27,6 +27,7 @@ public class Aim extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        System.out.println("Starting Aim");
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -35,9 +36,13 @@ public class Aim extends CommandBase {
 
         try {
             NetworkTable cameraTable = NetworkTable.getTable("SmartDashboard").getSubTable("camera");
-            System.out.println("Top Y: " + getTopY(cameraTable));
-            System.out.println("Chosen X: " + getChosenX(cameraTable));
-            System.out.println("range: " + targetRange(getTopY(cameraTable)));
+            SmartDashboard.putDouble("TopY", getTopY(cameraTable));
+            SmartDashboard.putDouble("ChosenX", getChosenX(cameraTable));
+            SmartDashboard.putDouble("range", targetRange(getTopY(cameraTable)));
+            for (int i = 0; i < cameraTable.getKeys().size(); i++){
+            SmartDashboard.putDouble("x" + i, cameraTable.getDouble("x" + i));
+            SmartDashboard.putDouble("y" + i, cameraTable.getDouble("y" + i));
+            }
           //  shooterYaw.setSetpoint(shooterYaw.getSetpoint() + yawAngle(getChosenX(cameraTable)));
           //  shooterPitch.setSetpoint(pitchAngle(targetRange(getTopY(cameraTable))));
         } catch (Exception ex) {
