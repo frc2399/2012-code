@@ -20,8 +20,6 @@ public class Aim extends CommandBase {
     public Aim(int position) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-
-        requires(vision);
         requires(shooterPitch);
         requires(shooterYaw);
         this.position = position;
@@ -76,7 +74,22 @@ public class Aim extends CommandBase {
     }
 
     private double pitchAngle(double range) {
-        return 0; //for now. we need to finish it. 
+                    double angle = 0;
+        switch (position) {
+                    case 1: // top
+
+                        break;
+                    case 2: // right
+                    case 3: // left
+
+                        break;
+                    case 4: // bottom
+
+                        break;
+                    default:
+                        break;
+    }
+         return angle; //for now. we need to finish it. 
     }
 
     private double getTopY(NetworkTable table) {
