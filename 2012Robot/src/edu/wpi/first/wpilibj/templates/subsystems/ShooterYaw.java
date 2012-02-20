@@ -21,10 +21,7 @@ public class ShooterYaw extends PIDSubsystem {
     public static final int MinAngle = -90;
     private Encoder encoder = new Encoder(RobotMap.yawEncoderA, RobotMap.yawEncoderB);
     private CANJaguar yawMotor;
-
-    
     private final DigitalInput AutoYawSwitch = new DigitalInput(RobotMap.autoYawSwitch);
-
 
     public ShooterYaw() {
         super(0.27, 0.0, 0.0);
@@ -62,9 +59,9 @@ public class ShooterYaw extends PIDSubsystem {
         SmartDashboard.putDouble("encoderAngle", encoder.getDistance());
 
         //do not touch this. it has to be negative or it turns like crazy
-            return -encoder.getDistance();
-            //for sensor
-        
+        return -encoder.getDistance();
+        //for sensor
+
     }
 
     protected void usePIDOutput(double output) {
@@ -78,13 +75,12 @@ public class ShooterYaw extends PIDSubsystem {
     public boolean atSetpoint() {
         return Math.abs(getPosition() - getSetpoint()) < 5;
     }
+
+    public boolean getSwitch() {
+        return AutoYawSwitch.get();
+    }
     
-    public boolean getSwitch(){
-        if(AutoYawSwitch.get() == true){
-            return true;
-        }else{
-            return false;  
-        }
-            
+    public void resetEncoder(){
+        encoder.reset();
     }
 }

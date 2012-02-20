@@ -34,6 +34,7 @@ public class AutonomousAimStart extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
+        shooterYaw.resetEncoder();
         shooterYaw.setSetpoint(shooterYaw.getPosition());
         
     }
