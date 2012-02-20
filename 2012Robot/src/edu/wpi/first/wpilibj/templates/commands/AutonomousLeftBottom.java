@@ -9,23 +9,23 @@ import edu.wpi.first.wpilibj.templates.commands.ShootBall;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.templates.commands.ShmackDown;
 import edu.wpi.first.wpilibj.templates.commands.AutonomousStopLeft;
+
 /**
- *
- * @author bradmiller
+ * A Command that extends CommandGroup to make an Autonomous program for the Left position, 
+ * aiming for the bottom hoop.
+ * @author Lauren and Jessie
  */
 public class AutonomousLeftBottom extends CommandGroup {
 
+    /**
+     * Creates an Autonomous Command that uses the directions for aiming using the
+     * AutonomousStopBottom and moving in the AutonomousLeftDirections.
+     */
     public AutonomousLeftBottom() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        addSequential(new AutonomousStopLeft());
-        //counter clockwise
-        addSequential(new Spinning(DriveTrain.Turn45Fast, 0.5));
-        addSequential(new Go(-74.0, 0.5));
-        //clockwise
-        addSequential(new Spinning(DriveTrain.TurnNeg45Fast, 0.5));
-        addSequential(new Go(-27.0, 0.5));
-        addSequential(new ShmackDown());
+        addSequential(new AutonomousStopBottom());
+        addSequential(new AutonomousLeftDirections());
     }
 
 }

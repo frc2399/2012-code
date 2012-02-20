@@ -12,22 +12,21 @@ import edu.wpi.first.wpilibj.templates.commands.AutonomousStopLeft;
 
 
 /**
- *
- * @author bradmiller
+ * A Command that extends CommandGroup to make an Autonomous program for the left position, 
+ * aiming for the left hoop.
+ * @author Lauren and Jessie
  */
 public class AutonomousLeftLeft extends CommandGroup {
 
+    /**
+     * Creates an Autonomous Command that uses the directions for aiming using the
+     * AutonomousStopLeft and moving in the AutonomousLeftDirections.
+     */
     public AutonomousLeftLeft() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         addSequential(new AutonomousStopLeft());
-        //counter clockwise
-        addSequential(new Spinning(DriveTrain.Turn45Fast, 0.5));
-        addSequential(new Go(-74.0, 0.5));
-        //clockwise
-        addSequential(new Spinning(DriveTrain.TurnNeg45Fast, 0.5));
-        addSequential(new Go(-27.0, 0.5));
-        addSequential(new ShmackDown());
+        addSequential(new AutonomousLeftDirections());
     }
 }
     

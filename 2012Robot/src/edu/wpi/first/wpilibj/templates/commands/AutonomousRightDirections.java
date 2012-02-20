@@ -10,17 +10,18 @@ import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.templates.commands.ShmackDown;
 
 /**
- * A Command that extends CommandGroup to make an Autonomous program for the right position.
- * @author Emma and Jessie
+ * A Command that extends CommandGroup to make directions for a Right 
+ * Autonomous program.
+ * @author Jessie
  */
-public class AutonomousRight extends CommandGroup {
+public class AutonomousRightDirections extends CommandGroup {
 
     /**
      * Creates an Autonomous Command for the right position that runs through the following steps:
      * aim at the top target, shoot twice, back up 20 in, turn 45 clockwise, 
-     * move backward 64 in, turn 45 clockwise, move backward 27 in, and smack down the ramp.
+     * move backward 64 in, turn 45 counter clockwise, move backward 27 in, and smack down the ramp.
      */
-    public AutonomousRight() {
+    public AutonomousRightDirections() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         

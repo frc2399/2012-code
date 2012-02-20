@@ -19,9 +19,9 @@ import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.templates.commands.Spinning;
 import edu.wpi.first.wpilibj.templates.commands.TestShooter;
 import edu.wpi.first.wpilibj.templates.commands.AutonomousStop;
-import edu.wpi.first.wpilibj.templates.commands.AutonomousCenter;
-import edu.wpi.first.wpilibj.templates.commands.AutonomousLeft;
-import edu.wpi.first.wpilibj.templates.commands.AutonomousRight;
+import edu.wpi.first.wpilibj.templates.commands.AutonomousCenterTop;
+import edu.wpi.first.wpilibj.templates.commands.AutonomousLeftTop;
+import edu.wpi.first.wpilibj.templates.commands.AutonomousRightTop;
 import edu.wpi.first.wpilibj.templates.commands.ShmackDown;
 import edu.wpi.first.wpilibj.templates.commands.LiftSmacker;
 import edu.wpi.first.wpilibj.templates.commands.Aim;
@@ -97,9 +97,9 @@ public class OI {
         
     //autonomous testing things
     AutonomousStop autonomousStopTest = new AutonomousStop();
-    AutonomousCenter autonomousCenterTest = new AutonomousCenter();
-    AutonomousLeft autonomousLeftTest = new AutonomousLeft();
-    AutonomousRight autonomousRightTest = new AutonomousRight();
+    AutonomousCenterTop autonomousCenterTest = new AutonomousCenterTop();
+    AutonomousLeftTop autonomousLeftTest = new AutonomousLeftTop();
+    AutonomousRightTop autonomousRightTest = new AutonomousRightTop();
     
     //smacker things
     ShmackDown shmackDown = new ShmackDown();
