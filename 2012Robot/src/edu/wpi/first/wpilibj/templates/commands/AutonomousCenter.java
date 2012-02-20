@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.templates.commands.ShootBall;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.templates.commands.ShmackDown;
 import edu.wpi.first.wpilibj.templates.commands.AutonomousAimStart;
+import edu.wpi.first.wpilibj.templates.commands.AutonomousStopTop;
 
 /** 
  * A Command that extends CommandGroup to make an Autonomous program for the center position.
@@ -23,12 +24,9 @@ public class AutonomousCenter extends CommandGroup {
     public AutonomousCenter() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        addSequential(new AutonomousAimStart());
-        addParallel(new Aim(1));
-        addSequential(new ShootOn());
-        addSequential(new ShootBall());
-        addSequential(new ShootBall());
-        addSequential(new ShootOff());
+        
+        addSequential(new AutonomousStopTop());
+        
         addSequential(new Go(-60.0, 0.5));
         addSequential(new ShmackDown());
         

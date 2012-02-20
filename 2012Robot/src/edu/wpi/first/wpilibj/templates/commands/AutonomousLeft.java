@@ -24,12 +24,8 @@ public class AutonomousLeft extends CommandGroup {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         
-        addSequential(new AutonomousAimStart());
-        addParallel(new Aim(1));
-        addSequential(new ShootOn());
-        addSequential(new ShootBall());
-        addSequential(new ShootBall());
-        addSequential(new ShootOff());
+        addSequential(new AutonomousStopTop());
+        
         addSequential(new Go(-20.0, 0.5));
         //counter clockwise
         addSequential(new Spinning(DriveTrain.Turn45Fast, 0.5));
