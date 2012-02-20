@@ -18,20 +18,18 @@ public class AutonomousCenter extends CommandGroup {
 
     /**
      * Creates an Autonomous Command for the center position that runs through the following steps:
-     * aim at the top target, shoot twice, back up 30 in, turn 180, move forward 30 in, and smack down the ramp.
+     * aim at the top target, shoot twice, back up 60 in, and smack down the ramp.
      */
     public AutonomousCenter() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         addSequential(new AutonomousAimStart());
-        addSequential(new Aim(1));
+        addParallel(new Aim(1));
         addSequential(new ShootOn());
         addSequential(new ShootBall());
         addSequential(new ShootBall());
         addSequential(new ShootOff());
-        addSequential(new Go(-30.0, 0.5));
-        addSequential(new Spinning(DriveTrain.Turn180, 0.5));
-        addSequential(new Go(30.0, 0.5));
+        addSequential(new Go(-60.0, 0.5));
         addSequential(new ShmackDown());
         
         
