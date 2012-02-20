@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.templates.commands.AutonomousAimStart;
 
 /** 
  * A Command that extends CommandGroup to make an Autonomous program for the center position.
- * @author Emma and Jessie
+ * @author Gillie
  */
 public class AutonomousStopBottom extends CommandGroup {
 
