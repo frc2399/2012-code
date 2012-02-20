@@ -25,7 +25,6 @@ public class ShooterYaw extends PIDSubsystem {
 
     public ShooterYaw() {
         super(0.27, 0.0, 0.0);
-        setSetpointRange(MaxAngle, MinAngle);
         setSetpoint(0);
         //positive is couterclockwise as seen from above
         encoder.setDistancePerPulse(0.0833750);
@@ -40,6 +39,7 @@ public class ShooterYaw extends PIDSubsystem {
     }
 
     public void setSetpoint(double setpoint) {
+        //setSetpointRange() does not work- we need to check if setpoint is in range ourselves
         if (setpoint > MaxAngle) {
             setpoint = MaxAngle;
         } else if (setpoint < MinAngle) {

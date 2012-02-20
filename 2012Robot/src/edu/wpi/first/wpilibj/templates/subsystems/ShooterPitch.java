@@ -24,7 +24,6 @@ public class ShooterPitch extends PIDSubsystem {
 
     public ShooterPitch() {
         super(0.033, 0.0, 0.00025);
-        setSetpointRange(MaxAngle, MinAngle);
         setSetpoint(80);
         enable();
 
@@ -36,7 +35,8 @@ public class ShooterPitch extends PIDSubsystem {
 
     }
 
-    public void setSetpoint(double setpoint) {
+    public void setSetpoint(double setpoint) { 
+        //setSetpointRange() does not work- we need to check if setpoint is in range ourselves
         if (setpoint > MaxAngle) {
             setpoint = MaxAngle;
         } else if (setpoint < MinAngle) {
