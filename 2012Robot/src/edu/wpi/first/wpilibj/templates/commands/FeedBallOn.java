@@ -1,9 +1,6 @@
 
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.templates.subsystems.Feeder;
-import edu.wpi.first.wpilibj.DigitalInput;
-
 /**
  * A Command that extends CommandBase and turns the feeder motor on, therefore rotating the feeder conveyor belt
  * @author Jessie

@@ -1,4 +1,3 @@
-
 package edu.wpi.first.wpilibj.templates;
 
 //imports from First
@@ -15,8 +14,6 @@ import edu.wpi.first.wpilibj.templates.commands.ShootOn;
 import edu.wpi.first.wpilibj.templates.commands.ShootOff;
 import edu.wpi.first.wpilibj.templates.commands.ShootBall;
 import edu.wpi.first.wpilibj.templates.RobotMap;
-import edu.wpi.first.wpilibj.templates.commands.TestButton;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.commands.Go;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.templates.commands.Spinning;
@@ -29,41 +26,68 @@ import edu.wpi.first.wpilibj.templates.commands.LiftSmacker;
 import edu.wpi.first.wpilibj.templates.commands.Aim;
 import edu.wpi.first.wpilibj.templates.commands.LoadBall;
 import edu.wpi.first.wpilibj.templates.commands.ManAim;
+
 /**
  * the Operator Interface, defines port numbers, joysticks, and commands
  * @author 2399 Programmers
  */
 public class OI {
     // Process operator interface input here.
-    
-    public static int leftStickNum = 1;
-    public static int rightStickNum = 3;
-    public static int feedButtPort = 7;
-    public static int feedButtNegPort = 8;
-    public static int shooterStickNum = 2;
+    //shooter stick buttons
+    Joystick shooterStick = new Joystick(2);
     public static int shootButtNum = 1;
-    public static int triggerButtNum = 20;
-    public static int goTestButtNum = 7;
-    public static int spin180ButtNum = 5;
-    public static int spin90ButtNum = 4;
-    public static int PIDTestButtNum = 3;
-    public static int AutonomousCenterTestButtNum = 2;
-    public static int AutonomousLeftTestButtNum = 4;
-    public static int AutonomousRightTestButtNum = 5;
-    public static int ShmackDownButtNum = 3;
-    public static int LiftSmackerButtNum = 2;
-    public static int AimTopButtNum = 1;
-    public static int AimRightButtNum = 2;
+    public static int triggerButtNum = 2;
+    public static int LoadButtNum = 3;
+    public static int ManAimButtOnNum = 12;
+    public static int ManAimButtOffNum = 11;
+    private final JoystickButton shootButt = new JoystickButton(shooterStick, shootButtNum); 
+    private final JoystickButton triggerButt = new JoystickButton(shooterStick, triggerButtNum);
+    private final JoystickButton LoadButt = new JoystickButton(shooterStick, LoadButtNum);
+    private final JoystickButton ManAimOnButt = new JoystickButton(shooterStick, ManAimButtOnNum);
+    private final JoystickButton ManAimOffButt = new JoystickButton(shooterStick, ManAimButtOffNum);    
+    
+    //driver buttons
+    Joystick leftStick = new Joystick(1);
+    Joystick rightStick = new Joystick(3);
+    public static int ShmackDownButtNum = 2;
+    public static int LiftSmackerButtNum = 3;
+    public static int feedButtNum = 1;
+    public static int feedButtNegNum = 10;
+    //right stick
+    private final JoystickButton feedButt = new JoystickButton(rightStick, feedButtNum);
+    private final JoystickButton feedButtNeg = new JoystickButton(rightStick, feedButtNegNum);
+    //left stick
+    private final JoystickButton ShmackDownButt = new JoystickButton(leftStick, ShmackDownButtNum);
+    private final JoystickButton LiftSmackerButt = new JoystickButton(leftStick, LiftSmackerButtNum);
+    
+    //peef buttons
+    public static int AimTopButtNum = 4;
+    public static int AimRightButtNum = 8;
     public static int AimLeftButtNum = 3;
-    public static int AimBottomButtNum = 4;
-    public static int LoadButtNum = 9;
-    public static int ManAimButtNum = 12;
+    public static int AimBottomButtNum = 7;
+    private final DigitalIOButton AimTopButt = new DigitalIOButton(AimTopButtNum);
+    private final DigitalIOButton AimRightButt = new DigitalIOButton(AimRightButtNum);
+    private final DigitalIOButton AimLeftButt = new DigitalIOButton(AimLeftButtNum);
+    private final DigitalIOButton AimBottomButt = new DigitalIOButton(AimBottomButtNum);
     
-    Joystick leftStick = new Joystick(leftStickNum);
-    Joystick rightStick = new Joystick(rightStickNum);
-    Joystick shooterStick = new Joystick(shooterStickNum);
-
+    //autonomous testing buttons
+    public static int goTestButtNum = 6;
+    public static int spin180ButtNum = 7;
+    public static int spin90ButtNum = 10;
+    public static int AutonomousCenterTestButtNum = 6;
+    public static int AutonomousLeftTestButtNum = 7;
+    public static int AutonomousRightTestButtNum = 10;
+    //right stick
+    private final JoystickButton goTestButt = new JoystickButton(rightStick, goTestButtNum);
+    private final JoystickButton spin180Butt = new JoystickButton(rightStick, spin180ButtNum);
+    private final JoystickButton spin90Butt = new JoystickButton(rightStick, spin90ButtNum);
+    //left stick
+    private final JoystickButton AutonomousCenterTestButt = new JoystickButton(leftStick, AutonomousCenterTestButtNum);
+    private final JoystickButton AutonomousLeftTestButt = new JoystickButton(leftStick, AutonomousLeftTestButtNum);
+    private final JoystickButton AutonomousRightTestButt = new JoystickButton(leftStick, AutonomousRightTestButtNum);
     
+    //making instances of things
+    //shooter things
     FeedBallOn feedOn = new FeedBallOn(1);
     FeedBallOff feedOff = new FeedBallOff();
     FeedBallOn feedNeg = new FeedBallOn(-1);
@@ -71,88 +95,73 @@ public class OI {
     ShootOn shootOn = new ShootOn();
     ShootOff shootOff = new ShootOff();
     ShootBall trigger = new ShootBall();
+    ManAim manAim = new ManAim();
+        
+    //autonomous testing things
     Go goTest = new Go(-36.0, 0.25);
     //these two angles go counter-clockwise
     Spinning spin180 = new Spinning(DriveTrain.Turn180, 0.25);
     Spinning spin90 = new Spinning(DriveTrain.Turn90, 0.25);
-    TestShooter testPitch = new TestShooter();
     AutonomousCenter autonomousCenterTest = new AutonomousCenter();
     AutonomousLeft autonomousLeftTest = new AutonomousLeft();
     AutonomousRight autonomousRightTest = new AutonomousRight();
+    
+    //smacker things
     ShmackDown shmackDown = new ShmackDown();
     LiftSmacker liftSmacker = new LiftSmacker();
+    
+    //aim things
     Aim aimTop = new Aim(1);
     Aim aimRight = new Aim(2);
     Aim aimLeft = new Aim(3);
     Aim aimBottom = new Aim(4);
-    ManAim manAim = new ManAim();
-    
-    
-    //buttons
-    private final JoystickButton feedButt = new JoystickButton(leftStick, feedButtPort);
-    private final JoystickButton feedButtNeg = new JoystickButton(leftStick, feedButtNegPort);
-    private final JoystickButton shootButt = new JoystickButton(shooterStick,shootButtNum);
-    private final JoystickButton triggerButt = new JoystickButton(shooterStick,triggerButtNum);
-    private final JoystickButton goTestButt = new JoystickButton(rightStick,goTestButtNum);
-    private final JoystickButton spin180Butt = new JoystickButton(rightStick,spin180ButtNum);
-    private final JoystickButton spin90Butt = new JoystickButton(rightStick,spin90ButtNum);
-    private final JoystickButton PIDTestButt = new JoystickButton(shooterStick,PIDTestButtNum);
-    private final JoystickButton AutonomousCenterTestButt = new JoystickButton(leftStick, AutonomousCenterTestButtNum);
-    private final JoystickButton AutonomousLeftTestButt = new JoystickButton(leftStick, AutonomousLeftTestButtNum);
-    private final JoystickButton AutonomousRightTestButt = new JoystickButton(leftStick, AutonomousRightTestButtNum);
-    private final JoystickButton ShmackDownButt = new JoystickButton(rightStick,ShmackDownButtNum);
-    private final JoystickButton LiftSmackerButt = new JoystickButton(rightStick,LiftSmackerButtNum);
-    private final DigitalIOButton AimTopButt = new DigitalIOButton(AimTopButtNum);
-    private final DigitalIOButton AimRightButt = new DigitalIOButton(AimRightButtNum);
-    private final DigitalIOButton AimLeftButt = new DigitalIOButton(AimLeftButtNum);
-    private final DigitalIOButton AimBottomButt = new DigitalIOButton(AimBottomButtNum);
-    private final JoystickButton LoadButt = new JoystickButton(leftStick,LoadButtNum);
-    private final JoystickButton ManAimButt = new JoystickButton(shooterStick, ManAimButtNum);
-   /**
+
+    /**
      * When the PickupBall feeder button "feedbutt" is pressed, the PickupBall feeder is turned on,
      * and when it is released the feeder stops.
      */
-    public OI(){
-        feedButt.whenPressed(feedOn);
-        feedButt.whenReleased(feedOff);
-        feedButtNeg.whileHeld(feedNeg);
+    public OI() {
+        //Shooter stick:
         shootButt.whenPressed(shootOn);
         shootButt.whenReleased(shootOff);
         triggerButt.whenPressed(trigger);
-        PIDTestButt.whenPressed(testPitch);
-
+        ShmackDownButt.whenPressed(shmackDown);
+        LiftSmackerButt.whenPressed(liftSmacker);
+        LoadButt.whenPressed(load);
+        ManAimOnButt.whenPressed(manAim);
+        ManAimOffButt.whenPressed(aimTop);
+        
+        //Right Driver stick:
+        feedButt.whenPressed(feedOn);
+        feedButt.whenReleased(feedOff);
+        feedButtNeg.whileHeld(feedNeg);
+        
         goTestButt.whenPressed(goTest);
         spin180Butt.whenPressed(spin180);
         spin90Butt.whenPressed(spin90);
         
+        //Left Driver stick:
         AutonomousCenterTestButt.whenPressed(autonomousCenterTest);
         AutonomousLeftTestButt.whenPressed(autonomousLeftTest);
         AutonomousRightTestButt.whenPressed(autonomousRightTest);
-        
-        ShmackDownButt.whenPressed(shmackDown);
-        LiftSmackerButt.whenPressed(liftSmacker);
-        
+
+        //Peef:
         AimTopButt.whenPressed(aimTop);
         AimRightButt.whenPressed(aimRight);
         AimLeftButt.whenPressed(aimLeft);
         AimBottomButt.whenPressed(aimBottom);
-        
-        LoadButt.whenPressed(load);
-    
-        ManAimButt.whenPressed(manAim);
-        ManAimButt.whenReleased(aimTop); 
+
     }
 
-    
     /**
      * gets the speed of the left joystick based on the y-axis position
      * @return the y position of the left joystick
      */
     public double getLeftSpeed() {
         //System.out.println("leftStick.getY() returns" + leftStick.getY());
-        return -leftStick.getY();    
+        return -leftStick.getY();
     }
-    
+
     /**
      * gets the speed of the right joystick based on the y-axis position
      * @return the y position of the right joystick
@@ -161,13 +170,12 @@ public class OI {
         //System.out.println("rightStick.getY() returns" + rightStick.getY());
         return -rightStick.getY();
     }
-    
-    public double getTwistSpeed(){
+
+    public double getTwistSpeed() {
         return -shooterStick.getTwist();
     }
-    
-    public double getThrottle(){
+
+    public double getThrottle() {
         return shooterStick.getThrottle();
     }
 }
-
