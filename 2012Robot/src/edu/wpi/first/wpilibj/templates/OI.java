@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.templates.commands.Go;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.templates.commands.Spinning;
 import edu.wpi.first.wpilibj.templates.commands.TestShooter;
+import edu.wpi.first.wpilibj.templates.commands.AutonomousStop;
 import edu.wpi.first.wpilibj.templates.commands.AutonomousCenter;
 import edu.wpi.first.wpilibj.templates.commands.AutonomousLeft;
 import edu.wpi.first.wpilibj.templates.commands.AutonomousRight;
@@ -71,16 +72,13 @@ public class OI {
     private final DigitalIOButton AimBottomButt = new DigitalIOButton(AimBottomButtNum);
     
     //autonomous testing buttons
-    public static int goTestButtNum = 6;
-    public static int spin180ButtNum = 7;
-    public static int spin90ButtNum = 10;
+    public static int AutonomousStopTestButtNum = 6;
     public static int AutonomousCenterTestButtNum = 6;
     public static int AutonomousLeftTestButtNum = 7;
     public static int AutonomousRightTestButtNum = 10;
     //right stick
-    private final JoystickButton goTestButt = new JoystickButton(rightStick, goTestButtNum);
-    private final JoystickButton spin180Butt = new JoystickButton(rightStick, spin180ButtNum);
-    private final JoystickButton spin90Butt = new JoystickButton(rightStick, spin90ButtNum);
+    private final JoystickButton AutonomousStopTestButt = new JoystickButton(rightStick, AutonomousStopTestButtNum);
+
     //left stick
     private final JoystickButton AutonomousCenterTestButt = new JoystickButton(leftStick, AutonomousCenterTestButtNum);
     private final JoystickButton AutonomousLeftTestButt = new JoystickButton(leftStick, AutonomousLeftTestButtNum);
@@ -98,10 +96,7 @@ public class OI {
     ManAim manAim = new ManAim();
         
     //autonomous testing things
-    Go goTest = new Go(-36.0, 0.25);
-    //these two angles go counter-clockwise
-    Spinning spin180 = new Spinning(DriveTrain.Turn180, 0.25);
-    Spinning spin90 = new Spinning(DriveTrain.Turn90, 0.25);
+    AutonomousStop autonomousStopTest = new AutonomousStop();
     AutonomousCenter autonomousCenterTest = new AutonomousCenter();
     AutonomousLeft autonomousLeftTest = new AutonomousLeft();
     AutonomousRight autonomousRightTest = new AutonomousRight();
@@ -136,9 +131,7 @@ public class OI {
         feedButt.whenReleased(feedOff);
         feedButtNeg.whileHeld(feedNeg);
         
-        goTestButt.whenPressed(goTest);
-        spin180Butt.whenPressed(spin180);
-        spin90Butt.whenPressed(spin90);
+        AutonomousStopTestButt.whenPressed(autonomousStopTest);
         
         //Left Driver stick:
         AutonomousCenterTestButt.whenPressed(autonomousCenterTest);
