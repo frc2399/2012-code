@@ -34,7 +34,7 @@ public class RobotTemplate extends IterativeRobot {
     public void robotInit() {
         // instantiate the command used for the autonomous period
         autonomousCommand = new ExampleCommand();
-        AxisCamera.getInstance().writeBrightness(50);
+        AxisCamera.getInstance().writeBrightness(60);
         AxisCamera.getInstance().writeColorLevel(50);
         // Initialize all subsystems
         CommandBase.init();
