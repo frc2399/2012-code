@@ -42,9 +42,9 @@ public class RobotMap {
     public static final int liftUpSwitch = 7;
     public static final int autoYawSwitch = 8;
     
-    public static final int topSensor = 10;
+    public static final int topSensor = 12;
     public static final int middleSensor = 11;
-    public static final int bottomSensor = 12;
+    public static final int bottomSensor = 10;
     
     
 }

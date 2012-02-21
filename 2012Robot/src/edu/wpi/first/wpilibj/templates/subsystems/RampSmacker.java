@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.commands.ShmackDown;
 import edu.wpi.first.wpilibj.templates.commands.LiftSmacker;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  * A Subsystem that contains methods for controlling the RampSmacker.  
  * @author Emma and Jessie
@@ -49,6 +50,12 @@ public class RampSmacker extends Subsystem {
      */
     public boolean getUpSwitch(){
         return liftUpSwitch.get();
+    }
+    
+    public void updateStatus(){
+        SmartDashboard.putBoolean("downSwitch", getDownSwitch());
+        SmartDashboard.putBoolean("upSwitch", getUpSwitch());
+        
     }
 }
 
