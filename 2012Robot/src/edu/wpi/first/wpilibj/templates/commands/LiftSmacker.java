@@ -1,4 +1,3 @@
-
 package edu.wpi.first.wpilibj.templates.commands;
 
 /**
@@ -40,7 +39,7 @@ public class LiftSmacker extends CommandBase {
      * @return true if the top limit switch is tripped, and false if it is not.  
      */
     protected boolean isFinished() {
-        if(rampSmacker.getUpSwitch() == true){
+        if (rampSmacker.getUpSwitch() == true) {
             return true;
         } else {
             return false;
@@ -58,5 +57,6 @@ public class LiftSmacker extends CommandBase {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+        rampSmacker.setSpeed(0.0);
     }
 }

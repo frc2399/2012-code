@@ -25,7 +25,6 @@ public class RampSmacker extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-        setSpeed(0.0);
     }
         
     /**

@@ -9,34 +9,26 @@ import edu.wpi.first.wpilibj.templates.commands.ShootBall;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.templates.commands.ShmackDown;
 import edu.wpi.first.wpilibj.templates.commands.AutonomousAimStart;
-/**
- * A Command that extends CommandGroup to make an Autonomous program for the right position.
- * @author Emma and Jessie
+
+/** 
+ * A Command that extends CommandGroup to make an Autonomous program for the center position.
+ * @author Gillie
  */
-public class AutonomousRight extends CommandGroup {
+public class AutonomousStop extends CommandGroup {
 
     /**
-     * Creates an Autonomous Command for the right position that runs through the following steps:
-     * aim at the top target, shoot twice, back up 20 in, turn 135 clockwise, 
-     * move forward 64 in, turn 45 clockwise, move forward 27 in, and smack down the ramp.
+     * Creates an Autonomous Command for the center position that runs through the following steps:
+     * aim at the top target, shoot twice, back up 30 in, turn 180, move forward 30 in, and smack down the ramp.
      */
-    public AutonomousRight() {
+    public AutonomousStop() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         addSequential(new AutonomousAimStart());
-        addSequential(new Aim(1));
+        addParallel(new Aim(1));
         addSequential(new ShootOn());
         addSequential(new ShootBall());
         addSequential(new ShootBall());
         addSequential(new ShootOff());
         
-        addSequential(new Go(-20.0, 0.5));
-        //clockwise
-        addSequential(new Spinning(DriveTrain.Turn135Fast, 0.5));
-        addSequential(new Go(64.0, 0.5));
-        //clockwise
-        addSequential(new Spinning(DriveTrain.Turn45Fast, 0.5));
-        addSequential(new Go(27.0, 0.5));
-        addSequential(new ShmackDown());
     }
 }

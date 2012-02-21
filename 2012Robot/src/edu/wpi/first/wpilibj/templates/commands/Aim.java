@@ -20,8 +20,6 @@ public class Aim extends CommandBase {
     public Aim(int position) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-
-        requires(vision);
         requires(shooterPitch);
         requires(shooterYaw);
         this.position = position;
@@ -29,6 +27,7 @@ public class Aim extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        System.out.println("Starting Aim");
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -37,9 +36,13 @@ public class Aim extends CommandBase {
 
         try {
             NetworkTable cameraTable = NetworkTable.getTable("SmartDashboard").getSubTable("camera");
-            System.out.println("Top Y: " + getTopY(cameraTable));
-            System.out.println("Chosen X: " + getChosenX(cameraTable));
-            System.out.println("range: " + targetRange(getTopY(cameraTable)));
+            SmartDashboard.putDouble("TopY", getTopY(cameraTable));
+            SmartDashboard.putDouble("ChosenX", getChosenX(cameraTable));
+            SmartDashboard.putDouble("range", targetRange(getTopY(cameraTable)));
+            for (int i = 0; i < cameraTable.getKeys().size(); i++){
+            SmartDashboard.putDouble("x" + i, cameraTable.getDouble("x" + i));
+            SmartDashboard.putDouble("y" + i, cameraTable.getDouble("y" + i));
+            }
           //  shooterYaw.setSetpoint(shooterYaw.getSetpoint() + yawAngle(getChosenX(cameraTable)));
           //  shooterPitch.setSetpoint(pitchAngle(targetRange(getTopY(cameraTable))));
         } catch (Exception ex) {
@@ -76,7 +79,22 @@ public class Aim extends CommandBase {
     }
 
     private double pitchAngle(double range) {
-        return 0; //for now. we need to finish it. 
+                    double angle = 0;
+        switch (position) {
+                    case 1: // top
+
+                        break;
+                    case 2: // right
+                    case 3: // left
+
+                        break;
+                    case 4: // bottom
+
+                        break;
+                    default:
+                        break;
+    }
+         return angle; //for now. we need to finish it. 
     }
 
     private double getTopY(NetworkTable table) {

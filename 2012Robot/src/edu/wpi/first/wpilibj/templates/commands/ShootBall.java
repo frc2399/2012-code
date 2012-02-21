@@ -36,9 +36,7 @@ public class ShootBall extends CommandBase {
      * is up to speed, turns on the Loader.  
      */
     protected void execute() {
-        if(shooter.upToSpeed() == true){
             loader.setLoaderSpeed(0.25);
-        }
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -39,9 +39,6 @@ public class LoadBall extends CommandBase {
      * happens, there will also be a printout on the SmartDashboard that says if a ball is 
      * ready or not.  If the middle sensor is tripped and the top sensor is not, the loader 
      * is moved until the top sensor is tripped,at which point the loader will stop.  
-     * If the top sensor is tripped, the middle is not, and the bottom (which is located by 
-     * the feeder conveyor) is tripped, then the feeder conveyor is moved until the middle 
-     * sensor is tripped, thereby moving a ball from the bottom position into the middle one. 
      */
     protected void execute() {
         if (loader.getTop() == true) {
@@ -49,9 +46,6 @@ public class LoadBall extends CommandBase {
         }
         if (loader.getMiddle() == true && loader.getTop() == false) {
             loader.setLoaderSpeed(0.25);
-        }
-        if (loader.getBottom() == true && loader.getTop() == true && loader.getMiddle() == false) {
-            feeder.setFeederSpeed(0.25);
         }
 
         SmartDashboard.putBoolean("ballReady", loader.getTop());

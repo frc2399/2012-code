@@ -7,7 +7,6 @@ import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-
 /**
  * A Subsystem extending PIDSubsystem that contains methods to control the ShooterPitch.  
  * @author Gillie, Lauren, and Emma
@@ -18,16 +17,13 @@ public class ShooterPitch extends PIDSubsystem {
 
     public static final int MaxAngle = 120;
     public static final int MinAngle = 45;
-
-    public static final double DegPerVolt = 72; 
+    public static final double DegPerVolt = 72;
     public static final double OffsetAngle = 287; //-165.601; 
-
     private final AnalogChannel encoder = new AnalogChannel(RobotMap.pitchEncoder);
     private CANJaguar pitchMotor;
 
     public ShooterPitch() {
-        super(0.037, 0.0, 0.0002);
-        setSetpointRange(MaxAngle, MinAngle);
+        super(0.033, 0.0, 0.00025);
         setSetpoint(80);
         enable();
 
@@ -38,21 +34,21 @@ public class ShooterPitch extends PIDSubsystem {
         }
 
     }
-    
-    
-    public void setSetpoint(double setpoint){
-    if (setpoint > MaxAngle){
-    setpoint = MaxAngle;
-    } else if (setpoint < MinAngle){
-        setpoint = MinAngle;
-    }      
-    getPIDController().setSetpoint(setpoint); 
+
+    public void setSetpoint(double setpoint) { 
+        //setSetpointRange() does not work- we need to check if setpoint is in range ourselves
+        if (setpoint > MaxAngle) {
+            setpoint = MaxAngle;
+        } else if (setpoint < MinAngle) {
+            setpoint = MinAngle;
+        }
+        getPIDController().setSetpoint(setpoint);
     }
-    
+
     public void initDefaultCommand() {
         // Set the default command for a  subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-      //  setDefaultCommand(new Aim(1));
+        //  setDefaultCommand(new Aim(1));
     }
 
     protected double returnPIDInput() {
@@ -60,10 +56,9 @@ public class ShooterPitch extends PIDSubsystem {
         double voltage = encoder.getAverageVoltage();
         double angle = (-voltage * DegPerVolt) + OffsetAngle;
         SmartDashboard.putDouble("pitchAngle", angle);
-                SmartDashboard.putDouble("pitchSetpoint", getSetpoint());
-        SmartDashboard.putDouble("pitchVoltage", voltage);
+        SmartDashboard.putDouble("pitchSetpoint", getSetpoint());
         return angle;
-        
+
     }
 
     protected void usePIDOutput(double output) {
@@ -73,7 +68,8 @@ public class ShooterPitch extends PIDSubsystem {
         } catch (Exception e) {
         }
     }
-    public boolean atSetpoint(){
+
+    public boolean atSetpoint() {
         return Math.abs(getPosition() - getSetpoint()) < 10; //Needs Testing!!!!
     }
 }

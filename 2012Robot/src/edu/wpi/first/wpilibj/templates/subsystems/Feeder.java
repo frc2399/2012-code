@@ -2,12 +2,9 @@
 package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.Jaguar;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.templates.RobotMap;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.Victor;
-import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.templates.commands.FeedBallOff;
 
 
 
@@ -29,7 +26,7 @@ public class Feeder extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
         
         //default is set to zero
-        setFeederSpeed(0.0);
+        setDefaultCommand(new FeedBallOff());
     }
     
     /**

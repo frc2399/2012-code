@@ -47,6 +47,7 @@ public class ShooterYaw extends PIDSubsystem {
     }
 
     public void setSetpoint(double setpoint) {
+        //setSetpointRange() does not work- we need to check if setpoint is in range ourselves
         if (setpoint > MaxAngle) {
             setpoint = MaxAngle;
         } else if (setpoint < MinAngle) {
@@ -65,10 +66,10 @@ public class ShooterYaw extends PIDSubsystem {
         SmartDashboard.putDouble("YawSetpoint", getSetpoint());
         SmartDashboard.putDouble("encoderAngle", encoder.getDistance());
 
-        
-            return -encoder.getDistance();
-            //for sensor
-        
+        //do not touch this. it has to be negative or it turns like crazy
+        return -encoder.getDistance();
+        //for sensor
+
     }
 
     protected void usePIDOutput(double output) {
@@ -82,18 +83,16 @@ public class ShooterYaw extends PIDSubsystem {
     public boolean atSetpoint() {
         return Math.abs(getPosition() - getSetpoint()) < 5;
     }
-    
-    public boolean getSwitch(){
-        if(AutoYawSwitch.get() == true){
-            return true;
-        }else{
-            return false;  
-        }
-            
+
+    public boolean getSwitch() {
+        return AutoYawSwitch.get();
     }
+    
+    
     public void resetEncoder(){
         encoder.reset();
     }
+    
 }
 
 

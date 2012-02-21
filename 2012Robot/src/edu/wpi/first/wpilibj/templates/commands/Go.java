@@ -46,11 +46,9 @@ public class Go extends CommandBase {
         if (distToGo >= 0){
             driveTrain.setSpeed(speed, speed);
             ticksFinal = (driveTrain.getRightEncoder() + driveTrain.getLeftEncoder()) / 2;
-            System.out.println("ticksFinal is:" + ticksFinal);
         } else {
             driveTrain.setSpeed(-speed, -speed);
             ticksFinal = (driveTrain.getRightEncoder() + driveTrain.getLeftEncoder()) / 2;
-            System.out.println("ticksFinal is:" + ticksFinal);
         }
     }
 
@@ -75,7 +73,6 @@ public class Go extends CommandBase {
      */
     protected void end() {
         driveTrain.setSpeed(0, 0);
-        System.out.println("end method");
     }
 
     // Called when another command which requires one or more of the same

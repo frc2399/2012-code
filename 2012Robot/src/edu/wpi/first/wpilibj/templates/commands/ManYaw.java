@@ -22,7 +22,6 @@ public class ManYaw extends CommandBase {
             shooterYaw.setSetpoint(shooterYaw.getSetpoint());
         } else {
         shooterYaw.setSetpoint(shooterYaw.getSetpoint() + oi.getTwistSpeed());
-       // System.out.println("Yaw twist: " + oi.getTwistSpeed());
         }
     }
 
