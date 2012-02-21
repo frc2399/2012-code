@@ -119,7 +119,7 @@ public class OI {
         //Shooter stick:
         shootButt.whenPressed(shootOn);
         shootButt.whenReleased(shootOff);
-        triggerButt.whenPressed(trigger);
+        triggerButt.whileHeld(trigger);
         ShmackDownButt.whenPressed(shmackDown);
         LiftSmackerButt.whenPressed(liftSmacker);
         LoadButt.whenPressed(load);

@@ -67,7 +67,7 @@ public class ShooterYaw extends PIDSubsystem {
         SmartDashboard.putDouble("encoderAngle", encoder.getDistance());
 
         //do not touch this. it has to be negative or it turns like crazy
-        return -encoder.getDistance();
+        return encoder.getDistance();
         //for sensor
 
     }

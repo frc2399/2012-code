@@ -27,7 +27,7 @@ public class ShootOn extends CommandBase {
      * Sets the Shooter speed and the timer.  
      */
     protected void initialize() {
-        shooter.setSpeed(1.00);
+        shooter.setSpeed(0.40);
         timer.start();
 
     }
