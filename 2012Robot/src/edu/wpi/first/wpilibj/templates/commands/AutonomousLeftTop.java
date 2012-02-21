@@ -24,7 +24,7 @@ public class AutonomousLeftTop extends CommandGroup {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         
-        addSequential(new AutonomousStopTop());
+        //addSequential(new AutonomousStopTop());
         addSequential(new AutonomousLeftDirections());
         
     }

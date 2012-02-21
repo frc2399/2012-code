@@ -26,12 +26,12 @@ public class FeedBallOn extends CommandBase {
      * turns the bottommost conveyor on
      */
     protected void initialize() {
-        feeder.setFeederSpeed(sign * 0.25);
+        feeder.setFeederSpeed(sign * 1);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-       feeder.setFeederSpeed(sign * 0.25);
+       feeder.setFeederSpeed(sign * 1);
     }
 
     // Make this return true when this Command no longer needs to run execute()
