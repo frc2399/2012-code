@@ -108,6 +108,13 @@ public class ImageProcessing extends WPICameraExtension {
         // figure out a way to return our centers- look up extensions?
         //possibly fixed- see NetworkTable things
 
+        // set everything currently in the table to -1 so that we can throw out 
+        //contours that no longer exist
+        for (int i = 0; i < cameraTable.getKeys().size(); i++) {
+            cameraTable.putDouble("x" + i, -1);
+            cameraTable.putDouble("y" + i, -1);
+        }
+        
         // put the centers into a table that goes to the robot
 
         for (int i = 0; i < finalContours.size(); i++) {
