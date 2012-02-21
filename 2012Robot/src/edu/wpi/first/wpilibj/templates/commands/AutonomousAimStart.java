@@ -2,8 +2,8 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 /**
- *
- * @author bradmiller
+ * A Command extending CommandBase that 
+ * @author Emma and Gillie
  */
 public class AutonomousAimStart extends CommandBase {
 
