@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.commands.LoadBall;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 /**
@@ -23,8 +24,12 @@ public class Loader extends Subsystem {
     private DigitalInput bottomSensor = new DigitalInput(RobotMap.bottomSensor);
     private DigitalInput middleSensor = new DigitalInput(RobotMap.middleSensor);
     
-    /**
-     * Default: Sets the Loader speed to zero, turning the Loader off.  
+    public void updateStatus(){
+        SmartDashboard.putBoolean("topSensor", getTop());
+        SmartDashboard.putBoolean("middleSensor", getMiddle());
+        SmartDashboard.putBoolean("bottomSensor", getBottom());
+    }    
+     /* Default: Sets the Loader speed to zero, turning the Loader off.  
      */
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

@@ -19,6 +19,7 @@ public class RampSmacker extends Subsystem {
     private final DigitalInput smackDownSwitch = new DigitalInput(RobotMap.smackDownSwitch);
     private final DigitalInput liftUpSwitch = new DigitalInput(RobotMap.liftUpSwitch);
     
+    
     /**
      * Default: the RampSmacker speed is zero, and the RampSmacker is off.  
      */
