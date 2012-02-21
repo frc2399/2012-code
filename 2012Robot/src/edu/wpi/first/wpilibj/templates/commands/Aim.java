@@ -40,8 +40,8 @@ public class Aim extends CommandBase {
             SmartDashboard.putDouble("ChosenX", getChosenX(cameraTable));
             SmartDashboard.putDouble("range", targetRange(getTopY(cameraTable)));
             for (int i = 0; i < cameraTable.getKeys().size(); i++){
-            SmartDashboard.putDouble("x" + i, cameraTable.getDouble("x" + i));
-            SmartDashboard.putDouble("y" + i, cameraTable.getDouble("y" + i));
+            SmartDashboard.putDouble("x" + i, cameraTable.getDouble("x" + i)-160);
+            SmartDashboard.putDouble("y" + i, 120-cameraTable.getDouble("y" + i));
             }
           //  shooterYaw.setSetpoint(shooterYaw.getSetpoint() + yawAngle(getChosenX(cameraTable)));
           //  shooterPitch.setSetpoint(pitchAngle(targetRange(getTopY(cameraTable))));
@@ -109,7 +109,7 @@ public class Aim extends CommandBase {
             for (int i = 0; i < (table.getKeys().size()) / 2; i++) {
                 double y = table.getDouble("y" + i, 0);
                 // Finds the y value of the top target
-                if (y < topY) {
+                if (y < topY && y > 0) {
                     topY = y;
                 }
             }
@@ -136,25 +136,25 @@ public class Aim extends CommandBase {
 
                 switch (position) {
                     case 1: // top
-                        if (y < chosenY) {
+                        if (y < chosenY && y > 0) {
                             chosenY = y;
                             chosenX = x;
                         }
                         break;
                     case 2: // right
-                        if (x > chosenX) {
+                        if (x > chosenX && x > 0) {
                             chosenY = y;
                             chosenX = x;
                         }
                         break;
                     case 3: // left
-                        if (x < chosenX) {
+                        if (x < chosenX && x > 0) {
                             chosenY = y;
                             chosenX = x;
                         }
                         break;
                     case 4: // bottom
-                        if (y > chosenY) {
+                        if (y > chosenY && y > 0) {
                             chosenY = y;
                             chosenX = x;
                         }
