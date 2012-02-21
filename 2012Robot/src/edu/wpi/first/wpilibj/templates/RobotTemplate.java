@@ -39,6 +39,7 @@ public class RobotTemplate extends IterativeRobot {
         AxisCamera.getInstance().writeColorLevel(50);
         // Initialize all subsystems
         CommandBase.init();
+        
         SmartDashboard.putData("SchedulerData", Scheduler.getInstance());
     }
 
