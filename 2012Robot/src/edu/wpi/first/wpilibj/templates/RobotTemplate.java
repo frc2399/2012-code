@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.templates.commands.CommandBase;
 import edu.wpi.first.wpilibj.templates.commands.ExampleCommand;
 import edu.wpi.first.wpilibj.templates.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.camera.AxisCamera;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -38,6 +39,8 @@ public class RobotTemplate extends IterativeRobot {
         AxisCamera.getInstance().writeColorLevel(50);
         // Initialize all subsystems
         CommandBase.init();
+        
+        SmartDashboard.putData("SchedulerData", Scheduler.getInstance());
     }
 
     public void autonomousInit() {

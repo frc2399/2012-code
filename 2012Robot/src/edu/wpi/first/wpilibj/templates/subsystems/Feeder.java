@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.templates.commands.FeedBallOff;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 
@@ -36,8 +37,5 @@ public class Feeder extends Subsystem {
     public void setFeederSpeed(double speed){
             feedMotor.set(speed);
     }
-            
-    
-
 }
 

@@ -32,7 +32,7 @@ public class FeedBallOff extends CommandBase {
      */
     protected void execute() {
         if (loader.getBottom() == true && loader.getTop() == true && loader.getMiddle() == false) {
-            feeder.setFeederSpeed(0.25);
+            feeder.setFeederSpeed(1);
         } else {
             feeder.setFeederSpeed(0);
         }
