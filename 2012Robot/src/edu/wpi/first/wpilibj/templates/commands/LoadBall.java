@@ -57,7 +57,8 @@ public class LoadBall extends CommandBase {
      * @return false because this must always run, and if it stops we will no longer be able to shoot.  
      */
     protected boolean isFinished() {
-        return false;
+        //switch to false!
+        return true;
     }
 
     // Called once after isFinished returns true

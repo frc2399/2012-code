@@ -1,5 +1,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 /**
  * A Command extending CommandBase that lifts the RampSmacker up. 
  * Requires rampSmacker.  
