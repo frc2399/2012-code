@@ -31,11 +31,12 @@ public class FeedBallOff extends CommandBase {
      * sensor is tripped, thereby moving a ball from the bottom position into the middle one. 
      */
     protected void execute() {
-        if (loader.getBottom() == true && loader.getTop() == true && loader.getMiddle() == false) {
+        /*if (loader.getBottom() == true && loader.getTop() == true && loader.getMiddle() == false) {
             feeder.setFeederSpeed(1);
         } else {
-            feeder.setFeederSpeed(0);
-        }
+            */
+        feeder.setFeederSpeed(0);
+        
     }
 
     // Make this return true when this Command no longer needs to run execute()

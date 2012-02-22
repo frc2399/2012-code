@@ -41,12 +41,15 @@ public class LoadBall extends CommandBase {
      * is moved until the top sensor is tripped,at which point the loader will stop.  
      */
     protected void execute() {
-        if (loader.getTop() == true) {
+        if (loader.getTop() == false) {
             loader.setLoaderSpeed(0.0);
+        } else {
+            //loader.setLoaderSpeed(1);
         }
+        
         if (loader.getMiddle() == true && loader.getTop() == false) {
-            loader.setLoaderSpeed(1);
-        }
+            //loader.setLoaderSpeed(1);
+        } 
 
         SmartDashboard.putBoolean("ballReady", loader.getTop());
     }
@@ -58,7 +61,7 @@ public class LoadBall extends CommandBase {
      */
     protected boolean isFinished() {
         //switch to false!
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true
