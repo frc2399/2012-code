@@ -37,14 +37,14 @@ public class LoadBall extends CommandBase {
      * two conveyors.  If the top sensor is tripped (meaning there is a ball there), 
      * the loader is stopped to prevent a ball from being pushed into the shooter.  When this
      * happens, there will also be a printout on the SmartDashboard that says if a ball is 
-     * ready or not.  If the middle sensor is tripped and the top sensor is not, the loader 
-     * is moved until the top sensor is tripped,at which point the loader will stop.  
+     * ready or not.  
      */
     protected void execute() {
-        if (loader.getTop() == false) {
+        //false = unblocked
+        if (loader.getTop() == true) {
             loader.setLoaderSpeed(0.0);
         } else {
-            //loader.setLoaderSpeed(1);
+            loader.setLoaderSpeed(1);
         }
         
         if (loader.getMiddle() == true && loader.getTop() == false) {
