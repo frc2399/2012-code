@@ -44,7 +44,7 @@ public class LoadBall extends CommandBase {
         if (loader.getTop() == true) {
             loader.setLoaderSpeed(0.0);
         } else {
-            loader.setLoaderSpeed(1);
+            loader.setLoaderSpeed(0.5);
         }
         
         if (loader.getMiddle() == true && loader.getTop() == false) {
