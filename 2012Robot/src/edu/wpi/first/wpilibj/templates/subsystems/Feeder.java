@@ -35,7 +35,7 @@ public class Feeder extends Subsystem {
      * @param speed double between -1 and 1
      */
     public void setFeederSpeed(double speed){
-            feedMotor.set(speed);
+            feedMotor.set(-speed);
     }
 }
 
