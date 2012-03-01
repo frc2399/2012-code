@@ -44,11 +44,11 @@ public class LoadBall extends CommandBase {
         if (loader.getTop() == true) {
             loader.setLoaderSpeed(0.0);
         } else {
-            loader.setLoaderSpeed(1);
+            loader.setLoaderSpeed(0.5);
         }
         
         if (loader.getMiddle() == true && loader.getTop() == false) {
-            //loader.setLoaderSpeed(1);
+            loader.setLoaderSpeed(1);
         } 
 
         SmartDashboard.putBoolean("ballReady", loader.getTop());
@@ -61,7 +61,7 @@ public class LoadBall extends CommandBase {
      */
     protected boolean isFinished() {
         //switch to false!
-        return false;
+        return loader.getTop();
     }
 
     // Called once after isFinished returns true
