@@ -67,10 +67,15 @@ public class ImageFileExtension extends StaticWidget {
             while (!destroyed) {
                 if (computerImage == null) {
                     loadImage(fileNameProperty.getSaveValue());
+                } else {
+                    image = computerImage;
+                    drawnImage = processImage((WPIColorImage) image).getBufferedImage();
                 }
-                image = computerImage;
-                drawnImage = processImage((WPIColorImage) image).getBufferedImage();
                 SwingUtilities.invokeLater(draw);
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException ex) {
+                }
             }
         }
 
@@ -84,7 +89,7 @@ public class ImageFileExtension extends StaticWidget {
     private BufferedImage drawnImage;
     private BGThread bgThread = new BGThread();
     private GCThread gcThread = new GCThread();
-    public final StringProperty fileNameProperty = new StringProperty(this, "FileName", "C:/Users/Edward/FIRST-2012/TestImages/VisionTargetTest2.bmp");
+    public final StringProperty fileNameProperty = new StringProperty(this, "FileName", "C:/Users/Ed/FIRST-2012/TestImages/VisionTargetTest2.bmp");
 
     @Override
     public void init() {
@@ -110,13 +115,11 @@ public class ImageFileExtension extends StaticWidget {
             System.out.println("Loading image: " + fileName);
             img = ImageIO.read(new File(fileName));
             System.out.println("Image is: " + img.getWidth() + "x" + img.getHeight());
+            // Create a WPIColorImage instance to process
+            computerImage = new WPIColorImage(img);
         } catch (Exception ignore) {
             System.err.println("***ERROR**** Failed to load image: " + fileName);
-            // ignore.printStackTrace(System.err);
-            System.exit(1);
         }
-        // Create a WPIColorImage instance to process
-        computerImage = new WPIColorImage(img);
     }
 
     @Override
