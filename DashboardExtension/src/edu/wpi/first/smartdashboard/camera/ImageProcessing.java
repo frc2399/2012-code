@@ -9,6 +9,7 @@ import edu.wpi.first.wpijavacv.WPIColor;
 import edu.wpi.first.wpijavacv.WPIImage;
 import edu.wpi.first.wpijavacv.WPIColorImage;
 import edu.wpi.first.wpijavacv.WPIBinaryImage;
+import edu.wpi.first.wpijavacv.BinaryImageExtension;
 import edu.wpi.first.wpijavacv.WPIGrayscaleImage;
 import edu.wpi.first.wpijavacv.WPIContour;
 import edu.wpi.first.wpijavacv.WPIPoint;
@@ -45,12 +46,12 @@ public class ImageProcessing extends ImageFileExtension { //Change to extend WPI
     public WPIImage processImage(WPIColorImage rawImage) {
         NetworkTable.setTeam(2399);
         //find color thresholds: red(0,151), green(198,255), blue(0,255)
-        WPIBinaryImage redBinary = rawImage.getRedChannel().getThresholdInverted(151);
-        WPIBinaryImage greenBinary = rawImage.getGreenChannel().getThreshold(198);
-        WPIBinaryImage blueBinary = rawImage.getBlueChannel().getThreshold(0);
+        BinaryImageExtension redBinary = new BinaryImageExtension(rawImage.getRedChannel().getThresholdInverted(151));
+        BinaryImageExtension greenBinary = new BinaryImageExtension(rawImage.getGreenChannel().getThreshold(198));
+        BinaryImageExtension blueBinary = new BinaryImageExtension(rawImage.getBlueChannel().getThreshold(0));
 
         // contains the pixels that show up in all three of the other images
-        WPIBinaryImage finalBinary = blueBinary.getAnd(redBinary).getAnd(greenBinary);
+        BinaryImageExtension finalBinary = new BinaryImageExtension(blueBinary.getAnd(redBinary).getAnd(greenBinary));
 
         finalBinary.dilate(7);
         finalBinary.erode(5);
@@ -105,6 +106,9 @@ public class ImageProcessing extends ImageFileExtension { //Change to extend WPI
             }
             NetworkTable.getTable("SmartDashboard").putSubTable("camera", cameraTable);
         }
+        for (int i = 0; i < centerPoints.length; i++){
+        System.out.println(centerPoints[i].getX() +", " + centerPoints[i].getY());
+                }
         return rawImage;
     }
 }
