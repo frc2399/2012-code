@@ -35,7 +35,7 @@ public class ImageProcessing extends ImageFileExtension { //Change to extend WPI
 
     WPIColorImage computerImage;
     NetworkTable cameraTable;
-    boolean sendData = false; //Set true to send values to cRIO
+    boolean sendData = true; //Set true to send values to cRIO
     
     public ImageProcessing() {
         super();
