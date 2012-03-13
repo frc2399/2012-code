@@ -31,7 +31,7 @@ import java.util.ArrayList;
  *
  * @author Gillie
  */
-public class ImageProcessing extends ImageFileExtension { //Change to extend WPICameraExtension to use camera
+public class ImageProcessing extends WPICameraExtension {//extends ImageFileExtension { //Change to extend WPICameraExtension to use camera
 
     WPIColorImage computerImage;
     NetworkTable cameraTable;
