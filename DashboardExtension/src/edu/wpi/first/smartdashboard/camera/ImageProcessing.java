@@ -9,6 +9,7 @@ import edu.wpi.first.wpijavacv.WPIColor;
 import edu.wpi.first.wpijavacv.WPIImage;
 import edu.wpi.first.wpijavacv.WPIColorImage;
 import edu.wpi.first.wpijavacv.WPIBinaryImage;
+import edu.wpi.first.wpijavacv.BinaryImageExtension;
 import edu.wpi.first.wpijavacv.WPIGrayscaleImage;
 import edu.wpi.first.wpijavacv.WPIContour;
 import edu.wpi.first.wpijavacv.WPIPoint;
@@ -21,55 +22,36 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
 import java.util.ArrayList;
 
 /**
  *
  * @author Gillie
  */
-public class ImageProcessing extends WPICameraExtension {
+public class ImageProcessing extends ImageFileExtension { //Change to extend WPICameraExtension to use camera
 
     WPIColorImage computerImage;
     NetworkTable cameraTable;
-
+    boolean sendData = false; //Set true to send values to cRIO
+    
     public ImageProcessing() {
         super();
         cameraTable = new NetworkTable();
-        /*
-        // Load in image to process (this goes in your constructor or wherever you want to load in an image file)
-        BufferedImage img = null;
-        String filename = "C:/Users/Gillie/2012-code/TestImages/VisionTargetTest2.jpg";
-        try {
-        System.out.println("Loading image: " + filename);
-        img = ImageIO.read(new File(filename));
-        System.out.println("Image is: " + img.getWidth() + "x" + img.getHeight());
-        } catch (Exception ignore) {
-        System.err.println("***ERROR**** Failed to load image: " + filename);
-        // ignore.printStackTrace(System.err);
-        System.exit(1);
-        }
-        
-        // Create a WPIColorImage instance to process
-        computerImage = new WPIColorImage(img);
-         */
     }
 
     @Override
     public WPIImage processImage(WPIColorImage rawImage) {
-
         NetworkTable.setTeam(2399);
-
-        if (computerImage != null) {
-            rawImage = computerImage;
-        }
-
         //find color thresholds: red(0,151), green(198,255), blue(0,255)
-        WPIBinaryImage redBinary = rawImage.getRedChannel().getThresholdInverted(151);
-        WPIBinaryImage greenBinary = rawImage.getGreenChannel().getThreshold(198);
-        WPIBinaryImage blueBinary = rawImage.getBlueChannel().getThreshold(0);
+        BinaryImageExtension redBinary = new BinaryImageExtension(rawImage.getRedChannel().getThresholdInverted(151));
+        BinaryImageExtension greenBinary = new BinaryImageExtension(rawImage.getGreenChannel().getThreshold(198));
+        BinaryImageExtension blueBinary = new BinaryImageExtension(rawImage.getBlueChannel().getThreshold(0));
 
         // contains the pixels that show up in all three of the other images
-        WPIBinaryImage finalBinary = blueBinary.getAnd(redBinary).getAnd(greenBinary);
+        BinaryImageExtension finalBinary = new BinaryImageExtension(blueBinary.getAnd(redBinary).getAnd(greenBinary));
 
         finalBinary.dilate(7);
         finalBinary.erode(5);
@@ -110,19 +92,23 @@ public class ImageProcessing extends WPICameraExtension {
 
         // set everything currently in the table to -1 so that we can throw out 
         //contours that no longer exist
-        for (int i = 0; i < cameraTable.getKeys().size(); i++) {
-            cameraTable.putDouble("x" + i, -1);
-            cameraTable.putDouble("y" + i, -1);
-        }
-        
-        // put the centers into a table that goes to the robot
+        if(sendData){
+            for (int i = 0; i < cameraTable.getKeys().size(); i++) {
+                cameraTable.putDouble("x" + i, -1);
+                cameraTable.putDouble("y" + i, -1);
+            }
 
-        for (int i = 0; i < finalContours.size(); i++) {
-            cameraTable.putDouble("x" + i, contourCentersX[i]);
-            cameraTable.putDouble("y" + i, contourCentersY[i]);
+            // put the centers into a table that goes to the robot
+
+            for (int i = 0; i < finalContours.size(); i++) {
+                cameraTable.putDouble("x" + i, contourCentersX[i]);
+                cameraTable.putDouble("y" + i, contourCentersY[i]);
+            }
+            NetworkTable.getTable("SmartDashboard").putSubTable("camera", cameraTable);
         }
-        NetworkTable.getTable("SmartDashboard").putSubTable("camera", cameraTable);
+        for (int i = 0; i < centerPoints.length; i++){
+        System.out.println(centerPoints[i].getX() +", " + centerPoints[i].getY());
+                }
         return rawImage;
     }
 }
- 
