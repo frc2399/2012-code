@@ -18,10 +18,10 @@ import edu.wpi.first.wpilibj.templates.commands.Go;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.templates.commands.Spinning;
 import edu.wpi.first.wpilibj.templates.commands.TestShooter;
-import edu.wpi.first.wpilibj.templates.commands.AutonomousStop;
-import edu.wpi.first.wpilibj.templates.commands.AutonomousCenterTop;
-import edu.wpi.first.wpilibj.templates.commands.AutonomousLeftTop;
-import edu.wpi.first.wpilibj.templates.commands.AutonomousRightTop;
+import edu.wpi.first.wpilibj.templates.commands.AutonomousStopTop;
+import edu.wpi.first.wpilibj.templates.commands.AutonomousCenterTest;
+import edu.wpi.first.wpilibj.templates.commands.AutonomousLeftTest;
+import edu.wpi.first.wpilibj.templates.commands.AutonomousRightTest;
 import edu.wpi.first.wpilibj.templates.commands.ShmackDown;
 import edu.wpi.first.wpilibj.templates.commands.LiftSmacker;
 import edu.wpi.first.wpilibj.templates.commands.Aim;
@@ -72,12 +72,12 @@ public class OI {
     private final DigitalIOButton AimBottomButt = new DigitalIOButton(AimBottomButtNum);
     
     //autonomous testing buttons
-    public static int AutonomousStopTestButtNum = 6;
+    public static int AutonomousStopTopTestButtNum = 6;
     public static int AutonomousCenterTestButtNum = 6;
     public static int AutonomousLeftTestButtNum = 7;
     public static int AutonomousRightTestButtNum = 10;
     //right stick
-    private final JoystickButton AutonomousStopTestButt = new JoystickButton(rightStick, AutonomousStopTestButtNum);
+    private final JoystickButton AutonomousStopTopTestButt = new JoystickButton(rightStick, AutonomousStopTopTestButtNum);
 
     //left stick
     private final JoystickButton AutonomousCenterTestButt = new JoystickButton(leftStick, AutonomousCenterTestButtNum);
@@ -96,10 +96,10 @@ public class OI {
     ManAim manAim = new ManAim();
         
     //autonomous testing things
-    AutonomousStop autonomousStopTest = new AutonomousStop();
-    AutonomousCenterTop autonomousCenterTest = new AutonomousCenterTop();
-    AutonomousLeftTop autonomousLeftTest = new AutonomousLeftTop();
-    AutonomousRightTop autonomousRightTest = new AutonomousRightTop();
+    AutonomousStopTop autonomousStopTest = new AutonomousStopTop();
+    AutonomousCenterTest autonomousCenterTest = new AutonomousCenterTest();
+    AutonomousLeftTest autonomousLeftTest = new AutonomousLeftTest();
+    AutonomousRightTest autonomousRightTest = new AutonomousRightTest();
     
     //smacker things
     ShmackDown shmackDown = new ShmackDown();
@@ -131,7 +131,7 @@ public class OI {
         feedButt.whenReleased(feedOff);
         feedButtNeg.whileHeld(feedNeg);
         
-        AutonomousStopTestButt.whenPressed(autonomousStopTest);
+        AutonomousStopTopTestButt.whenPressed(autonomousStopTest);
         
         //Left Driver stick:
         AutonomousCenterTestButt.whenPressed(autonomousCenterTest);
