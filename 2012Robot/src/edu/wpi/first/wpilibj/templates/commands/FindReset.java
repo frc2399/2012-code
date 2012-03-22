@@ -1,5 +1,5 @@
-
 package edu.wpi.first.wpilibj.templates.commands;
+
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.Encoder;
@@ -10,8 +10,6 @@ import edu.wpi.first.wpilibj.templates.subsystems.ShooterYaw;
  * @author bradmiller
  */
 public class FindReset extends CommandBase {
-
-
 
     public FindReset() {
         // This is to reset the encoder.
@@ -25,19 +23,19 @@ public class FindReset extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-      shooterYaw.setSetpoint(-60.0);
+        if (shooterYaw.getSwitch() == false && shooterYaw.atSetpoint() == true) {
+            shooterYaw.setSetpoint(-60.0);
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-           if(shooterYaw.getSwitch() == true){
+        if (shooterYaw.getSwitch() == true) {
             return true;
-        }else if(shooterYaw.getSwitch() == false && shooterYaw.atSetpoint() == true){
-            return false;
-        }else{
+        } else {
             return false;
         }
-           
+
     }
 
     // Called once after isFinished returns true
