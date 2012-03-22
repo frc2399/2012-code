@@ -25,7 +25,7 @@ public class AutonomousLeftDirections extends CommandGroup{
         addSequential(new Go(-74.0, 0.5));
         //clockwise
         addSequential(new Spinning(DriveTrain.TurnNeg45Fast, 0.5));
-        addSequential(new Go(-27.0, 0.5));
+        addSequential(new Go(-41.0, 0.5));
         addSequential(new ShmackDown());
     }
 }

@@ -82,6 +82,7 @@ public class RobotTemplate extends IterativeRobot {
     CommandBase.driveTrain.updateStatus();
     CommandBase.rampSmacker.updateStatus();
     CommandBase.loader.updateStatus();
+    CommandBase.shooterYaw.updateStatus();
     
     }
 }

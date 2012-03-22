@@ -18,19 +18,19 @@ public class FindReset extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        shooterYaw.setSetpoint(60.0);
+        shooterYaw.setSetpoint(30.0);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if (shooterYaw.getSwitch() == false && shooterYaw.atSetpoint() == true) {
-            shooterYaw.setSetpoint(-60.0);
+        if (shooterYaw.getSwitch() == true && shooterYaw.atSetpoint() == true) {
+            shooterYaw.setSetpoint(-30.0);
         }
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if (shooterYaw.getSwitch() == true) {
+        if (shooterYaw.getSwitch() == false) {
             return true;
         } else {
             return false;

@@ -35,7 +35,7 @@ public class ImageProcessing extends ImageFileExtension { //Change to extend WPI
 
     WPIColorImage computerImage;
     NetworkTable cameraTable;
-    boolean sendData = false; //Set true to send values to cRIO
+    boolean sendData = true; //Set true to send values to cRIO
     
     public ImageProcessing() {
         super();
@@ -46,9 +46,9 @@ public class ImageProcessing extends ImageFileExtension { //Change to extend WPI
     public WPIImage processImage(WPIColorImage rawImage) {
         NetworkTable.setTeam(2399);
         //find color thresholds: red(0,151), green(198,255), blue(0,255)
-        BinaryImageExtension redBinary = new BinaryImageExtension(rawImage.getRedChannel().getThresholdInverted(151));
-        BinaryImageExtension greenBinary = new BinaryImageExtension(rawImage.getGreenChannel().getThreshold(198));
-        BinaryImageExtension blueBinary = new BinaryImageExtension(rawImage.getBlueChannel().getThreshold(0));
+        BinaryImageExtension redBinary = new BinaryImageExtension(rawImage.getRedChannel().getThresholdInverted(141)); // red:t 191
+        BinaryImageExtension greenBinary = new BinaryImageExtension(rawImage.getGreenChannel().getThreshold(193)); //red:i 158
+        BinaryImageExtension blueBinary = new BinaryImageExtension(rawImage.getBlueChannel().getThresholdInverted(146)); //red:t 78
 
         // contains the pixels that show up in all three of the other images
         BinaryImageExtension finalBinary = new BinaryImageExtension(blueBinary.getAnd(redBinary).getAnd(greenBinary));
@@ -106,9 +106,9 @@ public class ImageProcessing extends ImageFileExtension { //Change to extend WPI
             }
             NetworkTable.getTable("SmartDashboard").putSubTable("camera", cameraTable);
         }
-        for (int i = 0; i < centerPoints.length; i++){
-        System.out.println(centerPoints[i].getX() +", " + centerPoints[i].getY());
-                }
+       // for (int i = 0; i < centerPoints.length; i++){
+       // System.out.println(centerPoints[i].getX() +", " + centerPoints[i].getY());
+        //        }
         return rawImage;
     }
 }

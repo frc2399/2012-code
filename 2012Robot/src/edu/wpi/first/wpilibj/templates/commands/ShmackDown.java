@@ -33,7 +33,7 @@ public class ShmackDown extends CommandBase {
      * limit switches.  
      */
     protected void execute() {
-        rampSmacker.setSpeed(0.5);
+        rampSmacker.setSpeed(0.25);
         
     }
 

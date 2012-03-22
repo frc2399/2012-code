@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.templates.commands.JoystickDrive;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.CANJaguar;
+import com.sun.squawk.util.MathUtils;
 
 /**
  *contains methods for controlling the DriveTrain
@@ -88,7 +89,7 @@ public class DriveTrain extends Subsystem {
      */
     public void setSpeed(double leftSpeed, double rightSpeed) {
         try{
-          drive.setLeftRightMotorOutputs(leftSpeed, rightSpeed);
+          drive.setLeftRightMotorOutputs(MathUtils.pow(leftSpeed,3), MathUtils.pow(rightSpeed,3));
         //System.out.println("the left speed is:" + leftSpeed);
         //System.out.println("the right speed is;" + rightSpeed);  
         } catch(Exception x) {
