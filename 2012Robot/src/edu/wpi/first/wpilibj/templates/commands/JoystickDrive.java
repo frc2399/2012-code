@@ -7,15 +7,15 @@ package edu.wpi.first.wpilibj.templates.commands;
  * @author Emma and Jessie
  */
 public class JoystickDrive extends CommandBase {
-
+        private double speed;
     /**
      * Creates a new instance of JoystickDrive.  
      */
-    public JoystickDrive() {
+    public JoystickDrive(double speed) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         requires(driveTrain);
-        
+        this.speed = speed;
     }
 
     // Called just before this Command runs the first time
@@ -28,7 +28,7 @@ public class JoystickDrive extends CommandBase {
      */
     protected void execute() {
         try {
-            driveTrain.drive.tankDrive(oi.getLeftSpeed(), oi.getRightSpeed());
+            driveTrain.drive.tankDrive(speed * oi.getLeftSpeed(), speed * oi.getRightSpeed());
         } catch(Exception x){
             
         }

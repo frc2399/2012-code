@@ -27,6 +27,7 @@ import edu.wpi.first.wpilibj.templates.commands.LiftSmacker;
 import edu.wpi.first.wpilibj.templates.commands.Aim;
 import edu.wpi.first.wpilibj.templates.commands.LoadBall;
 import edu.wpi.first.wpilibj.templates.commands.ManAim;
+import edu.wpi.first.wpilibj.templates.commands.JoystickDrive;
 
 /**
  * the Operator Interface, defines port numbers, joysticks, and commands
@@ -54,7 +55,9 @@ public class OI {
     public static int LiftSmackerButtNum = 3;
     public static int feedButtNum = 3;
     public static int feedButtNegNum = 6;
+    public static int slowButtNum = 3;
     //right stick
+    private final JoystickButton slowButt = new JoystickButton(rightStick, slowButtNum);
     private final JoystickButton feedButt = new JoystickButton(shooterStick, feedButtNum);
     private final JoystickButton feedButtNeg = new JoystickButton(shooterStick, feedButtNegNum);
     //left stick
@@ -85,6 +88,8 @@ public class OI {
     private final JoystickButton AutonomousRightTestButt = new JoystickButton(leftStick, AutonomousRightTestButtNum);
     
     //making instances of things
+    JoystickDrive slowSpeed = new JoystickDrive(0.5);
+    
     //shooter things
     FeedBallOn feedOn = new FeedBallOn(1);
     FeedBallOff feedOff = new FeedBallOff();
@@ -130,6 +135,7 @@ public class OI {
         feedButt.whenPressed(feedOn);
         feedButt.whenReleased(feedOff);
         feedButtNeg.whileHeld(feedNeg);
+        slowButt.whileHeld(slowSpeed);
         
         AutonomousStopTopTestButt.whenPressed(autonomousStopTest);
         
@@ -152,7 +158,10 @@ public class OI {
      */
     public double getLeftSpeed() {
         //System.out.println("leftStick.getY() returns" + leftStick.getY());
-        return -leftStick.getY();
+        
+            return -leftStick.getY();
+        
+        
     }
 
     /**
@@ -161,7 +170,10 @@ public class OI {
      */
     public double getRightSpeed() {
         //System.out.println("rightStick.getY() returns" + rightStick.getY());
-        return -rightStick.getY();
+        
+        
+            return -rightStick.getY();
+        
     }
 
     public double getTwistSpeed() {
