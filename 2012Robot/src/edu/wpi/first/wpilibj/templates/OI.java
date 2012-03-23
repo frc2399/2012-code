@@ -52,11 +52,11 @@ public class OI {
     Joystick rightStick = new Joystick(3);
     public static int ShmackDownButtNum = 2;
     public static int LiftSmackerButtNum = 3;
-    public static int feedButtNum = 1;
-    public static int feedButtNegNum = 10;
+    public static int feedButtNum = 3;
+    public static int feedButtNegNum = 6;
     //right stick
-    private final JoystickButton feedButt = new JoystickButton(rightStick, feedButtNum);
-    private final JoystickButton feedButtNeg = new JoystickButton(rightStick, feedButtNegNum);
+    private final JoystickButton feedButt = new JoystickButton(shooterStick, feedButtNum);
+    private final JoystickButton feedButtNeg = new JoystickButton(shooterStick, feedButtNegNum);
     //left stick
     private final JoystickButton ShmackDownButt = new JoystickButton(leftStick, ShmackDownButtNum);
     private final JoystickButton LiftSmackerButt = new JoystickButton(leftStick, LiftSmackerButtNum);

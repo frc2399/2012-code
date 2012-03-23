@@ -25,10 +25,10 @@ public class AutonomousCenterDirections extends CommandGroup {
     public AutonomousCenterDirections() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        
-        addSequential(new Go(-74.0, 0.5));
+       
         addSequential(new ShmackDown());
-        
+        addSequential(new Go(-86.0, 0.5));
+
         
     }
 }

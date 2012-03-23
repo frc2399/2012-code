@@ -25,7 +25,7 @@ public class ShooterPitch extends PIDSubsystem {
 
     public ShooterPitch() {
         super(0.033, 0.0, 0.00025);
-        setSetpoint(80);
+        setSetpoint(110);
         enable();
 
         try {

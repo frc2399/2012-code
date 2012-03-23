@@ -25,15 +25,15 @@ public class AutonomousRightDirections extends CommandGroup {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         
-        addSequential(new AutonomousStopTop());
-        
+        //addSequential(new AutonomousStopTop());
+        addSequential(new ShmackDown());
         addSequential(new Go(-20.0, 0.5));
         //clockwise
         addSequential(new Spinning(DriveTrain.TurnNeg45Fast, 0.5));
         addSequential(new Go(-64.0, 0.5));
         //counter clockwise
         addSequential(new Spinning(DriveTrain.Turn45Fast, 0.5));
-        addSequential(new Go(-41.0, 0.5));
-        addSequential(new ShmackDown());
+        addSequential(new Go(-53.0, 0.5));
+        
     }
 }
