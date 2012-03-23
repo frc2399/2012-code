@@ -39,11 +39,12 @@ public class Aim extends CommandBase {
             SmartDashboard.putDouble("TopY", getTopY(cameraTable));
             SmartDashboard.putDouble("ChosenX", getChosenX(cameraTable));
             SmartDashboard.putDouble("range", targetRange(getTopY(cameraTable)));
-           // for (int i = 0; i < cameraTable.getKeys().size(); i++){
-           // SmartDashboard.putDouble("x" + i, cameraTable.getDouble("x" + i)-160);
-           // SmartDashboard.putDouble("y" + i, 120-cameraTable.getDouble("y" + i));
-          //  }
-            SmartDashboard.putInt("numKeys", cameraTable.getKeys().size());
+           
+            for (int i = 0; i < (cameraTable.getKeys().size()/2); i++){
+                SmartDashboard.putDouble("x" + i, cameraTable.getDouble("x" + i)-160);
+                SmartDashboard.putDouble("y" + i, 120-cameraTable.getDouble("y" + i));
+           }
+
           //  shooterYaw.setSetpoint(shooterYaw.getSetpoint() + yawAngle(getChosenX(cameraTable)));
           //  shooterPitch.setSetpoint(pitchAngle(targetRange(getTopY(cameraTable))));
         } catch (Exception ex) {

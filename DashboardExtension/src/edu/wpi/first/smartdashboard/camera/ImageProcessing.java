@@ -93,7 +93,7 @@ public class ImageProcessing extends ImageFileExtension { //Change to extend WPI
         // set everything currently in the table to -1 so that we can throw out 
         //contours that no longer exist
         if(sendData){
-            for (int i = 0; i < cameraTable.getKeys().size(); i++) {
+            for (int i = 0; i < (cameraTable.getKeys().size()/2); i++) {
                 cameraTable.putDouble("x" + i, -1);
                 cameraTable.putDouble("y" + i, -1);
             }
