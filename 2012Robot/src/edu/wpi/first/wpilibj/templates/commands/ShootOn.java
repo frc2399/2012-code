@@ -49,7 +49,8 @@ public class ShootOn extends CommandBase {
      * @return false because the program must always run.  
      */
     protected boolean isFinished() {
-        return true;
+        return timer.get() > 2;
+        
     }
 
     // Called once after isFinished returns true

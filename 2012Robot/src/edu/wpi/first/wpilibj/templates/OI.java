@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.templates.commands.FeedBallOn;
 import edu.wpi.first.wpilibj.templates.commands.FeedBallOff;
 import edu.wpi.first.wpilibj.templates.commands.ShootOn;
 import edu.wpi.first.wpilibj.templates.commands.ShootOff;
-import edu.wpi.first.wpilibj.templates.commands.ShootBall;
+import edu.wpi.first.wpilibj.templates.commands.ManShootBall;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.commands.Go;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
@@ -91,13 +91,13 @@ public class OI {
     JoystickDrive slowSpeed = new JoystickDrive(0.5);
     
     //shooter things
-    FeedBallOn feedOn = new FeedBallOn(1);
+    FeedBallOn feedOn = new FeedBallOn(1, 1);
     FeedBallOff feedOff = new FeedBallOff();
-    FeedBallOn feedNeg = new FeedBallOn(-1);
+    FeedBallOn feedNeg = new FeedBallOn(-1, 1);
     LoadBall load = new LoadBall();
     ShootOn shootOn = new ShootOn();
     ShootOff shootOff = new ShootOff();
-    ShootBall trigger = new ShootBall();
+    ManShootBall trigger = new ManShootBall();
     ManAim manAim = new ManAim();
         
     //autonomous testing things
