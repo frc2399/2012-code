@@ -17,7 +17,8 @@ import edu.wpi.first.wpilibj.templates.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.camera.AxisCamera;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.commands.AutonomousCenterTest;
-import edu.wpi.first.wpilibj.templates.commands.AutonomousLeftTest;
+import edu.wpi.first.wpilibj.templates.commands.AutonomousStopTop;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -36,7 +37,7 @@ public class RobotTemplate extends IterativeRobot {
      */
     public void robotInit() {
         // instantiate the command used for the autonomous period
-        autonomousCommand = new AutonomousLeftTest();
+        autonomousCommand = new AutonomousStopTop();
        // AxisCamera.getInstance().writeBrightness(60);
     //    AxisCamera.getInstance().writeColorLevel(50);
         // Initialize all subsystems

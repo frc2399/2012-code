@@ -23,12 +23,16 @@ public class AutonomousStopTop extends CommandGroup {
     public AutonomousStopTop() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        addSequential(new FindReset());
+        //addSequential(new FindReset());
        // addSequential(new AutonomousAimStart());
-        addParallel(new Aim(1));
+      //  addParallel(new Aim(1));
+        addSequential(new SetPitch(110.5));
+        
         addSequential(new ShootOn());
+        addSequential(new FeedBallOn(1));
+        addParallel(new ShootBall());
         addSequential(new ShootBall());
-        addSequential(new ShootBall());
+        addSequential(new FeedBallOff());
         addSequential(new ShootOff());
         
     }

@@ -1,36 +1,28 @@
 
 package edu.wpi.first.wpilibj.templates.commands;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 
 /**
- * A Command extending CommandBase that turns both of the Shooter motors off and
- * stops the shooter completely.  
- * Requires Shooter.  
- * @author Jessie and Emma
+ *
+ * @author bradmiller
  */
-public class ShootOff extends CommandBase {
+public class SetPitch extends CommandBase {
 
-    /**
-     * Creates an instance of ShootOff.  
-     */
-    public ShootOff() {
+    private double angle;
+    
+    public SetPitch(double angle) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        requires(shooter);
+        requires(shooterPitch);
+        this.angle = angle;
     }
 
     // Called just before this Command runs the first time
-    /**
-     * Sets the Shooter speed to zero, turning the Shooter off.  
-     */
     protected void initialize() {
-        shooter.setSpeed(0.0);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        SmartDashboard.putBoolean("atSpeed", false); 
+        shooterPitch.setSetpoint(angle); 
     }
 
     // Make this return true when this Command no longer needs to run execute()

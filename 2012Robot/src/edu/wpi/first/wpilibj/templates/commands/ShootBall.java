@@ -58,7 +58,7 @@ public class ShootBall extends CommandBase {
      * Sets the Loader speed to zero and stops the conveyor.  
      */
     protected void end() {
-        loader.setLoaderSpeed(0.0);
+      //  loader.setLoaderSpeed(0.0);
     }
 
     // Called when another command which requires one or more of the same

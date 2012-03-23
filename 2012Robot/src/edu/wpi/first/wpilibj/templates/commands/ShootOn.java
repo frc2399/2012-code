@@ -29,6 +29,7 @@ public class ShootOn extends CommandBase {
     protected void initialize() {
         shooter.setSpeed(0.40);
         timer.start();
+        setTimeout(2.0);
 
     }
 
@@ -39,6 +40,7 @@ public class ShootOn extends CommandBase {
     protected void execute() {
         SmartDashboard.putBoolean("atSpeed", timer.get() > 1);
         shooter.atSpeed = timer.get() > 1;
+        
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -47,7 +49,7 @@ public class ShootOn extends CommandBase {
      * @return false because the program must always run.  
      */
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
