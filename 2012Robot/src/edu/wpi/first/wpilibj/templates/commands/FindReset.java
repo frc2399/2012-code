@@ -48,11 +48,11 @@ public class FindReset extends CommandBase {
     protected void end() {
         
         if (isSwitchFound == true){
+           shooterYaw.resetEncoder();
            shooterYaw.setSetpoint(7.0); 
         } else {
            shooterYaw.setSetpoint(0.0);
         }
-        shooterYaw.resetEncoder();
         
     }
 

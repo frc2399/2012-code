@@ -28,6 +28,7 @@ import edu.wpi.first.wpilibj.templates.commands.Aim;
 import edu.wpi.first.wpilibj.templates.commands.LoadBall;
 import edu.wpi.first.wpilibj.templates.commands.ManAim;
 import edu.wpi.first.wpilibj.templates.commands.JoystickDrive;
+import edu.wpi.first.wpilibj.templates.commands.FindReset;
 
 /**
  * the Operator Interface, defines port numbers, joysticks, and commands
@@ -75,13 +76,14 @@ public class OI {
     private final DigitalIOButton AimBottomButt = new DigitalIOButton(AimBottomButtNum);
     
     //autonomous testing buttons
-    public static int AutonomousStopTopTestButtNum = 6;
+    //public static int AutonomousStopTopTestButtNum = 6;
     public static int AutonomousCenterTestButtNum = 6;
+    public static int FindResetTestButtNum = 6;
     public static int AutonomousLeftTestButtNum = 7;
     public static int AutonomousRightTestButtNum = 10;
     //right stick
-    private final JoystickButton AutonomousStopTopTestButt = new JoystickButton(rightStick, AutonomousStopTopTestButtNum);
-
+   // private final JoystickButton AutonomousStopTopTestButt = new JoystickButton(rightStick, AutonomousStopTopTestButtNum);
+ private final JoystickButton FindResetTestButt = new JoystickButton(rightStick, FindResetTestButtNum);
     //left stick
     private final JoystickButton AutonomousCenterTestButt = new JoystickButton(leftStick, AutonomousCenterTestButtNum);
     private final JoystickButton AutonomousLeftTestButt = new JoystickButton(leftStick, AutonomousLeftTestButtNum);
@@ -105,6 +107,7 @@ public class OI {
     AutonomousCenterTest autonomousCenterTest = new AutonomousCenterTest();
     AutonomousLeftTest autonomousLeftTest = new AutonomousLeftTest();
     AutonomousRightTest autonomousRightTest = new AutonomousRightTest();
+    FindReset findResetTest = new FindReset();
     
     //smacker things
     ShmackDown shmackDown = new ShmackDown();
@@ -137,7 +140,7 @@ public class OI {
         feedButtNeg.whileHeld(feedNeg);
         slowButt.whileHeld(slowSpeed);
         
-        AutonomousStopTopTestButt.whenPressed(autonomousStopTest);
+        FindResetTestButt.whenPressed(findResetTest);
         
         //Left Driver stick:
         AutonomousCenterTestButt.whenPressed(autonomousCenterTest);

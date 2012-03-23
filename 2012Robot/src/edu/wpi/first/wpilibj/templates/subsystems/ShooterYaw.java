@@ -75,7 +75,7 @@ public class ShooterYaw extends PIDSubsystem {
     protected void usePIDOutput(double output) {
         //for motor
         try {
-            yawMotor.setX(output);
+            yawMotor.setX(output*0.5);
         } catch (Exception e) {
         }
     }
