@@ -39,11 +39,13 @@ public class OI {
     //shooter stick buttons
     Joystick shooterStick = new Joystick(2);
     public static int shootButtNum = 1;
+    public static int slowShootButtNum = 7;
     public static int triggerButtNum = 2;
     public static int LoadButtNum = 3;
     public static int ManAimButtOnNum = 12;
     public static int ManAimButtOffNum = 11;
     private final JoystickButton shootButt = new JoystickButton(shooterStick, shootButtNum); 
+    private final JoystickButton slowShootButt = new JoystickButton(shooterStick, slowShootButtNum);
     private final JoystickButton triggerButt = new JoystickButton(shooterStick, triggerButtNum);
     private final JoystickButton LoadButt = new JoystickButton(shooterStick, LoadButtNum);
     private final JoystickButton ManAimOnButt = new JoystickButton(shooterStick, ManAimButtOnNum);
@@ -97,7 +99,8 @@ public class OI {
     FeedBallOff feedOff = new FeedBallOff();
     FeedBallOn feedNeg = new FeedBallOn(-1, 1);
     LoadBall load = new LoadBall();
-    ShootOn shootOn = new ShootOn();
+    ShootOn shootOn = new ShootOn(0.4);
+    ShootOn slowShootOn = new ShootOn(0.1);
     ShootOff shootOff = new ShootOff();
     ManShootBall trigger = new ManShootBall();
     ManAim manAim = new ManAim();
@@ -127,6 +130,8 @@ public class OI {
         //Shooter stick:
         shootButt.whenPressed(shootOn);
         shootButt.whenReleased(shootOff);
+        slowShootButt.whenPressed(slowShootOn);
+        slowShootButt.whenReleased(shootOff);
         triggerButt.whileHeld(trigger);
         ShmackDownButt.whenPressed(shmackDown);
         LiftSmackerButt.whenPressed(liftSmacker);

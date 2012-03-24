@@ -11,15 +11,15 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class ShootOn extends CommandBase {
 
     Timer timer = new Timer();
-
+    private double speed;
     /**
      * Creates an instance of ShootOn.  
      */
-    public ShootOn() {
+    public ShootOn(double speed) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         requires(shooter);
-
+        this.speed = speed;
     }
 
     // Called just before this Command runs the first time
@@ -27,7 +27,7 @@ public class ShootOn extends CommandBase {
      * Sets the Shooter speed and the timer.  
      */
     protected void initialize() {
-        shooter.setSpeed(0.40);
+        shooter.setSpeed(speed);
         timer.start();
         setTimeout(2.0);
 

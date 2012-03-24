@@ -26,7 +26,7 @@ public class AutonomousStopRight extends CommandGroup {
         addSequential(new FindReset());
         addSequential(new AutonomousAimStart());
         addParallel(new Aim(2));
-        addSequential(new ShootOn());
+        addSequential(new ShootOn(0.4));
         addSequential(new ShootBall());
         addSequential(new ShootBall());
         addSequential(new ShootOff());

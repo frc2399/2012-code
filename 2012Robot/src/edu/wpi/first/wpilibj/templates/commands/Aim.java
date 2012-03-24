@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.networktables.NetworkTableKeyNotDefined;
 import com.sun.squawk.util.MathUtils;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
 /**
  *
@@ -12,7 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * x = x - 160
  */
 public class Aim extends CommandBase {
-
+    NetworkTable rioCameraTable;
     int position;
     final double targetHeight = 109;     //heights in inches
     final double cameraHeight = 27.5;
@@ -28,6 +29,7 @@ public class Aim extends CommandBase {
     // Called just before this Command runs the first time
     protected void initialize() {
        // System.out.println("Starting Aim");
+        rioCameraTable = NetworkTable.getTable("camera");
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -35,18 +37,21 @@ public class Aim extends CommandBase {
         //this is for finding the topmost target
 
         try {
-            NetworkTable cameraTable = NetworkTable.getTable("SmartDashboard").getSubTable("camera");
-            SmartDashboard.putDouble("TopY", getTopY(cameraTable));
-            SmartDashboard.putDouble("ChosenX", getChosenX(cameraTable));
-            SmartDashboard.putDouble("range", targetRange(getTopY(cameraTable)));
+            
+            SmartDashboard.putDouble("TopY", getTopY(rioCameraTable));
+            SmartDashboard.putDouble("ChosenX", getChosenX(rioCameraTable));
+            SmartDashboard.putDouble("range", targetRange(getTopY(rioCameraTable)));
            
-            for (int i = 0; i < (cameraTable.getKeys().size()/2); i++){
-                SmartDashboard.putDouble("x" + i, cameraTable.getDouble("x" + i)-160);
-                SmartDashboard.putDouble("y" + i, 120-cameraTable.getDouble("y" + i));
+            for (int i = 0; i < (rioCameraTable.getKeys().size()/2); i++){
+                SmartDashboard.putDouble("x" + i, rioCameraTable.getDouble("x" + i)-160);
+                SmartDashboard.putDouble("y" + i, 120-rioCameraTable.getDouble("y" + i));
            }
-
-          //  shooterYaw.setSetpoint(shooterYaw.getSetpoint() + yawAngle(getChosenX(cameraTable)));
-          //  shooterPitch.setSetpoint(pitchAngle(targetRange(getTopY(cameraTable))));
+            
+            
+            
+            
+          //  shooterYaw.setSetpoint(shooterYaw.getSetpoint() + yawAngle(getChosenX(rioCameraTable)));
+          //  shooterPitch.setSetpoint(pitchAngle(targetRange(getTopY(rioCameraTable))));
         } catch (Exception ex) {
             System.out.println(ex);
         }
