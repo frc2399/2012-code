@@ -37,7 +37,7 @@ public class Aim extends CommandBase {
         //this is for finding the topmost target
 
         try {
-            
+            rioCameraTable.beginTransaction();
             SmartDashboard.putDouble("TopY", getTopY(rioCameraTable));
             SmartDashboard.putDouble("ChosenX", getChosenX(rioCameraTable));
             SmartDashboard.putDouble("range", targetRange(getTopY(rioCameraTable)));
@@ -48,7 +48,7 @@ public class Aim extends CommandBase {
            }
             
             
-            
+            rioCameraTable.endTransaction();
             
           //  shooterYaw.setSetpoint(shooterYaw.getSetpoint() + yawAngle(getChosenX(rioCameraTable)));
           //  shooterPitch.setSetpoint(pitchAngle(targetRange(getTopY(rioCameraTable))));
@@ -113,17 +113,20 @@ public class Aim extends CommandBase {
         double topY = 0;
         try {
             //Makes chosenX and chosenY the first X and Y values
-
+            table.beginTransaction();
             topY = table.getDouble("y0", 0);
-
+            
             //The for loop looks at the values in the camera table
             for (int i = 0; i < (table.getKeys().size()) / 2; i++) {
+                
                 double y = table.getDouble("y" + i, 0);
+               
                 // Finds the y value of the top target
                 if (y < topY && y > 0) {
                     topY = y;
                 }
             }
+            table.endTransaction();
         } catch (Exception ex) {
             System.out.println(ex);
         }
@@ -137,7 +140,7 @@ public class Aim extends CommandBase {
         double chosenX = 0;
         double chosenY = 0;
         try {
-
+            table.beginTransaction();
             //Makes chosenX and chosenY the first X and Y values
             chosenX = table.getDouble("x0", 0);
             chosenY = table.getDouble("y0", 0);
@@ -176,6 +179,7 @@ public class Aim extends CommandBase {
                         break;
                 }
             }
+            table.endTransaction();
         } catch (Exception ex) {
             System.out.println(ex);
         }

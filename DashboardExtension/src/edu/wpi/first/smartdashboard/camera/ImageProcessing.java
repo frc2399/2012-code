@@ -34,17 +34,19 @@ import java.util.ArrayList;
 public class ImageProcessing extends ImageFileExtension { //Change to extend WPICameraExtension to use camera
 
     WPIColorImage computerImage;
-    NetworkTable cameraTable;
+    private NetworkTable cameraTable;
     boolean sendData = true; //Set true to send values to cRIO
     
     public ImageProcessing() {
         super();
-        cameraTable = new NetworkTable();
+      //  cameraTable = new NetworkTable();
+        NetworkTable.setIPAddress("10.23.99.2");
+        cameraTable = NetworkTable.getTable("camera");
     }
 
     @Override
     public WPIImage processImage(WPIColorImage rawImage) {
-        NetworkTable.setTeam(2399);
+       // NetworkTable.setTeam(2399);
         //find color thresholds: red(0,151), green(198,255), blue(0,255)
         BinaryImageExtension redBinary = new BinaryImageExtension(rawImage.getRedChannel().getThresholdInverted(141)); // red:t 191
         BinaryImageExtension greenBinary = new BinaryImageExtension(rawImage.getGreenChannel().getThreshold(193)); //red:i 158
@@ -93,6 +95,7 @@ public class ImageProcessing extends ImageFileExtension { //Change to extend WPI
         // set everything currently in the table to -1 so that we can throw out 
         //contours that no longer exist
         if(sendData){
+            cameraTable.beginTransaction();
             for (int i = 0; i < (cameraTable.getKeys().size()/2); i++) {
                 cameraTable.putDouble("x" + i, -1);
                 cameraTable.putDouble("y" + i, -1);
@@ -104,7 +107,8 @@ public class ImageProcessing extends ImageFileExtension { //Change to extend WPI
                 cameraTable.putDouble("x" + i, contourCentersX[i]);
                 cameraTable.putDouble("y" + i, contourCentersY[i]);
             }
-            NetworkTable.getTable("SmartDashboard").putSubTable("camera", cameraTable);
+          //  NetworkTable.getTable("SmartDashboard").putSubTable("camera", cameraTable);
+            cameraTable.endTransaction();
         }
        // for (int i = 0; i < centerPoints.length; i++){
        // System.out.println(centerPoints[i].getX() +", " + centerPoints[i].getY());
