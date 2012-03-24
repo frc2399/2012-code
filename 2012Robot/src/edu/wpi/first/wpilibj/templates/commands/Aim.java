@@ -28,7 +28,7 @@ public class Aim extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-       // System.out.println("Starting Aim");
+       //System.out.println("Starting Aim");
         rioCameraTable = NetworkTable.getTable("camera");
     }
 

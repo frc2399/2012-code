@@ -39,11 +39,13 @@ public class ImageProcessing extends ImageFileExtension { //Change to extend WPI
     
     public ImageProcessing() {
         super();
+        System.out.println("about to initialize cameraTable.");
         cameraTable = new NetworkTable();
     }
 
     @Override
     public WPIImage processImage(WPIColorImage rawImage) {
+        System.out.println("Starting processImage");
         NetworkTable.setTeam(2399);
         //find color thresholds: red(0,151), green(198,255), blue(0,255)
         BinaryImageExtension redBinary = new BinaryImageExtension(rawImage.getRedChannel().getThresholdInverted(141)); // red:t 191
@@ -92,14 +94,17 @@ public class ImageProcessing extends ImageFileExtension { //Change to extend WPI
 
         // set everything currently in the table to -1 so that we can throw out 
         //contours that no longer exist
+        
+        System.out.println("about to send data");
         if(sendData){
+            System.out.println("about to run -1 filling for loop");
             for (int i = 0; i < (cameraTable.getKeys().size()/2); i++) {
                 cameraTable.putDouble("x" + i, -1);
                 cameraTable.putDouble("y" + i, -1);
             }
 
             // put the centers into a table that goes to the robot
-
+            System.out.println("about to run point filling for loop");
             for (int i = 0; i < finalContours.size(); i++) {
                 cameraTable.putDouble("x" + i, contourCentersX[i]);
                 cameraTable.putDouble("y" + i, contourCentersY[i]);
@@ -109,6 +114,7 @@ public class ImageProcessing extends ImageFileExtension { //Change to extend WPI
        // for (int i = 0; i < centerPoints.length; i++){
        // System.out.println(centerPoints[i].getX() +", " + centerPoints[i].getY());
         //        }
+        System.out.println("processImage finished.");
         return rawImage;
     }
 }

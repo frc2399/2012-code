@@ -32,7 +32,7 @@ public class LiftSmacker extends CommandBase {
      * limit switches.  
      */
     protected void execute() {
-        rampSmacker.setSpeed(-0.25);
+        rampSmacker.setSpeed(-0.5);
     }
 
     // Make this return true when this Command no longer needs to run execute()
