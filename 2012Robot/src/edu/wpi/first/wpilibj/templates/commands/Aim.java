@@ -35,14 +35,18 @@ public class Aim extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         //this is for finding the topmost target
-
+        int keySize;
+        
         try {
             rioCameraTable.beginTransaction();
             SmartDashboard.putDouble("TopY", getTopY(rioCameraTable));
             SmartDashboard.putDouble("ChosenX", getChosenX(rioCameraTable));
             SmartDashboard.putDouble("range", targetRange(getTopY(rioCameraTable)));
-           
-            for (int i = 0; i < (rioCameraTable.getKeys().size()/2); i++){
+            
+            System.out.println("connected? " + rioCameraTable.isConnected());
+            
+            keySize = rioCameraTable.getKeys().size()/2;
+            for (int i = 0; i < keySize; i++){
                 SmartDashboard.putDouble("x" + i, rioCameraTable.getDouble("x" + i)-160);
                 SmartDashboard.putDouble("y" + i, 120-rioCameraTable.getDouble("y" + i));
            }
