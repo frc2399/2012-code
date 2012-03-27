@@ -16,5 +16,7 @@ public class SpeedEncoder extends Counter implements PIDSource{
         return 1/getPeriod();
     }
             
-            
+    public SpeedEncoder(int channel){
+        super(channel);
+    }         
 }

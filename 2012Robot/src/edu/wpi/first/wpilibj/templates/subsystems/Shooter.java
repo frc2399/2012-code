@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.templates.commands.ShootOff;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.templates.SpeedEncoder;
 
 /**
  * A Subsystem that contains methods to control the Shooter.  
@@ -15,8 +16,7 @@ import edu.wpi.first.wpilibj.Encoder;
 public class Shooter extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-    Encoder lShootEncoder = new Encoder(RobotMap.lShootEncoderA, RobotMap.lShootEncoderB);    
-    Encoder rShootEncoder = new Encoder(RobotMap.rShootEncoderA, RobotMap.rShootEncoderB);    
+    SpeedEncoder speedEncoder = new SpeedEncoder(RobotMap.speedEncoder);    
     Victor shootMotor = new Victor(RobotMap.shootMotor);
     Victor shootMotor2 = new Victor(RobotMap.shootMotor2);
     public boolean atSpeed = false;
@@ -48,7 +48,7 @@ public class Shooter extends Subsystem {
      * @return the average of the two Shooter motor speeds.  
      */
     public double getShooterSpeed() {
-        return (-lShootEncoder.get() + -rShootEncoder.get()) / 2;
+        return speedEncoder.pidGet();
     }
 
     /**
@@ -57,12 +57,12 @@ public class Shooter extends Subsystem {
      */
     
     public boolean upToSpeed() { 
-        if(getShooterSpeed = -speed){
+        if(getShooterSpeed() >= speed){
             return true;
         }else{
             return false;
                 }
     }
      
-    }
+    
 }
