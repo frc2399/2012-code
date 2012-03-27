@@ -38,10 +38,14 @@ public class RobotMap {
     public static final int pitchEncoder = 2; //analog
     public static final int yawEncoderA = 13;
     public static final int yawEncoderB = 14;
+    public static final int lShootEncoderA = 15;
+    public static final int lShootEncoderB = 16;
+    public static final int rShootEncoderA = 17;
+    public static final int rShootEncoderB = 18;
     public static final int smackDownSwitch = 6;
     public static final int liftUpSwitch = 7;
     public static final int autoYawSwitch = 8;
-    
+   
     public static final int topSensor = 11;
     public static final int middleSensor = 10;
     public static final int bottomSensor = 12;
