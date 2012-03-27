@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.templates.commands.Aim;
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.templates.commands.ManPitch;
 
 /**
  * A Subsystem extending PIDSubsystem that contains methods to control the ShooterPitch.  
@@ -24,7 +25,7 @@ public class ShooterPitch extends PIDSubsystem {
 
     public ShooterPitch() {
         super(0.033, 0.0, 0.00025);
-        setSetpoint(80);
+        setSetpoint(110);
         enable();
 
         try {
@@ -48,7 +49,7 @@ public class ShooterPitch extends PIDSubsystem {
     public void initDefaultCommand() {
         // Set the default command for a  subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-        //  setDefaultCommand(new Aim(1));
+        setDefaultCommand(new ManPitch());
     }
 
     protected double returnPIDInput() {

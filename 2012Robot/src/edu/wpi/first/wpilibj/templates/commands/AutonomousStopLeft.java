@@ -23,9 +23,10 @@ public class AutonomousStopLeft extends CommandGroup {
     public AutonomousStopLeft() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+        addSequential(new FindReset());
         addSequential(new AutonomousAimStart());
         addParallel(new Aim(3));
-        addSequential(new ShootOn());
+        addSequential(new ShootOn(0.4));
         addSequential(new ShootBall());
         addSequential(new ShootBall());
         addSequential(new ShootOff());

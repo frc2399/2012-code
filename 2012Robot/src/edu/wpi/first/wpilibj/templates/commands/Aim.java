@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.networktables.NetworkTableKeyNotDefined;
 import com.sun.squawk.util.MathUtils;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
 /**
  *
@@ -12,7 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * x = x - 160
  */
 public class Aim extends CommandBase {
-
+    NetworkTable rioCameraTable;
     int position;
     final double targetHeight = 109;     //heights in inches
     final double cameraHeight = 27.5;
@@ -27,24 +28,34 @@ public class Aim extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        System.out.println("Starting Aim");
+       // System.out.println("Starting Aim");
+        rioCameraTable = NetworkTable.getTable("camera");
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         //this is for finding the topmost target
-
+        int keySize;
+        
         try {
-            NetworkTable cameraTable = NetworkTable.getTable("SmartDashboard").getSubTable("camera");
-            SmartDashboard.putDouble("TopY", getTopY(cameraTable));
-            SmartDashboard.putDouble("ChosenX", getChosenX(cameraTable));
-            SmartDashboard.putDouble("range", targetRange(getTopY(cameraTable)));
-            for (int i = 0; i < cameraTable.getKeys().size(); i++){
-            SmartDashboard.putDouble("x" + i, cameraTable.getDouble("x" + i)-160);
-            SmartDashboard.putDouble("y" + i, 120-cameraTable.getDouble("y" + i));
-            }
-          //  shooterYaw.setSetpoint(shooterYaw.getSetpoint() + yawAngle(getChosenX(cameraTable)));
-          //  shooterPitch.setSetpoint(pitchAngle(targetRange(getTopY(cameraTable))));
+            rioCameraTable.beginTransaction();
+            SmartDashboard.putDouble("TopY", getTopY(rioCameraTable));
+            SmartDashboard.putDouble("ChosenX", getChosenX(rioCameraTable));
+            SmartDashboard.putDouble("range", targetRange(getTopY(rioCameraTable)));
+            
+            System.out.println("connected? " + rioCameraTable.isConnected());
+            
+            keySize = rioCameraTable.getKeys().size()/2;
+            for (int i = 0; i < keySize; i++){
+                SmartDashboard.putDouble("x" + i, rioCameraTable.getDouble("x" + i)-160);
+                SmartDashboard.putDouble("y" + i, 120-rioCameraTable.getDouble("y" + i));
+           }
+            
+            
+            rioCameraTable.endTransaction();
+            
+          //  shooterYaw.setSetpoint(shooterYaw.getSetpoint() + yawAngle(getChosenX(rioCameraTable)));
+          //  shooterPitch.setSetpoint(pitchAngle(targetRange(getTopY(rioCameraTable))));
         } catch (Exception ex) {
             System.out.println(ex);
         }
@@ -97,6 +108,7 @@ public class Aim extends CommandBase {
                     default:
                         break;
     }
+        angle += 15;
          return angle; //for now. we need to finish it. 
     }
 
@@ -105,21 +117,26 @@ public class Aim extends CommandBase {
         double topY = 0;
         try {
             //Makes chosenX and chosenY the first X and Y values
-
+            table.beginTransaction();
             topY = table.getDouble("y0", 0);
-
+            
             //The for loop looks at the values in the camera table
             for (int i = 0; i < (table.getKeys().size()) / 2; i++) {
+                
                 double y = table.getDouble("y" + i, 0);
+               
                 // Finds the y value of the top target
                 if (y < topY && y > 0) {
                     topY = y;
                 }
             }
+            table.endTransaction();
         } catch (Exception ex) {
             System.out.println(ex);
         }
         topY = 120 - topY;
+       // System.out.println("top y:" + topY);
+               SmartDashboard.putDouble("top y", topY);
         return topY;
     }
 
@@ -127,7 +144,7 @@ public class Aim extends CommandBase {
         double chosenX = 0;
         double chosenY = 0;
         try {
-
+            table.beginTransaction();
             //Makes chosenX and chosenY the first X and Y values
             chosenX = table.getDouble("x0", 0);
             chosenY = table.getDouble("y0", 0);
@@ -166,10 +183,13 @@ public class Aim extends CommandBase {
                         break;
                 }
             }
+            table.endTransaction();
         } catch (Exception ex) {
             System.out.println(ex);
         }
         chosenX = chosenX - 160;
-        return chosenX;
+      // System.out.println("chosen x:" + chosenX);
+        SmartDashboard.putDouble("chosen x", chosenX);
+                return chosenX;
     }
 }

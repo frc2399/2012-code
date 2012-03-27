@@ -59,15 +59,15 @@ public class ShooterYaw extends PIDSubsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-        // setDefaultCommand(new Aim(1));
+         setDefaultCommand(new ManYaw());
     }
 
     protected double returnPIDInput() {
         SmartDashboard.putDouble("YawSetpoint", getSetpoint());
-        SmartDashboard.putDouble("encoderAngle", encoder.getDistance());
+        SmartDashboard.putDouble("encoderAngle", -encoder.getDistance());
 
         //do not touch this. it has to be negative or it turns like crazy
-        return encoder.getDistance();
+        return -encoder.getDistance();
         //for sensor
 
     }
@@ -75,7 +75,7 @@ public class ShooterYaw extends PIDSubsystem {
     protected void usePIDOutput(double output) {
         //for motor
         try {
-            yawMotor.setX(output);
+            yawMotor.setX(output*0.5);
         } catch (Exception e) {
         }
     }
@@ -91,6 +91,10 @@ public class ShooterYaw extends PIDSubsystem {
     
     public void resetEncoder(){
         encoder.reset();
+    }
+    public void updateStatus(){
+        SmartDashboard.putBoolean("YawSwitch", getSwitch());
+        
     }
     
 }

@@ -7,12 +7,12 @@ package edu.wpi.first.wpilibj.templates.commands;
  * Requires Loader
  * @author Jessie & Emma
  */
-public class ShootBall extends CommandBase {
+public class ManShootBall extends CommandBase {
 
     /**
      * Creates an instance of ShootBall.
      */
-    public ShootBall() {
+    public ManShootBall() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         requires(loader);
@@ -46,11 +46,7 @@ public class ShootBall extends CommandBase {
      * @return true if the top sensor is no longer tripped and false if it is.  
      */
     protected boolean isFinished(){
-        if(loader.getTop() == false){
-            return true;
-        }else{
-            return false;
-        }
+        return false;
     }
 
     // Called once after isFinished returns true
@@ -58,7 +54,7 @@ public class ShootBall extends CommandBase {
      * Sets the Loader speed to zero and stops the conveyor.  
      */
     protected void end() {
-      //  loader.setLoaderSpeed(0.0);
+      loader.setLoaderSpeed(0.0);
     }
 
     // Called when another command which requires one or more of the same

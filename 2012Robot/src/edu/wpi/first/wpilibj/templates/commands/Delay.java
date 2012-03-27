@@ -1,42 +1,36 @@
 
 package edu.wpi.first.wpilibj.templates.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 /**
- * drives the robot in TankDrive based on y-values returned from the joysticks in the OI
- * requires the DriveTrain subsystem
- * @author Emma and Jessie
+ *
+ * @author bradmiller
  */
-public class JoystickDrive extends CommandBase {
-        private double speed;
-    /**
-     * Creates a new instance of JoystickDrive.  
-     */
-    public JoystickDrive(double speed) {
+public class Delay extends CommandBase {
+    Timer delayTime;
+    double wait; 
+    public Delay(double time) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        requires(driveTrain);
-        this.speed = speed;
+        wait = time;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        delayTime.start();
     }
 
     // Called repeatedly when this Command is scheduled to run
-    /**
-     * Drives the robot based on Joystick values from the OI.
-     */
     protected void execute() {
-        try {
-            driveTrain.drive.tankDrive(speed * oi.getLeftSpeed(), speed * oi.getRightSpeed());
-        } catch(Exception x){
-            
-        }
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+        if (delayTime.get() > wait){
+        return true;
+        } else {
         return false;
+        }
     }
 
     // Called once after isFinished returns true

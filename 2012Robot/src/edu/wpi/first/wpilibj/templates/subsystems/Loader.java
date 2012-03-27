@@ -51,7 +51,7 @@ public class Loader extends Subsystem {
      * @return the value of the top sensor.  True means the sensor is tripped, false means it is not.  
      */
     public boolean getTop(){
-        System.out.println("top: " + topSensor.get());
+       // System.out.println("top: " + topSensor.get());
         return topSensor.get();
     }
     
@@ -60,7 +60,7 @@ public class Loader extends Subsystem {
      * @return the value of the middle sensor.  True means the sensor is tripped, false means it is not.  
      */
     public boolean getBottom(){
-        System.out.println("bottom: " + bottomSensor.get());
+     //   System.out.println("bottom: " + bottomSensor.get());
         return bottomSensor.get();
     }
     
@@ -69,7 +69,7 @@ public class Loader extends Subsystem {
      * @return the value of the bottom sensor.  True means the sensor is tripped, false means it is not.  
      */
     public boolean getMiddle(){  
-        System.out.println("middle: " + middleSensor.get());
+       // System.out.println("middle: " + middleSensor.get());
         return middleSensor.get();
     }
                 

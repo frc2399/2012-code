@@ -12,21 +12,23 @@ import edu.wpi.first.wpilibj.templates.commands.FeedBallOn;
 import edu.wpi.first.wpilibj.templates.commands.FeedBallOff;
 import edu.wpi.first.wpilibj.templates.commands.ShootOn;
 import edu.wpi.first.wpilibj.templates.commands.ShootOff;
-import edu.wpi.first.wpilibj.templates.commands.ShootBall;
+import edu.wpi.first.wpilibj.templates.commands.ManShootBall;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.commands.Go;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.templates.commands.Spinning;
 import edu.wpi.first.wpilibj.templates.commands.TestShooter;
-import edu.wpi.first.wpilibj.templates.commands.AutonomousStop;
-import edu.wpi.first.wpilibj.templates.commands.AutonomousCenterTop;
-import edu.wpi.first.wpilibj.templates.commands.AutonomousLeftTop;
-import edu.wpi.first.wpilibj.templates.commands.AutonomousRightTop;
+import edu.wpi.first.wpilibj.templates.commands.AutonomousStopTop;
+import edu.wpi.first.wpilibj.templates.commands.AutonomousCenterTest;
+import edu.wpi.first.wpilibj.templates.commands.AutonomousLeftTest;
+import edu.wpi.first.wpilibj.templates.commands.AutonomousRightTest;
 import edu.wpi.first.wpilibj.templates.commands.ShmackDown;
 import edu.wpi.first.wpilibj.templates.commands.LiftSmacker;
 import edu.wpi.first.wpilibj.templates.commands.Aim;
 import edu.wpi.first.wpilibj.templates.commands.LoadBall;
 import edu.wpi.first.wpilibj.templates.commands.ManAim;
+import edu.wpi.first.wpilibj.templates.commands.JoystickDrive;
+import edu.wpi.first.wpilibj.templates.commands.FindReset;
 
 /**
  * the Operator Interface, defines port numbers, joysticks, and commands
@@ -37,11 +39,13 @@ public class OI {
     //shooter stick buttons
     Joystick shooterStick = new Joystick(2);
     public static int shootButtNum = 1;
+    public static int slowShootButtNum = 7;
     public static int triggerButtNum = 2;
     public static int LoadButtNum = 3;
     public static int ManAimButtOnNum = 12;
     public static int ManAimButtOffNum = 11;
     private final JoystickButton shootButt = new JoystickButton(shooterStick, shootButtNum); 
+    private final JoystickButton slowShootButt = new JoystickButton(shooterStick, slowShootButtNum);
     private final JoystickButton triggerButt = new JoystickButton(shooterStick, triggerButtNum);
     private final JoystickButton LoadButt = new JoystickButton(shooterStick, LoadButtNum);
     private final JoystickButton ManAimOnButt = new JoystickButton(shooterStick, ManAimButtOnNum);
@@ -52,11 +56,13 @@ public class OI {
     Joystick rightStick = new Joystick(3);
     public static int ShmackDownButtNum = 2;
     public static int LiftSmackerButtNum = 3;
-    public static int feedButtNum = 1;
-    public static int feedButtNegNum = 10;
+    public static int feedButtNum = 3;
+    public static int feedButtNegNum = 6;
+    public static int slowButtNum = 3;
     //right stick
-    private final JoystickButton feedButt = new JoystickButton(rightStick, feedButtNum);
-    private final JoystickButton feedButtNeg = new JoystickButton(rightStick, feedButtNegNum);
+    private final JoystickButton slowButt = new JoystickButton(rightStick, slowButtNum);
+    private final JoystickButton feedButt = new JoystickButton(shooterStick, feedButtNum);
+    private final JoystickButton feedButtNeg = new JoystickButton(shooterStick, feedButtNegNum);
     //left stick
     private final JoystickButton ShmackDownButt = new JoystickButton(leftStick, ShmackDownButtNum);
     private final JoystickButton LiftSmackerButt = new JoystickButton(leftStick, LiftSmackerButtNum);
@@ -72,34 +78,39 @@ public class OI {
     private final DigitalIOButton AimBottomButt = new DigitalIOButton(AimBottomButtNum);
     
     //autonomous testing buttons
-    public static int AutonomousStopTestButtNum = 6;
+    //public static int AutonomousStopTopTestButtNum = 6;
     public static int AutonomousCenterTestButtNum = 6;
+    public static int FindResetTestButtNum = 6;
     public static int AutonomousLeftTestButtNum = 7;
     public static int AutonomousRightTestButtNum = 10;
     //right stick
-    private final JoystickButton AutonomousStopTestButt = new JoystickButton(rightStick, AutonomousStopTestButtNum);
-
+   // private final JoystickButton AutonomousStopTopTestButt = new JoystickButton(rightStick, AutonomousStopTopTestButtNum);
+ private final JoystickButton FindResetTestButt = new JoystickButton(rightStick, FindResetTestButtNum);
     //left stick
     private final JoystickButton AutonomousCenterTestButt = new JoystickButton(leftStick, AutonomousCenterTestButtNum);
     private final JoystickButton AutonomousLeftTestButt = new JoystickButton(leftStick, AutonomousLeftTestButtNum);
     private final JoystickButton AutonomousRightTestButt = new JoystickButton(leftStick, AutonomousRightTestButtNum);
     
     //making instances of things
+    JoystickDrive slowSpeed = new JoystickDrive(0.5);
+    
     //shooter things
-    FeedBallOn feedOn = new FeedBallOn(1);
+    FeedBallOn feedOn = new FeedBallOn(1, 1);
     FeedBallOff feedOff = new FeedBallOff();
-    FeedBallOn feedNeg = new FeedBallOn(-1);
+    FeedBallOn feedNeg = new FeedBallOn(-1, 1);
     LoadBall load = new LoadBall();
-    ShootOn shootOn = new ShootOn();
+    ShootOn shootOn = new ShootOn(0.4);
+    ShootOn slowShootOn = new ShootOn(0.1);
     ShootOff shootOff = new ShootOff();
-    ShootBall trigger = new ShootBall();
+    ManShootBall trigger = new ManShootBall();
     ManAim manAim = new ManAim();
         
     //autonomous testing things
-    AutonomousStop autonomousStopTest = new AutonomousStop();
-    AutonomousCenterTop autonomousCenterTest = new AutonomousCenterTop();
-    AutonomousLeftTop autonomousLeftTest = new AutonomousLeftTop();
-    AutonomousRightTop autonomousRightTest = new AutonomousRightTop();
+    AutonomousStopTop autonomousStopTest = new AutonomousStopTop();
+    AutonomousCenterTest autonomousCenterTest = new AutonomousCenterTest();
+    AutonomousLeftTest autonomousLeftTest = new AutonomousLeftTest();
+    AutonomousRightTest autonomousRightTest = new AutonomousRightTest();
+    FindReset findResetTest = new FindReset();
     
     //smacker things
     ShmackDown shmackDown = new ShmackDown();
@@ -119,6 +130,8 @@ public class OI {
         //Shooter stick:
         shootButt.whenPressed(shootOn);
         shootButt.whenReleased(shootOff);
+        slowShootButt.whenPressed(slowShootOn);
+        slowShootButt.whenReleased(shootOff);
         triggerButt.whileHeld(trigger);
         ShmackDownButt.whenPressed(shmackDown);
         LiftSmackerButt.whenPressed(liftSmacker);
@@ -130,8 +143,9 @@ public class OI {
         feedButt.whenPressed(feedOn);
         feedButt.whenReleased(feedOff);
         feedButtNeg.whileHeld(feedNeg);
+        slowButt.whileHeld(slowSpeed);
         
-        AutonomousStopTestButt.whenPressed(autonomousStopTest);
+        FindResetTestButt.whenPressed(findResetTest);
         
         //Left Driver stick:
         AutonomousCenterTestButt.whenPressed(autonomousCenterTest);
@@ -152,7 +166,10 @@ public class OI {
      */
     public double getLeftSpeed() {
         //System.out.println("leftStick.getY() returns" + leftStick.getY());
-        return -leftStick.getY();
+        
+            return -leftStick.getY();
+        
+        
     }
 
     /**
@@ -161,7 +178,10 @@ public class OI {
      */
     public double getRightSpeed() {
         //System.out.println("rightStick.getY() returns" + rightStick.getY());
-        return -rightStick.getY();
+        
+        
+            return -rightStick.getY();
+        
     }
 
     public double getTwistSpeed() {

@@ -8,17 +8,19 @@ package edu.wpi.first.wpilibj.templates.commands;
 public class FeedBallOn extends CommandBase {
     
     private int sign;
+    private double speed;
     
     /**
      * turns the PickupBall feeder on
      * requires the "feeder" subsystem
      * @param sign either -1 or 1 designates the direction of the motor/victor as positive or negative
      */
-    public FeedBallOn(int sign) {
+    public FeedBallOn(int sign, double speed) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         requires(feeder);
         this.sign = sign;
+        this.speed = speed;
     }
 
     // Called just before this Command runs the first time
@@ -26,12 +28,12 @@ public class FeedBallOn extends CommandBase {
      * turns the bottommost conveyor on
      */
     protected void initialize() {
-        feeder.setFeederSpeed(sign * 1);
+        feeder.setFeederSpeed(sign * speed);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-       feeder.setFeederSpeed(sign * 1);
+       feeder.setFeederSpeed(sign * speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()

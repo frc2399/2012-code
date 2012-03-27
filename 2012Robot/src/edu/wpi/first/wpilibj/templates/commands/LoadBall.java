@@ -13,6 +13,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class LoadBall extends CommandBase {
 
+    private boolean overshot;
+
     /**
      * Creates a new instance of LoadBall.  
      */
@@ -29,6 +31,7 @@ public class LoadBall extends CommandBase {
      */
     protected void initialize() {
         loader.setLoaderSpeed(0.0);
+        overshot = false;
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -41,15 +44,20 @@ public class LoadBall extends CommandBase {
      */
     protected void execute() {
         //false = unblocked
-        if (loader.getTop() == true) {
-            loader.setLoaderSpeed(0.0);
+        if (!overshot) {
+            if (loader.getTop() == true) {
+                loader.setLoaderSpeed(0.0);
+                overshot = true;
+            } else {
+                loader.setLoaderSpeed(0.25);
+            }
         } else {
-            loader.setLoaderSpeed(0.5);
+            loader.setLoaderSpeed(0.0);
         }
-        
-        if (loader.getMiddle() == true && loader.getTop() == false) {
-            loader.setLoaderSpeed(1);
-        } 
+
+        // if (loader.getMiddle() == true && loader.getTop() == false) {
+        //   loader.setLoaderSpeed(1);
+        //} 
 
         SmartDashboard.putBoolean("ballReady", loader.getTop());
     }
@@ -61,7 +69,8 @@ public class LoadBall extends CommandBase {
      */
     protected boolean isFinished() {
         //switch to false!
-        return loader.getTop();
+       // return loader.getTop();
+        return false;
     }
 
     // Called once after isFinished returns true

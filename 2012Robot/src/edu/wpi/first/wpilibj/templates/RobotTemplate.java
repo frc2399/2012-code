@@ -10,12 +10,16 @@ package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.templates.commands.CommandBase;
 import edu.wpi.first.wpilibj.templates.commands.ExampleCommand;
 import edu.wpi.first.wpilibj.templates.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.camera.AxisCamera;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.templates.commands.AutonomousCenterTest;
+import edu.wpi.first.wpilibj.templates.commands.AutonomousStopTop;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -34,7 +38,7 @@ public class RobotTemplate extends IterativeRobot {
      */
     public void robotInit() {
         // instantiate the command used for the autonomous period
-        autonomousCommand = new ExampleCommand();
+        autonomousCommand = new AutonomousStopTop();
        // AxisCamera.getInstance().writeBrightness(60);
     //    AxisCamera.getInstance().writeColorLevel(50);
         // Initialize all subsystems
@@ -81,6 +85,9 @@ public class RobotTemplate extends IterativeRobot {
     CommandBase.driveTrain.updateStatus();
     CommandBase.rampSmacker.updateStatus();
     CommandBase.loader.updateStatus();
+    CommandBase.shooterYaw.updateStatus();
+    
+    SmartDashboard.putData(CommandBase.loader);
     
     }
 }
