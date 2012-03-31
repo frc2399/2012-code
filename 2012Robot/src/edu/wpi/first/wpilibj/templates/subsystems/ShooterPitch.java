@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.templates.commands.Aim;
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.templates.commands.ManPitch;
+import edu.wpi.first.wpilibj.templates.commands.manualControl.ManPitch;
 
 /**
  * A Subsystem extending PIDSubsystem that contains methods to control the ShooterPitch.  

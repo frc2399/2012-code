@@ -13,12 +13,12 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.templates.commands.CommandBase;
-import edu.wpi.first.wpilibj.templates.commands.ExampleCommand;
+import edu.wpi.first.wpilibj.templates.commands.testers.ExampleCommand;
 import edu.wpi.first.wpilibj.templates.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.camera.AxisCamera;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.templates.commands.AutonomousCenterTest;
-import edu.wpi.first.wpilibj.templates.commands.AutonomousStopTop;
+import edu.wpi.first.wpilibj.templates.commands.autonomous.AutonomousCenterTest;
+import edu.wpi.first.wpilibj.templates.commands.autonomous.AutonomousStopTop;
 
 
 /**

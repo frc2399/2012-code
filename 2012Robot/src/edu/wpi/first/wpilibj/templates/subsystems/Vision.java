@@ -2,7 +2,7 @@
 package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.templates.commands.TestVision;
+import edu.wpi.first.wpilibj.templates.commands.testers.TestVision;
 import edu.wpi.first.wpilibj.templates.commands.Aim;
 
 /**

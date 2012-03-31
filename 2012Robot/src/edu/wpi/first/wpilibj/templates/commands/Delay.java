@@ -4,7 +4,10 @@ package edu.wpi.first.wpilibj.templates.commands;
 import edu.wpi.first.wpilibj.Timer;
 /**
  *
- * @author bradmiller
+ * @author Gillie
+ * WARNING: this class does not do what we hoped it would (make the autonomous
+ * wait two seconds). Instead, it does something terrible where
+ * autonomous mode never ends. Do not use it until further notice.  
  */
 public class Delay extends CommandBase {
     Timer delayTime;
