@@ -23,7 +23,7 @@ public class LiftSmacker extends CommandBase {
      * Sets the speed of the RampSmacker in order to lift it up.
      */
     protected void initialize() {
-        rampSmacker.setSpeed(-0.1);
+        rampSmacker.setSpeed(-0.5);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -32,7 +32,7 @@ public class LiftSmacker extends CommandBase {
      * limit switches.  
      */
     protected void execute() {
-        rampSmacker.setSpeed(-0.5);
+        rampSmacker.setSpeed(-1);
     }
 
     // Make this return true when this Command no longer needs to run execute()

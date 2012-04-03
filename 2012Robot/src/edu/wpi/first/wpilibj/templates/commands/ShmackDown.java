@@ -24,7 +24,7 @@ public class ShmackDown extends CommandBase {
      * sets the speed of the RampSmacker in order to push it down.  
      */
     protected void initialize() {
-        rampSmacker.setSpeed(0.1);
+        rampSmacker.setSpeed(0.5);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -33,7 +33,7 @@ public class ShmackDown extends CommandBase {
      * limit switches.  
      */
     protected void execute() {
-        rampSmacker.setSpeed(0.5);
+        rampSmacker.setSpeed(1);
         
     }
 
