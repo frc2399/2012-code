@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.templates.commands.LoadBall;
 import edu.wpi.first.wpilibj.templates.commands.ShootBall;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.templates.commands.ShmackDown;
-import edu.wpi.first.wpilibj.templates.commands.autonomous.AutonomousAimStart;
+
 import edu.wpi.first.wpilibj.templates.commands.FindReset;
 import edu.wpi.first.wpilibj.templates.commands.ShootBall;
 import edu.wpi.first.wpilibj.templates.commands.ShootOff;
@@ -27,7 +27,7 @@ public class AutonomousStopRight extends CommandGroup {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         addSequential(new FindReset());
-        addSequential(new AutonomousAimStart());
+     
         addParallel(new Aim(2));
         addSequential(new ShootOn(0.4));
         addSequential(new ShootBall());

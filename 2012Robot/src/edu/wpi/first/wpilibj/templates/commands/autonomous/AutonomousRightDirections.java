@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.templates.commands.LoadBall;
 import edu.wpi.first.wpilibj.templates.commands.ShootBall;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.templates.commands.ShmackDown;
-import edu.wpi.first.wpilibj.templates.commands.autonomous.AutonomousAimStart;
+
 import edu.wpi.first.wpilibj.templates.commands.ShmackDown;
 /**
  * A Command that extends CommandGroup to make directions for a Right 

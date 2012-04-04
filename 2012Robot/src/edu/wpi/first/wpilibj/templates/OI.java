@@ -19,9 +19,6 @@ import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.templates.commands.autonomous.Spinning;
 import edu.wpi.first.wpilibj.templates.commands.testers.TestShooter;
 import edu.wpi.first.wpilibj.templates.commands.autonomous.AutonomousStopTop;
-import edu.wpi.first.wpilibj.templates.commands.autonomous.AutonomousCenterTest;
-import edu.wpi.first.wpilibj.templates.commands.autonomous.AutonomousLeftTest;
-import edu.wpi.first.wpilibj.templates.commands.autonomous.AutonomousRightTest;
 import edu.wpi.first.wpilibj.templates.commands.ShmackDown;
 import edu.wpi.first.wpilibj.templates.commands.LiftSmacker;
 import edu.wpi.first.wpilibj.templates.commands.Aim;
@@ -87,9 +84,7 @@ public class OI {
    // private final JoystickButton AutonomousStopTopTestButt = new JoystickButton(rightStick, AutonomousStopTopTestButtNum);
  private final JoystickButton FindResetTestButt = new JoystickButton(rightStick, FindResetTestButtNum);
     //left stick
-    private final JoystickButton AutonomousCenterTestButt = new JoystickButton(leftStick, AutonomousCenterTestButtNum);
-    private final JoystickButton AutonomousLeftTestButt = new JoystickButton(leftStick, AutonomousLeftTestButtNum);
-    private final JoystickButton AutonomousRightTestButt = new JoystickButton(leftStick, AutonomousRightTestButtNum);
+
     
     //making instances of things
     JoystickDrive slowSpeed = new JoystickDrive(0.5);
@@ -107,9 +102,6 @@ public class OI {
         
     //autonomous testing things
     AutonomousStopTop autonomousStopTest = new AutonomousStopTop();
-    AutonomousCenterTest autonomousCenterTest = new AutonomousCenterTest();
-    AutonomousLeftTest autonomousLeftTest = new AutonomousLeftTest();
-    AutonomousRightTest autonomousRightTest = new AutonomousRightTest();
     FindReset findResetTest = new FindReset();
     
     //smacker things
@@ -148,9 +140,7 @@ public class OI {
         FindResetTestButt.whenPressed(findResetTest);
         
         //Left Driver stick:
-        AutonomousCenterTestButt.whenPressed(autonomousCenterTest);
-        AutonomousLeftTestButt.whenPressed(autonomousLeftTest);
-        AutonomousRightTestButt.whenPressed(autonomousRightTest);
+
 
         //Peef:
         AimTopButt.whenPressed(aimTop);

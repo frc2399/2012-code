@@ -17,7 +17,6 @@ import edu.wpi.first.wpilibj.templates.commands.testers.ExampleCommand;
 import edu.wpi.first.wpilibj.templates.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.camera.AxisCamera;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.templates.commands.autonomous.AutonomousCenterTest;
 import edu.wpi.first.wpilibj.templates.commands.autonomous.AutonomousStopTop;
 
 

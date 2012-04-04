@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.templates.commands.LoadBall;
 import edu.wpi.first.wpilibj.templates.commands.ShootBall;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.templates.commands.ShmackDown;
-import edu.wpi.first.wpilibj.templates.commands.autonomous.AutonomousAimStart;
+
 import edu.wpi.first.wpilibj.templates.commands.FeedBallOff;
 import edu.wpi.first.wpilibj.templates.commands.FeedBallOn;
 import edu.wpi.first.wpilibj.templates.commands.SetPitch;
@@ -28,7 +28,7 @@ public class AutonomousStopTop extends CommandGroup {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         //addSequential(new FindReset());
-       // addSequential(new AutonomousAimStart());
+
       //  addParallel(new Aim(1));
         addSequential(new SetPitch(105));
         
