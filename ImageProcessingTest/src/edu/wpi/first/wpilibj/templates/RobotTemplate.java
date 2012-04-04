@@ -6,14 +6,18 @@
 /*----------------------------------------------------------------------------*/
 
 package edu.wpi.first.wpilibj.templates;
-
-
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.templates.commands.CommandBase;
-import edu.wpi.first.wpilibj.templates.commands.ExampleCommand;
+//import edu.wpi.first.wpilibj.templates.commands.testers.ExampleCommand;
+import edu.wpi.first.wpilibj.templates.subsystems.ExampleSubsystem;
+import edu.wpi.first.wpilibj.camera.AxisCamera;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.commands.Printout;
+
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -32,9 +36,12 @@ public class RobotTemplate extends IterativeRobot {
     public void robotInit() {
         // instantiate the command used for the autonomous period
         autonomousCommand = new Printout();
-
+       // AxisCamera.getInstance().writeBrightness(60);
+    //    AxisCamera.getInstance().writeColorLevel(50);
         // Initialize all subsystems
         CommandBase.init();
+        
+        SmartDashboard.putData("SchedulerData", Scheduler.getInstance());
     }
 
     public void autonomousInit() {
@@ -50,11 +57,12 @@ public class RobotTemplate extends IterativeRobot {
     }
 
     public void teleopInit() {
-	// This makes sure that the autonomous stops running when
-        // teleop starts running. If you want the autonomous to 
-        // continue until interrupted by another command, remove
-        // this line or comment it out.
-        autonomousCommand.cancel();
+		// This makes sure that the autonomous stops running when
+		// teleop starts running. If you want the autonomous to 
+		// continue until interrupted by another command, remove
+		// this line or comment it out.
+		autonomousCommand.cancel();
+        updateStatus();
     }
 
     /**
@@ -62,5 +70,22 @@ public class RobotTemplate extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        updateStatus();
+    }
+    
+    public void teleopDisabled(){
+    updateStatus();
+    }
+    
+    
+    public void updateStatus(){
+        
+    CommandBase.driveTrain.updateStatus();
+    CommandBase.rampSmacker.updateStatus();
+    CommandBase.loader.updateStatus();
+    CommandBase.shooterYaw.updateStatus();
+    
+    SmartDashboard.putData(CommandBase.loader);
+    
     }
 }
