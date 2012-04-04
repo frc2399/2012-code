@@ -1,3 +1,4 @@
+
 package edu.wpi.first.wpilibj.templates;
 
 //imports from First
@@ -21,7 +22,7 @@ import edu.wpi.first.wpilibj.templates.commands.testers.TestShooter;
 import edu.wpi.first.wpilibj.templates.commands.autonomous.AutonomousStopTop;
 import edu.wpi.first.wpilibj.templates.commands.ShmackDown;
 import edu.wpi.first.wpilibj.templates.commands.LiftSmacker;
-import edu.wpi.first.wpilibj.templates.commands.Aim;
+import edu.wpi.first.wpilibj.templates.commands.NewAim;
 import edu.wpi.first.wpilibj.templates.commands.LoadBall;
 import edu.wpi.first.wpilibj.templates.commands.manualControl.ManAim;
 import edu.wpi.first.wpilibj.templates.commands.JoystickDrive;
@@ -109,10 +110,10 @@ public class OI {
     LiftSmacker liftSmacker = new LiftSmacker();
     
     //aim things
-    Aim aimTop = new Aim(1);
-    Aim aimRight = new Aim(2);
-    Aim aimLeft = new Aim(3);
-    Aim aimBottom = new Aim(4);
+    NewAim aimTop = new NewAim(1);
+    NewAim aimRight = new NewAim(2);
+    NewAim aimLeft = new NewAim(3);
+    NewAim aimBottom = new NewAim(4);
 
     /**
      * When the PickupBall feeder button "feedbutt" is pressed, the PickupBall feeder is turned on,
@@ -182,3 +183,4 @@ public class OI {
         return shooterStick.getThrottle();
     }
 }
+

@@ -6,18 +6,16 @@
 /*----------------------------------------------------------------------------*/
 
 package edu.wpi.first.wpilibj.templates;
-
-
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.templates.commands.CommandBase;
-import edu.wpi.first.wpilibj.templates.commands.testers.ExampleCommand;
+//import edu.wpi.first.wpilibj.templates.commands.testers.ExampleCommand;
 import edu.wpi.first.wpilibj.templates.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.camera.AxisCamera;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.templates.commands.autonomous.AutonomousStopTop;
+import edu.wpi.first.wpilibj.templates.commands.NewAim;
 
 
 /**
@@ -37,7 +35,7 @@ public class RobotTemplate extends IterativeRobot {
      */
     public void robotInit() {
         // instantiate the command used for the autonomous period
-        autonomousCommand = new AutonomousStopTop();
+        autonomousCommand = new NewAim(1);
        // AxisCamera.getInstance().writeBrightness(60);
     //    AxisCamera.getInstance().writeColorLevel(50);
         // Initialize all subsystems
@@ -81,12 +79,13 @@ public class RobotTemplate extends IterativeRobot {
     
     
     public void updateStatus(){
+     /* is the BIG PROBLEM here? try # 2   
     CommandBase.driveTrain.updateStatus();
     CommandBase.rampSmacker.updateStatus();
     CommandBase.loader.updateStatus();
     CommandBase.shooterYaw.updateStatus();
     
     SmartDashboard.putData(CommandBase.loader);
-    
+    */
     }
 }

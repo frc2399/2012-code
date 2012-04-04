@@ -27,7 +27,7 @@ public class Feeder extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
         
         //default is set to zero
-    //    setDefaultCommand(new FeedBallOff());
+        setDefaultCommand(new FeedBallOff());
     }
     
     /**

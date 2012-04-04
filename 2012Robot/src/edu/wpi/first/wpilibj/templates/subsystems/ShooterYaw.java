@@ -4,7 +4,7 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.templates.RobotMap;
-import edu.wpi.first.wpilibj.templates.commands.Aim;
+import edu.wpi.first.wpilibj.templates.commands.NewAim;
 import edu.wpi.first.wpilibj.templates.commands.manualControl.ManYaw;
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -59,7 +59,7 @@ public class ShooterYaw extends PIDSubsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-        // setDefaultCommand(new ManYaw());
+         setDefaultCommand(new ManYaw());
     }
 
     protected double returnPIDInput() {

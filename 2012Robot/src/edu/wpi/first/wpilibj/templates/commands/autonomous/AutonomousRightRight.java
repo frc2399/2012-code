@@ -1,7 +1,7 @@
 
 package edu.wpi.first.wpilibj.templates.commands.autonomous;
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import edu.wpi.first.wpilibj.templates.commands.Aim;
+import edu.wpi.first.wpilibj.templates.commands.NewAim;
 import edu.wpi.first.wpilibj.templates.commands.LoadBall;
 import edu.wpi.first.wpilibj.templates.commands.ShootBall;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;

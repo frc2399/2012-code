@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.Victor;
-import edu.wpi.first.wpilibj.templates.commands.ShootOff;
+//import edu.wpi.first.wpilibj.templates.commands.ShootOff;
 
 /**
  * A Subsystem that contains methods to control the Shooter.  
