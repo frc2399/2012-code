@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.templates.commands.CommandBase;
 import edu.wpi.first.wpilibj.templates.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.camera.AxisCamera;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.templates.commands.Printout;
+import edu.wpi.first.wpilibj.templates.commands.NewAim;
 
 
 /**
@@ -35,7 +35,7 @@ public class RobotTemplate extends IterativeRobot {
      */
     public void robotInit() {
         // instantiate the command used for the autonomous period
-        autonomousCommand = new Printout();
+        autonomousCommand = new NewAim(1);
        // AxisCamera.getInstance().writeBrightness(60);
     //    AxisCamera.getInstance().writeColorLevel(50);
         // Initialize all subsystems

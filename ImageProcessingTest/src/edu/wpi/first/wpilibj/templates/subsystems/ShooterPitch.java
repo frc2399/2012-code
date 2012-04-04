@@ -2,11 +2,11 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.templates.RobotMap;
-//import edu.wpi.first.wpilibj.templates.commands.Aim;
+import edu.wpi.first.wpilibj.templates.commands.NewAim;
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-//import edu.wpi.first.wpilibj.templates.commands.manualControl.ManPitch;
+import edu.wpi.first.wpilibj.templates.commands.manualControl.ManPitch;
 
 /**
  * A Subsystem extending PIDSubsystem that contains methods to control the ShooterPitch.  
@@ -49,7 +49,7 @@ public class ShooterPitch extends PIDSubsystem {
     public void initDefaultCommand() {
         // Set the default command for a  subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-      //  setDefaultCommand(new ManPitch());
+        setDefaultCommand(new ManPitch());
     }
 
     protected double returnPIDInput() {

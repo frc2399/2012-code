@@ -9,7 +9,7 @@ import com.sun.squawk.util.MathUtils;
  *
  * @author bradmiller
  */
-public class Printout extends CommandBase {
+public class NewAim extends CommandBase {
 
     NetworkTable cameraTable;
     
@@ -17,12 +17,12 @@ public class Printout extends CommandBase {
     final double cameraHeight = 27.5;
     int position;
     
-    public Printout() {
+    public NewAim(int position) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         requires(networkTabling);
         cameraTable = NetworkTable.getTable("camera");
-        position = 1;
+        this.position = position;
     }
 
     // Called just before this Command runs the first time

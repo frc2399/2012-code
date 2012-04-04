@@ -4,7 +4,7 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.Victor;
-//import edu.wpi.first.wpilibj.templates.commands.FeedBallOff;
+import edu.wpi.first.wpilibj.templates.commands.FeedBallOff;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
@@ -27,7 +27,7 @@ public class Feeder extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
         
         //default is set to zero
-    //    setDefaultCommand(new FeedBallOff());
+        setDefaultCommand(new FeedBallOff());
     }
     
     /**

@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.templates.RobotMap;
-//import edu.wpi.first.wpilibj.templates.commands.LoadBall;
+import edu.wpi.first.wpilibj.templates.commands.LoadBall;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
@@ -34,7 +34,7 @@ public class Loader extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-        //setDefaultCommand(new LoadBall());
+        setDefaultCommand(new LoadBall());
     }
     
     /**

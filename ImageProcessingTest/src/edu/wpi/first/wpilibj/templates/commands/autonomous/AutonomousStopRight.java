@@ -1,8 +1,7 @@
 
 package edu.wpi.first.wpilibj.templates.commands.autonomous;
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import edu.wpi.first.wpilibj.templates.commands.Aim;
-import edu.wpi.first.wpilibj.templates.commands.Aim;
+import edu.wpi.first.wpilibj.templates.commands.NewAim;
 import edu.wpi.first.wpilibj.templates.commands.LoadBall;
 import edu.wpi.first.wpilibj.templates.commands.ShootBall;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
@@ -28,7 +27,7 @@ public class AutonomousStopRight extends CommandGroup {
         // eg. requires(chassis);
         addSequential(new FindReset());
      
-        addParallel(new Aim(2));
+        addParallel(new NewAim(2));
         addSequential(new ShootOn(0.4));
         addSequential(new ShootBall());
         addSequential(new ShootBall());
