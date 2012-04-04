@@ -31,7 +31,7 @@ public class Printout extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        
+        //testers
         cameraTable.beginTransaction();
         boolean imageFound = cameraTable.getBoolean("found", false);
        // double imageOffset = cameraTable.getDouble("offset", -1.0);
@@ -43,14 +43,22 @@ public class Printout extends CommandBase {
          * SmartDashboard.putDouble("offset", imageOffset);     
          * SmartDashboard.putDouble("distance", imageDistance);
         */
+        
+        
         try{
-         cameraTable.beginTransaction();        
+          
+         cameraTable.beginTransaction();
+         
+            SmartDashboard.putDouble("TopY", getTopY(cameraTable));
+            SmartDashboard.putDouble("ChosenX", getChosenX(cameraTable));
+            SmartDashboard.putDouble("range", targetRange(getTopY(cameraTable)));
+            
          for (int i = 0; i < (cameraTable.getKeys().size()/2); i++){
-
                 SmartDashboard.putDouble("x" + i, cameraTable.getDouble("x" + i)-160);
                 SmartDashboard.putDouble("y" + i, 120-cameraTable.getDouble("y" + i));
            }
         cameraTable.endTransaction();
+        
         } catch (Exception ex) {
             System.out.println(ex);
         }
@@ -124,8 +132,7 @@ public class Printout extends CommandBase {
             System.out.println(ex);
         }
         topY = 120 - topY;
-       // System.out.println("top y:" + topY);
-               SmartDashboard.putDouble("top y", topY);
+      
         return topY;
     }
       
@@ -177,8 +184,7 @@ public class Printout extends CommandBase {
             System.out.println(ex);
         }
         chosenX = chosenX - 160;
-      // System.out.println("chosen x:" + chosenX);
-        SmartDashboard.putDouble("chosen x", chosenX);
+
                 return chosenX;
     }
 }
