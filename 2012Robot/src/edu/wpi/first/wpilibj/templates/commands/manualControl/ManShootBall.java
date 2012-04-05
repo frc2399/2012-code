@@ -38,7 +38,7 @@ public class ManShootBall extends CommandBase {
      * is up to speed, turns on the Loader.  
      */
     protected void execute() {
-            loader.setLoaderSpeed(1);
+            loader.setLoaderSpeed(0.5);
     }
 
     // Make this return true when this Command no longer needs to run execute()

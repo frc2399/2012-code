@@ -27,7 +27,8 @@ import edu.wpi.first.wpilibj.templates.commands.LoadBall;
 import edu.wpi.first.wpilibj.templates.commands.manualControl.ManAim;
 import edu.wpi.first.wpilibj.templates.commands.JoystickDrive;
 import edu.wpi.first.wpilibj.templates.commands.FindReset;
-
+import edu.wpi.first.wpilibj.templates.commands.SlowShoot;
+import edu.wpi.first.wpilibj.templates.commands.MedShoot;
 /**
  * the Operator Interface, defines port numbers, joysticks, and commands
  * @author 2399 Programmers
@@ -38,12 +39,14 @@ public class OI {
     Joystick shooterStick = new Joystick(2);
     public static int shootButtNum = 1;
     public static int slowShootButtNum = 7;
+    public static int medShootButtNum = 8;
     public static int triggerButtNum = 2;
     public static int LoadButtNum = 3;
     public static int ManAimButtOnNum = 12;
     public static int ManAimButtOffNum = 11;
     private final JoystickButton shootButt = new JoystickButton(shooterStick, shootButtNum); 
     private final JoystickButton slowShootButt = new JoystickButton(shooterStick, slowShootButtNum);
+    private final JoystickButton medShootButt = new JoystickButton(shooterStick, medShootButtNum);
     private final JoystickButton triggerButt = new JoystickButton(shooterStick, triggerButtNum);
     private final JoystickButton LoadButt = new JoystickButton(shooterStick, LoadButtNum);
     private final JoystickButton ManAimOnButt = new JoystickButton(shooterStick, ManAimButtOnNum);
@@ -96,7 +99,8 @@ public class OI {
     FeedBallOn feedNeg = new FeedBallOn(-1, 1);
     LoadBall load = new LoadBall();
     ShootOn shootOn = new ShootOn(0.4);
-    ShootOn slowShootOn = new ShootOn(0.1);
+    SlowShoot slowShootOn = new SlowShoot(0.2);
+    MedShoot medShootOn = new MedShoot(0.3);
     ShootOff shootOff = new ShootOff();
     ManShootBall trigger = new ManShootBall();
     ManAim manAim = new ManAim();
@@ -125,6 +129,8 @@ public class OI {
         shootButt.whenReleased(shootOff);
         slowShootButt.whenPressed(slowShootOn);
         slowShootButt.whenReleased(shootOff);
+        medShootButt.whenPressed(medShootOn);
+        medShootButt.whenReleased(shootOff);
         triggerButt.whileHeld(trigger);
         ShmackDownButt.whenPressed(shmackDown);
         LiftSmackerButt.whenPressed(liftSmacker);

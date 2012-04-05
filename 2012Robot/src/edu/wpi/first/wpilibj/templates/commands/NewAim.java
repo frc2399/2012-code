@@ -15,12 +15,15 @@ public class NewAim extends CommandBase {
     
     final double targetHeight = 109;     //heights in inches
     final double cameraHeight = 27.5;
+    final double offsetAngle = 15;
     int position;
     
     public NewAim(int position) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        requires(networkTabling);
+       // requires(networkTabling);
+        requires(shooterPitch);
+        requires(shooterYaw);
         cameraTable = NetworkTable.getTable("camera");
         this.position = position;
     }
@@ -57,6 +60,9 @@ public class NewAim extends CommandBase {
                 SmartDashboard.putDouble("x" + i, cameraTable.getDouble("x" + i)-160);
                 SmartDashboard.putDouble("y" + i, 120-cameraTable.getDouble("y" + i));
            }
+        //ShooterPitch.setSetpoint(pitchAngle(targetRange(getTopY(cameraTable))));
+        //ShooterYaw.setSetpoint(yawAngle(getChosenX(cameraTable)));
+         
         cameraTable.endTransaction();
         
         } catch (Exception ex) {
@@ -81,7 +87,11 @@ public class NewAim extends CommandBase {
     //Beginning of 2399-created methods
     
     private double targetRange(double yPixel) { // yPixel is the top target's y-coordinate
-        return 305.01 * ((targetHeight - cameraHeight) / yPixel);
+        //this gives the range if the camera's offset was 0.
+        //return 305.01 * ((targetHeight - cameraHeight) / yPixel);
+       return -0.000009 * MathUtils.pow(yPixel, 3)
+               + 0.002 * MathUtils.pow(yPixel, 2)
+               - 0.25 * yPixel + 27.173;
     }
 
     private double yawAngle(double xPixel) {
@@ -108,7 +118,7 @@ public class NewAim extends CommandBase {
                     default:
                         break;
     }
-        angle += 15;
+        angle += offsetAngle;
          return angle; //for now. we need to finish it. 
     }
 

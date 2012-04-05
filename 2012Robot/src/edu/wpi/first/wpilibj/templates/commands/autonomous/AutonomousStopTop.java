@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.templates.commands.SetPitch;
 import edu.wpi.first.wpilibj.templates.commands.ShootBall;
 import edu.wpi.first.wpilibj.templates.commands.ShootOff;
 import edu.wpi.first.wpilibj.templates.commands.ShootOn;
+import edu.wpi.first.wpilibj.templates.commands.manualControl.ManShootBall;
 
 /** 
  * A Command that extends CommandGroup to make an Autonomous program for the center position.
@@ -34,11 +35,11 @@ public class AutonomousStopTop extends CommandGroup {
         
         addSequential(new ShootOn(0.4));
         addParallel(new FeedBallOn(1, 0.5));
-        addSequential(new ShootBall());
-        //addSequential(new ShootOn());
+        addSequential(new ManShootBall());
+        /*
         addSequential(new ShootBall());
         addSequential(new FeedBallOff());
         addSequential(new ShootOff());
-        
+        */
     }
 }

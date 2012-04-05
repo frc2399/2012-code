@@ -13,7 +13,7 @@ public class NetworkTabling extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-        setDefaultCommand(new NewAim(1));
+      //  setDefaultCommand(new NewAim(1));
     }
 }
 

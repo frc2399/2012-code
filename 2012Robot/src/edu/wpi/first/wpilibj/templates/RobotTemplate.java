@@ -16,8 +16,8 @@ import edu.wpi.first.wpilibj.templates.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.camera.AxisCamera;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.commands.NewAim;
-
-
+import edu.wpi.first.wpilibj.templates.commands.autonomous.AutonomousStopTop;
+import edu.wpi.first.wpilibj.templates.commands.autonomous.MotherTeresa;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -35,7 +35,7 @@ public class RobotTemplate extends IterativeRobot {
      */
     public void robotInit() {
         // instantiate the command used for the autonomous period
-        autonomousCommand = new NewAim(1);
+        autonomousCommand = new AutonomousStopTop();
        // AxisCamera.getInstance().writeBrightness(60);
     //    AxisCamera.getInstance().writeColorLevel(50);
         // Initialize all subsystems
