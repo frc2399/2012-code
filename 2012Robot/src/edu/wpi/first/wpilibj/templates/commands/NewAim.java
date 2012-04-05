@@ -117,7 +117,7 @@ public class NewAim extends CommandBase {
         double topY = 0;
         try {
             //Makes chosenX and chosenY the first X and Y values
-
+            cameraTable.beginTransaction();
             topY = table.getDouble("y0", 0);
 
             //The for loop looks at the values in the camera table
@@ -128,6 +128,7 @@ public class NewAim extends CommandBase {
                     topY = y;
                 }
             }
+            cameraTable.endTransaction();
         } catch (Exception ex) {
             System.out.println(ex);
         }

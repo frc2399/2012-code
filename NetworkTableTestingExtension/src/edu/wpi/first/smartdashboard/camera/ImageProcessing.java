@@ -45,10 +45,12 @@ public class ImageProcessing extends ImageFileExtension {
     @Override
     public WPIImage processImage(WPIColorImage rawImage) {
 
-        //find color thresholds: red(0,151), green(198,255), blue(0,255)
-        BinaryImageExtension redBinary = new BinaryImageExtension(rawImage.getRedChannel().getThresholdInverted(141)); // red:t 191
-        BinaryImageExtension greenBinary = new BinaryImageExtension(rawImage.getGreenChannel().getThreshold(193)); //red:i 158
-        BinaryImageExtension blueBinary = new BinaryImageExtension(rawImage.getBlueChannel().getThresholdInverted(146)); //red:t 78
+        //find color thresholds:
+        //for green light: red(0,141), green(193,255), blue(0,146)
+        //for red light: red(191,255), green(0,158), blue (78,255)
+        BinaryImageExtension redBinary = new BinaryImageExtension(rawImage.getRedChannel().getThreshold(191));
+        BinaryImageExtension greenBinary = new BinaryImageExtension(rawImage.getGreenChannel().getThresholdInverted(158)); 
+        BinaryImageExtension blueBinary = new BinaryImageExtension(rawImage.getBlueChannel().getThreshold(78)); 
 
         // contains the pixels that show up in all three of the other images
         BinaryImageExtension finalBinary = new BinaryImageExtension(blueBinary.getAnd(redBinary).getAnd(greenBinary));
