@@ -64,7 +64,7 @@ public class NewAim extends CommandBase {
            }
          */
         shooterPitch.setSetpoint(pitchAngle(targetRange(getTopY(cameraTable))));
-        shooterYaw.setSetpoint(yawAngle(getChosenX(cameraTable)));
+        //shooterYaw.setSetpoint(yawAngle(getChosenX(cameraTable)));
          
         cameraTable.endTransaction();
         
