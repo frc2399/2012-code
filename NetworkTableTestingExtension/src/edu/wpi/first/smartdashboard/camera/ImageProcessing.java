@@ -31,7 +31,7 @@ import java.util.ArrayList;
  *
  * @author Gillie
  */
-public class ImageProcessing extends WPICameraExtension {
+public class ImageProcessing extends ImageFileExtension {
     
     WPIColorImage computerImage;  
     private NetworkTable table;
