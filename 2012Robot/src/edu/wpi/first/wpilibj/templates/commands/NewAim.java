@@ -107,7 +107,7 @@ public class NewAim extends CommandBase {
                     double angle = 0;
         switch (position) {
                     case 1: // top
-                        angle = 0.0174*(MathUtils.pow(range, 3))
+                        angle = -0.0174*(MathUtils.pow(range, 3))
                                 + 0.9494*(MathUtils.pow(range, 2))
                                 - 19.315*range
                                 + 236.91;
