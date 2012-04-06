@@ -100,7 +100,7 @@ public class OI {
     LoadBall load = new LoadBall();
     ShootOn shootOn = new ShootOn(0.4);
     SlowShoot slowShootOn = new SlowShoot(0.2);
-    MedShoot medShootOn = new MedShoot(0.3);
+    MedShoot medShootOn = new MedShoot(0.25);
     ShootOff shootOff = new ShootOff();
     ManShootBall trigger = new ManShootBall();
     ManAim manAim = new ManAim();

@@ -55,13 +55,16 @@ public class NewAim extends CommandBase {
             SmartDashboard.putDouble("TopY", getTopY(cameraTable));
             SmartDashboard.putDouble("ChosenX", getChosenX(cameraTable));
             SmartDashboard.putDouble("range", targetRange(getTopY(cameraTable)));
-            
+            SmartDashboard.putDouble("AimPitch", pitchAngle(targetRange(getTopY(cameraTable))));
+            SmartDashboard.putDouble("AimYaw", yawAngle(getChosenX(cameraTable)));
+        /*    
          for (int i = 0; i < (cameraTable.getKeys().size()/2); i++){
                 SmartDashboard.putDouble("x" + i, cameraTable.getDouble("x" + i)-160);
                 SmartDashboard.putDouble("y" + i, 120-cameraTable.getDouble("y" + i));
            }
-        //ShooterPitch.setSetpoint(pitchAngle(targetRange(getTopY(cameraTable))));
-        //ShooterYaw.setSetpoint(yawAngle(getChosenX(cameraTable)));
+         */
+        shooterPitch.setSetpoint(pitchAngle(targetRange(getTopY(cameraTable))));
+        shooterYaw.setSetpoint(yawAngle(getChosenX(cameraTable)));
          
         cameraTable.endTransaction();
         
