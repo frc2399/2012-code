@@ -92,9 +92,10 @@ public class NewAim extends CommandBase {
     private double targetRange(double yPixel) { // yPixel is the top target's y-coordinate
         //this gives the range if the camera's offset was 0.
         //return 305.01 * ((targetHeight - cameraHeight) / yPixel);
-       return -0.000009 * MathUtils.pow(yPixel, 3)
+        
+       return 12 * (-0.000009 * MathUtils.pow(yPixel, 3)
                + 0.002 * MathUtils.pow(yPixel, 2)
-               - 0.25 * yPixel + 27.173;
+               - 0.25 * yPixel + 27.173);
     }
 
     private double yawAngle(double xPixel) {
