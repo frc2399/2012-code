@@ -59,7 +59,8 @@ public class LoadBall extends CommandBase {
         //   loader.setLoaderSpeed(1);
         //} 
 
-        SmartDashboard.putBoolean("ballReady", loader.getTop());
+        SmartDashboard.putBoolean("overshot", overshot);
+        SmartDashboard.putBoolean("topSensor", loader.getTop());
     }
 
     // Make this return true when this Command no longer needs to run execute()

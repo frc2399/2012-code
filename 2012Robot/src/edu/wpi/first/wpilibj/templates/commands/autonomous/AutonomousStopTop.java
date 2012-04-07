@@ -31,7 +31,7 @@ public class AutonomousStopTop extends CommandGroup {
         //addSequential(new FindReset());
 
       //  addParallel(new Aim(1));
-        addSequential(new SetPitch(105));
+        addSequential(new SetPitch(109));
         
         addSequential(new ShootOn(0.4));
        // addParallel(new FeedBallOn(1, 0.5));

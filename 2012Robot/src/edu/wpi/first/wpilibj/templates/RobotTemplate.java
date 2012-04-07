@@ -82,7 +82,9 @@ public class RobotTemplate extends IterativeRobot {
      /* is the BIG PROBLEM here? try # 2   
     CommandBase.driveTrain.updateStatus();
     CommandBase.rampSmacker.updateStatus();
+         
     CommandBase.loader.updateStatus();
+            
     CommandBase.shooterYaw.updateStatus();
     
     SmartDashboard.putData(CommandBase.loader);

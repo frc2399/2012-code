@@ -45,7 +45,9 @@ public abstract class CommandBase extends Command {
         SmartDashboard.putData(driveTrain);
         SmartDashboard.putData(shooter);
         SmartDashboard.putData(feeder);
+        
         SmartDashboard.putData(loader);
+        
         SmartDashboard.putData(rampSmacker);
          */
         //This line doesn't work b/c Gillie's code is currently disabled...can we re-enable it?
