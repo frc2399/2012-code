@@ -43,7 +43,7 @@ public class ShmackDown extends CommandBase {
      * @return true if the bottom limit switch is tripped, and false if it is not.  
      */
     protected boolean isFinished() {
-        if (rampSmacker.getDownSwitch() == true) {
+        if (rampSmacker.getDownSwitch() == false) {
             return true;
         } else {
             return false;

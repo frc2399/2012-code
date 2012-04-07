@@ -3,7 +3,7 @@ package edu.wpi.first.wpilibj.templates.commands.autonomous;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.templates.commands.NewAim;
 import edu.wpi.first.wpilibj.templates.commands.LoadBall;
-import edu.wpi.first.wpilibj.templates.commands.ShootBall;
+import edu.wpi.first.wpilibj.templates.commands.AutonomousLoad;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.templates.commands.ShmackDown;
 
@@ -34,8 +34,13 @@ public class AutonomousStopTop extends CommandGroup {
         addSequential(new SetPitch(105));
         
         addSequential(new ShootOn(0.4));
+       // addParallel(new FeedBallOn(1, 0.5));
+        addSequential(new AutonomousLoad());
+        addSequential(new ShootOn(0.4));
+        addSequential(new AutonomousLoad());
         addParallel(new FeedBallOn(1, 0.5));
         addSequential(new ManShootBall());
+        
         /*
         addSequential(new ShootBall());
         addSequential(new FeedBallOff());

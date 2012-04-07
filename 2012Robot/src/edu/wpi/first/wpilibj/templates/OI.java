@@ -115,10 +115,12 @@ public class OI {
     
     //aim things
     NewAim aimTop = new NewAim(1);
+    /*
     NewAim aimRight = new NewAim(2);
     NewAim aimLeft = new NewAim(3);
     NewAim aimBottom = new NewAim(4);
-
+    */
+    
     /**
      * When the PickupBall feeder button "feedbutt" is pressed, the PickupBall feeder is turned on,
      * and when it is released the feeder stops.
@@ -151,10 +153,11 @@ public class OI {
 
         //Peef:
         AimTopButt.whenPressed(aimTop);
+        /*
         AimRightButt.whenPressed(aimRight);
         AimLeftButt.whenPressed(aimLeft);
-        AimBottomButt.whenPressed(aimBottom);
-
+        AimBottomButt.whenPressed(aimBottom); 
+         */
     }
 
     /**

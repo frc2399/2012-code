@@ -69,8 +69,8 @@ public class LoadBall extends CommandBase {
      */
     protected boolean isFinished() {
         //switch to false!
-       // return loader.getTop();
         return false;
+        
     }
 
     // Called once after isFinished returns true

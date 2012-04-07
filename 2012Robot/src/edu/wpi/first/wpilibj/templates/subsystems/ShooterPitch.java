@@ -24,7 +24,7 @@ public class ShooterPitch extends PIDSubsystem {
     private CANJaguar pitchMotor;
 
     public ShooterPitch() {
-        super(0.033, 0.0, 0.00025);
+        super(0.033, 0.0020, 0.00025); //p used to be 0.033
         setSetpoint(110);
         enable();
 

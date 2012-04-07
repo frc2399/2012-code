@@ -94,23 +94,23 @@ public class ImageProcessing extends ImageFileExtension {
 
         // set everything currently in the table to -1 so that we can throw out 
         //contours that no longer exist
- 
+            table.beginTransaction();
             for (int i = 0; i < (table.getKeys().size()/2); i++) {
-                table.beginTransaction();
+              
                 table.putDouble("x" + i, -1);
                 table.putDouble("y" + i, -1);
-                table.endTransaction();
+               
             }
 
             // put the centers into a table that goes to the robot
             
             for (int i = 0; i < finalContours.size(); i++) {
-                table.beginTransaction();
+                
                 table.putDouble("x" + i, contourCentersX[i]);
                 table.putDouble("y" + i, contourCentersY[i]);
-                table.endTransaction();
+                
             }
-            
+            table.endTransaction();
         
        // for (int i = 0; i < centerPoints.length; i++){
        // System.out.println(centerPoints[i].getX() +", " + centerPoints[i].getY());
