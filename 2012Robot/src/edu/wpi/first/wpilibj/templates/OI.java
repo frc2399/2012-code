@@ -63,9 +63,11 @@ public class OI {
     public static int LiftSmackerButtNum = 3;
     public static int feedButtNum = 3;
     public static int feedButtNegNum = 6;
-    public static int slowButtNum = 3;
+    public static int slowButtNum = 6; //check this number
+    public static int medButtNum = 7;
     //right stick
     private final JoystickButton slowButt = new JoystickButton(rightStick, slowButtNum);
+    private final JoystickButton medButt = new JoystickButton(rightStick, medButtNum);
     private final JoystickButton feedButt = new JoystickButton(shooterStick, feedButtNum);
     private final JoystickButton feedButtNeg = new JoystickButton(shooterStick, feedButtNegNum);
     //left stick
@@ -96,6 +98,7 @@ public class OI {
     
     //making instances of things
     JoystickDrive slowSpeed = new JoystickDrive(0.5);
+    JoystickDrive medSpeed = new JoystickDrive(0.75);
     
     //shooter things
     FeedBallOn feedOn = new FeedBallOn(1, 1);
@@ -152,7 +155,8 @@ public class OI {
         feedButt.whenPressed(feedOn);
         feedButt.whenReleased(feedOff);
         feedButtNeg.whileHeld(feedNeg);
-        slowButt.whileHeld(slowSpeed);
+        slowButt.whenPressed(slowSpeed);
+        medButt.whenPressed(medSpeed);
         
         FindResetTestButt.whenPressed(findResetTest);
         
