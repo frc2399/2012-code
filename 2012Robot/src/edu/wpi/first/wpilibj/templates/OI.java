@@ -26,6 +26,7 @@ import edu.wpi.first.wpilibj.templates.commands.NewAim;
 import edu.wpi.first.wpilibj.templates.commands.LoadBall;
 import edu.wpi.first.wpilibj.templates.commands.manualControl.ManAim;
 import edu.wpi.first.wpilibj.templates.commands.JoystickDrive;
+import edu.wpi.first.wpilibj.templates.commands.OneWheelDrive;
 import edu.wpi.first.wpilibj.templates.commands.FindReset;
 import edu.wpi.first.wpilibj.templates.commands.SlowShoot;
 import edu.wpi.first.wpilibj.templates.commands.MedShoot;
@@ -65,9 +66,14 @@ public class OI {
     public static int feedButtNegNum = 6;
     public static int slowButtNum = 6; //check this number
     public static int medButtNum = 7;
+    public static int oneWheelButtNum = 8;
+    public static int fullSpeedButtNum = 9;   
     //right stick
     private final JoystickButton slowButt = new JoystickButton(rightStick, slowButtNum);
     private final JoystickButton medButt = new JoystickButton(rightStick, medButtNum);
+    private final JoystickButton oneWheelButt = new JoystickButton(rightStick, oneWheelButtNum);
+    private final JoystickButton fullSpeedButt = new JoystickButton(rightStick, fullSpeedButtNum);
+    
     private final JoystickButton feedButt = new JoystickButton(shooterStick, feedButtNum);
     private final JoystickButton feedButtNeg = new JoystickButton(shooterStick, feedButtNegNum);
     //left stick
@@ -99,6 +105,8 @@ public class OI {
     //making instances of things
     JoystickDrive slowSpeed = new JoystickDrive(0.5);
     JoystickDrive medSpeed = new JoystickDrive(0.75);
+    OneWheelDrive oneWheelSpeed = new OneWheelDrive(0.75);
+    JoystickDrive fullSpeed = new JoystickDrive(1);
     
     //shooter things
     FeedBallOn feedOn = new FeedBallOn(1, 1);
@@ -157,6 +165,8 @@ public class OI {
         feedButtNeg.whileHeld(feedNeg);
         slowButt.whenPressed(slowSpeed);
         medButt.whenPressed(medSpeed);
+        oneWheelButt.whenPressed(oneWheelSpeed);
+        fullSpeedButt.whenPressed(fullSpeed);
         
         FindResetTestButt.whenPressed(findResetTest);
         
