@@ -92,13 +92,13 @@ public class OI {
     
     //autonomous testing buttons
     //public static int AutonomousStopTopTestButtNum = 6;
-    public static int AutonomousCenterTestButtNum = 6;
-    public static int FindResetTestButtNum = 6;
+  //  public static int AutonomousCenterTestButtNum = 6;
+  // public static int FindResetTestButtNum = 6;
     public static int AutonomousLeftTestButtNum = 7;
     public static int AutonomousRightTestButtNum = 10;
     //right stick
    // private final JoystickButton AutonomousStopTopTestButt = new JoystickButton(rightStick, AutonomousStopTopTestButtNum);
- private final JoystickButton FindResetTestButt = new JoystickButton(rightStick, FindResetTestButtNum);
+// private final JoystickButton FindResetTestButt = new JoystickButton(rightStick, FindResetTestButtNum);
     //left stick
 
     
@@ -163,12 +163,13 @@ public class OI {
         feedButt.whenPressed(feedOn);
         feedButt.whenReleased(feedOff);
         feedButtNeg.whileHeld(feedNeg);
+        /*
         slowButt.whenPressed(slowSpeed);
         medButt.whenPressed(medSpeed);
         oneWheelButt.whenPressed(oneWheelSpeed);
         fullSpeedButt.whenPressed(fullSpeed);
-        
-        FindResetTestButt.whenPressed(findResetTest);
+        */
+//        FindResetTestButt.whenPressed(findResetTest);
         
         //Left Driver stick:
 
