@@ -64,7 +64,7 @@ public class OI {
     public static int LiftSmackerButtNum = 3;
     public static int feedButtNum = 3;
     public static int feedButtNegNum = 6;
-    public static int slowButtNum = 6; //check this number
+    public static int slowButtNum = 2; //check this number
     public static int medButtNum = 7;
     public static int oneWheelButtNum = 8;
     public static int fullSpeedButtNum = 9;   
@@ -163,12 +163,15 @@ public class OI {
         feedButt.whenPressed(feedOn);
         feedButt.whenReleased(feedOff);
         feedButtNeg.whileHeld(feedNeg);
-        /*
-        slowButt.whenPressed(slowSpeed);
+        
+        slowButt.whileHeld(slowSpeed);
+       /*
         medButt.whenPressed(medSpeed);
         oneWheelButt.whenPressed(oneWheelSpeed);
         fullSpeedButt.whenPressed(fullSpeed);
-        */
+         * 
+         */
+        
 //        FindResetTestButt.whenPressed(findResetTest);
         
         //Left Driver stick:
